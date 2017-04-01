@@ -15,6 +15,9 @@
 		F4FE29541E8EC7F10026AD50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */; };
 		F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE295E1E8EC7F10026AD50 /* FoodSavrTests.swift */; };
 		F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29691E8EC7F10026AD50 /* FoodSavrUITests.swift */; };
+		F4FE29781E9051A60026AD50 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29771E9051A60026AD50 /* Item.swift */; };
+		F4FE297A1E90617B0026AD50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29791E90617B0026AD50 /* User.swift */; };
+		F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE297B1E90697F0026AD50 /* Receipt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		F4FE29651E8EC7F10026AD50 /* FoodSavrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodSavrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FE29691E8EC7F10026AD50 /* FoodSavrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSavrUITests.swift; sourceTree = "<group>"; };
 		F4FE296B1E8EC7F10026AD50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4FE29771E9051A60026AD50 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		F4FE29791E90617B0026AD50 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F4FE297B1E90697F0026AD50 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 		F4FE29461E8EC7F10026AD50 /* FoodSavr */ = {
 			isa = PBXGroup;
 			children = (
+				F4FE29771E9051A60026AD50 /* Item.swift */,
+				F4FE29791E90617B0026AD50 /* User.swift */,
+				F4FE297B1E90697F0026AD50 /* Receipt.swift */,
 				F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */,
 				F4FE29491E8EC7F10026AD50 /* FirstViewController.swift */,
 				F4FE294B1E8EC7F10026AD50 /* SecondViewController.swift */,
@@ -265,8 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
+				F4FE29781E9051A60026AD50 /* Item.swift in Sources */,
 				F4FE294C1E8EC7F10026AD50 /* SecondViewController.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
+				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
 				F4FE294A1E8EC7F10026AD50 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
