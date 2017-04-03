@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class User: NSObject {
     private var _UserRef: FIRDatabaseReference!
@@ -19,10 +20,10 @@ class User: NSObject {
     private var _zipCode: Int!
 
     private var _phone: Int!
-    private var _dietaryRestrictions: Array!
-    private var _restrictedIngredients: Array!
+    private var _dietaryRestrictions: Array<String>!
+    private var _restrictedIngredients: Array<String>!
     
-    private var _groups: Array!
+    private var _groups: Array<Group>!
     private var _pic: UIImage!
     
     var key: String {
@@ -49,15 +50,15 @@ class User: NSObject {
         return _phone
     }
     
-    var dietaryRestrictions: Array {
+    var dietaryRestrictions: Array<String> {
         return _dietaryRestrictions
     }
     
-    var restrictedIngredients: Array {
+    var restrictedIngredients: Array<String> {
         return _restrictedIngredients
     }
     
-    var groups: Array {
+    var groups: Array<Group> {
         return _groups
     }
     
@@ -87,14 +88,14 @@ class User: NSObject {
             self._phone = newPhone
         }
         
-        if let newDietaryRestrictions = dictionary["dietaryRestrictions"] as? Array {
+        if let newDietaryRestrictions = dictionary["dietaryRestrictions"] as? Array<String> {
             self._dietaryRestrictions = newDietaryRestrictions
         }
         
-        if let newRestrictedIngredients = dictionary["restrictedIngredients"] as? Array {
+        if let newRestrictedIngredients = dictionary["restrictedIngredients"] as? Array<String> {
             self._restrictedIngredients = newRestrictedIngredients
         }
-        if let newGroups = dictionary["groups"] as? Array {
+        if let newGroups = dictionary["groups"] as? Array<Group> {
             self._groups = newGroups
         }
         

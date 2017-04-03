@@ -1,8 +1,8 @@
 //
-//  Receipt.swift
+//  Group.swift
 //  FoodSavr
 //
-//  Created by Peter Freschi on 4/1/17.
+//  Created by Peter Freschi on 4/2/17.
 //  Copyright © 2017 FoodSavr. All rights reserved.
 //
 
@@ -11,27 +11,26 @@ import Firebase
 import FirebaseDatabase
 import Foundation
 
-class Receipt: NSObject {
-    private var _receiptRef: FIRDatabaseReference!
+class Group: NSObject {
+    private var _groupRef: FIRDatabaseReference!
     
     private var _key: Int!
-    private var _pic: UIImage!
+    private var _name: String!
     private var _deleted: Bool!
     private var _dateAdded: String!
     private var _creatorId: Int!
-    private var _items: Array<Item>!
-    private var _vendor: String!
+    private var _users: Array<User>!
     
-    var receiptRef: FIRDatabaseReference {
-        return _receiptRef
+    var groupRef: FIRDatabaseReference {
+        return _groupRef
     }
     
     var key: Int {
         return _key
     }
     
-    var pic: UIImage {
-        return _pic
+    var name: String {
+        return _name
     }
     
     var deleted: Bool {
@@ -46,18 +45,15 @@ class Receipt: NSObject {
         return _creatorId
     }
     
-    var items: Array<Item> {
-        return _items
-    }
-    
-    var vendor: String {
-        return _vendor
+    var users: Array<User> {
+        return _users
     }
     
     init(key: Int, dictionary: Dictionary<String, AnyObject>) {
         self._key = key
-        if let newPic = dictionary["pic"] as? UIImage {
-            self._pic = newPic
+        
+        if let newName = dictionary["name"] as? String {
+            self._name = newName
         }
         
         if let newDeleted = dictionary["deleted"] as? Bool {
@@ -72,20 +68,15 @@ class Receipt: NSObject {
             self._creatorId = newCreatorId
         }
         
-        if let newItems = dictionary["items"] as? Array<Item> {
-            self._items = newItems
-        }
-        
-        if let newVendor = dictionary["vendor"] as? String {
-            self._vendor = newVendor
+        if let newUsers = dictionary["users"] as? Array<User> {
+            self._users = newUsers
         }
         
         //the above properties added to their key?!
-        self._receiptRef = FirebaseProxy.firebaseProxy.receiptRef.child(String(self._key))
+        self._groupRef = FirebaseProxy.firebaseProxy.groupRef.child(String(self._key))
         
     }
     
     
     
 }
-
