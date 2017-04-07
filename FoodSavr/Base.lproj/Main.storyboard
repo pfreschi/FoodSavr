@@ -88,7 +88,7 @@
         <!--Authentication-->
         <scene sceneID="T3n-ob-lCN">
             <objects>
-                <viewController title="Authentication" id="dDw-LV-twm" customClass="AuthenticationViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" title="Authentication" id="dDw-LV-twm" customClass="AuthenticationViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aua-DA-c2Y"/>
                         <viewControllerLayoutGuide type="bottom" id="xTO-wD-Koj"/>
