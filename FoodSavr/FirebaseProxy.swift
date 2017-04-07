@@ -12,10 +12,11 @@ import Firebase
 import FirebaseDatabase
 
 
-
 class FirebaseProxy: NSObject {
     
     static let firebaseProxy = FirebaseProxy()
+
+
     
     // Connect to Firebase DB
     private var _myRootRef = FIRDatabase.database().reference()
@@ -24,6 +25,7 @@ class FirebaseProxy: NSObject {
     private var _userRef = FIRDatabase.database().reference().child("users")
     private var _groupRef = FIRDatabase.database().reference().child("groups")
     
+
     
     
     var myRootRef: FIRDatabaseReference {
@@ -129,4 +131,6 @@ class FirebaseProxy: NSObject {
         }
     }
  */
+    
+
 }

@@ -18,7 +18,7 @@
 		F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463323D1E91FE2500A8C14C /* SecondViewController.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
 		F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */; };
-		F4FE294A1E8EC7F10026AD50 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29491E8EC7F10026AD50 /* FirstViewController.swift */; };
+		F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */; };
 		F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE294D1E8EC7F10026AD50 /* Main.storyboard */; };
 		F4FE29511E8EC7F10026AD50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FE29501E8EC7F10026AD50 /* Assets.xcassets */; };
 		F4FE29541E8EC7F10026AD50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */; };
@@ -62,7 +62,7 @@
 		F4AE6C671E920169009C5141 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F4FE29441E8EC7F10026AD50 /* FoodSavr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodSavr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4FE29491E8EC7F10026AD50 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F4FE294E1E8EC7F10026AD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4FE29501E8EC7F10026AD50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4FE29531E8EC7F10026AD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				F4FE297B1E90697F0026AD50 /* Receipt.swift */,
 				F46332391E91FACA00A8C14C /* Group.swift */,
 				F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */,
-				F4FE29491E8EC7F10026AD50 /* FirstViewController.swift */,
+				F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */,
 				F463323D1E91FE2500A8C14C /* SecondViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
 				F4FE29501E8EC7F10026AD50 /* Assets.xcassets */,
@@ -264,7 +264,7 @@
 				TargetAttributes = {
 					F4FE29431E8EC7F10026AD50 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = CMHG5573MR;
+						DevelopmentTeam = 33G7MEJKT7;
 						ProvisioningStyle = Automatic;
 					};
 					F4FE29591E8EC7F10026AD50 = {
@@ -466,7 +466,7 @@
 				F4AE6C681E920169009C5141 /* Item.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
 				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
-				F4FE294A1E8EC7F10026AD50 /* FirstViewController.swift in Sources */,
+				F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,10 +621,10 @@
 			baseConfigurationReference = 9BEE1D4164D8E61755BED9AB /* Pods-FoodSavr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CMHG5573MR;
+				DEVELOPMENT_TEAM = 33G7MEJKT7;
 				INFOPLIST_FILE = FoodSavr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.peterfreschi.FoodSavr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaowenfeng.FoodSavr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -635,10 +635,10 @@
 			baseConfigurationReference = 438C92A686327C8730F8854A /* Pods-FoodSavr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CMHG5573MR;
+				DEVELOPMENT_TEAM = 33G7MEJKT7;
 				INFOPLIST_FILE = FoodSavr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.peterfreschi.FoodSavr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaowenfeng.FoodSavr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
