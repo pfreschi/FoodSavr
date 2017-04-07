@@ -22,9 +22,10 @@ class User: NSObject {
     private var _phone: Int!
     private var _dietaryRestrictions: Array<String>!
     private var _restrictedIngredients: Array<String>!
+    private var _receipts: Array<String>!
     
-    private var _groups: Array<Group>!
-    private var _pic: UIImage!
+    private var _groups: Array<String>!
+    private var _pic: String!
     
     var key: String {
         return _key
@@ -58,11 +59,15 @@ class User: NSObject {
         return _restrictedIngredients
     }
     
-    var groups: Array<Group> {
+    var receipts: Array<String> {
+        return _receipts
+    }
+    
+    var groups: Array<String> {
         return _groups
     }
     
-    var pic: UIImage {
+    var pic: String {
         return _pic
     }
     
@@ -95,11 +100,13 @@ class User: NSObject {
         if let newRestrictedIngredients = dictionary["restrictedIngredients"] as? Array<String> {
             self._restrictedIngredients = newRestrictedIngredients
         }
-        if let newGroups = dictionary["groups"] as? Array<Group> {
+        if let newReceipts = dictionary["receipts"] as? Array<String> {
+            self._receipts = newReceipts
+        }
+        if let newGroups = dictionary["groups"] as? Array<String> {
             self._groups = newGroups
         }
-        
-        if let newPic = dictionary["pic"] as? UIImage {
+        if let newPic = dictionary["pic"] as? String {
             self._pic = newPic
         }
         
@@ -107,7 +114,4 @@ class User: NSObject {
         self._UserRef = FirebaseProxy.firebaseProxy.myRootRef.child("users").child(self._key)
         
     }
-    
-    
-    
 }
