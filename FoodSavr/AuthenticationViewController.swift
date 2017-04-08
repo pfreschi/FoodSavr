@@ -33,15 +33,19 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 250)
+        
+        
         let loginButton = FBSDKLoginButton()
+        loginButton.center = newCenter
         view.addSubview(loginButton)
-        //frame's are obselete, please use constraints instead because its 2016 after all
-        loginButton.frame = CGRect(x: 16, y: 50, width: view.frame.width - 32, height: 50)
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
         
         rootRef = FIRDatabase.database().reference()
         userRef = FirebaseProxy.firebaseProxy.userRef
+        
+        
 
 
     }
@@ -71,7 +75,9 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     func firebaseLogin(credential: FIRAuthCredential) {
         if FIRAuth.auth()?.currentUser?.link != nil{
             print("Current user has been linked with a firebase credential.")
-            afterSuccessfulFBLogin(userUid: (FIRAuth.auth()?.currentUser?.uid)!)
+            //TODO: delete this after implement add receipt
+            self.showViewWithIdentifier(identifier: "tabBar")
+            //afterSuccessfulFBLogin(userUid: (FIRAuth.auth()?.currentUser?.uid)!)
         } else {
             
             //start a new firebase credential
@@ -99,6 +105,7 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
     
     func afterSuccessfulFBLogin(userUid : String) {
+        
         self.userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             // if user had logged in before and has items in their kitchen, go to Kitchen
@@ -117,8 +124,7 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
                 self.addNewUser(userUid: userUid)
                 //self.showViewWithIdentifier(identifier: "AddReceipt")
             }
-            //TODO: delete this after implement add receipt
-            self.showViewWithIdentifier(identifier: "tabBar")
+
         })
 
     }

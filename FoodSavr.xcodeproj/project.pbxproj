@@ -18,9 +18,9 @@
 		AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
-		AEFBA9E11E97521200DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E01E97521200DD9DAC /* Assets 21-48-33-041.xcassets */; };
-		AEFBA9E21E97521200DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E01E97521200DD9DAC /* Assets 21-48-33-041.xcassets */; };
-		AEFBA9E31E97521200DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E01E97521200DD9DAC /* Assets 21-48-33-041.xcassets */; };
+		AEFBA9E51E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
+		AEFBA9E61E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
+		AEFBA9E71E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		C833E6FE2AB2E7AA5B2FBE98 /* Pods_FoodSavrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */; };
 		F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332371E91D0B700A8C14C /* FirebaseProxy.swift */; };
 		F463323A1E91FACA00A8C14C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332391E91FACA00A8C14C /* Group.swift */; };
@@ -63,7 +63,7 @@
 		AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		AE63D3451E971B2400AC6936 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		AE788B181E904AE4000DF559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		AEFBA9E01E97521200DD9DAC /* Assets 21-48-33-041.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 21-48-33-041.xcassets"; sourceTree = "<group>"; };
+		AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 21-48-33-041.xcassets"; sourceTree = "<group>"; };
 		BC31EA20D851F2F2D64C38E8 /* Pods-FoodSavrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +174,7 @@
 		F4FE29461E8EC7F10026AD50 /* FoodSavr */ = {
 			isa = PBXGroup;
 			children = (
-				AEFBA9E01E97521200DD9DAC /* Assets 21-48-33-041.xcassets */,
+				AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */,
 				F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */,
 				F4AE6C671E920169009C5141 /* Item.swift */,
 				F4FE29791E90617B0026AD50 /* User.swift */,
@@ -376,7 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFBA9E11E97521200DD9DAC /* Assets 21-48-33-041.xcassets in Resources */,
+				AEFBA9E51E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */,
 				F4FE29541E8EC7F10026AD50 /* LaunchScreen.storyboard in Resources */,
 				AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 				F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */,
@@ -387,7 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFBA9E21E97521200DD9DAC /* Assets 21-48-33-041.xcassets in Resources */,
+				AEFBA9E61E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */,
 				AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFBA9E31E97521200DD9DAC /* Assets 21-48-33-041.xcassets in Resources */,
+				AEFBA9E71E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */,
 				AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

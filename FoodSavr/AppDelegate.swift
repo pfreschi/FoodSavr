@@ -23,6 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Override point for customization after application launch.
+        
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if  UserDefaults.standard.value(forKey: "uid") != nil {
+                let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
+                self.window?.rootViewController = vc
+            } else {
+                let vc = storyboard.instantiateViewController(withIdentifier: "login")
+                self.window?.rootViewController = vc
+            }
+        
         return true
     }
     
