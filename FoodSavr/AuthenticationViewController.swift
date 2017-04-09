@@ -80,8 +80,6 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     func firebaseLogin(credential: FIRAuthCredential) {
         if FIRAuth.auth()?.currentUser?.link != nil{
             print("Current user has been linked with a firebase credential.")
-            //TODO: delete this after implement add receipt
-            //self.showViewWithIdentifier(identifier: "tabBar")
             afterSuccessfulFBLogin(userUid: (FIRAuth.auth()?.currentUser?.uid)!)
         } else {
             
@@ -92,16 +90,16 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
                     print(error.localizedDescription)
                     return
                 } else {
-                    
+                    let userUid = FIRAuth.auth()!.currentUser?.uid
                     // add the new user to Firebase database
                     for profile in user!.providerData {
-                        let userUid = profile.uid
+                        
                         self.newUserInfo["name"] = profile.displayName!
                         self.newUserInfo["email"] = profile.email!
                         self.newUserInfo["pic"] = profile.photoURL?.absoluteString
                         // TODO: Ask peter about the sisutation when user is alreay logged in
                         UserDefaults.standard.setValue(userUid, forKey: "uid")
-                        self.afterSuccessfulFBLogin(userUid: userUid)
+                        self.afterSuccessfulFBLogin(userUid: userUid!)
                         
                     }
                 }
@@ -109,6 +107,7 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
         }
     }
     
+    // navigate to the next page after login
     func afterSuccessfulFBLogin(userUid : String) {
         //every one goes to kitchen page
         self.showViewWithIdentifier(identifier: "tabBar")
