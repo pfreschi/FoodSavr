@@ -46,8 +46,6 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
         userRef = FirebaseProxy.firebaseProxy.userRef
         
         
-
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +55,13 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            print("signout with firebase")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -76,8 +81,8 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
         if FIRAuth.auth()?.currentUser?.link != nil{
             print("Current user has been linked with a firebase credential.")
             //TODO: delete this after implement add receipt
-            self.showViewWithIdentifier(identifier: "tabBar")
-            //afterSuccessfulFBLogin(userUid: (FIRAuth.auth()?.currentUser?.uid)!)
+            //self.showViewWithIdentifier(identifier: "tabBar")
+            afterSuccessfulFBLogin(userUid: (FIRAuth.auth()?.currentUser?.uid)!)
         } else {
             
             //start a new firebase credential
@@ -94,7 +99,7 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
                         self.newUserInfo["name"] = profile.displayName!
                         self.newUserInfo["email"] = profile.email!
                         self.newUserInfo["pic"] = profile.photoURL?.absoluteString
-                        
+                        // TODO: Ask peter about the sisutation when user is alreay logged in
                         UserDefaults.standard.setValue(userUid, forKey: "uid")
                         self.afterSuccessfulFBLogin(userUid: userUid)
                         
@@ -105,28 +110,26 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
     
     func afterSuccessfulFBLogin(userUid : String) {
+        //every one goes to kitchen page
+        self.showViewWithIdentifier(identifier: "tabBar")
         
         self.userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             // if user had logged in before and has items in their kitchen, go to Kitchen
             if snapshot.hasChild(userUid) && snapshot.childSnapshot(forPath: userUid).childSnapshot(forPath: "receipts").childrenCount > 0  {
-                // TODO: REPLACE IDENTIFIER BELOW WITH CORRECT KITCHEN VIEWCONTROLLER
-                print("going to Kitchen View")
-                //self.showViewWithIdentifier(identifier: "tabBar")
+
                 
-            } else if snapshot.hasChild(userUid){ // user logged in before but has NO items in kitchen, take to Receipt Add View
-                // TODO: REPLACE IDENTIFIER BELOW WITH CORRECT RECEIPT VIEWCONTROLLER
-                print("going to Receipt View")
-                //self.showViewWithIdentifier(identifier: "AddReceipt")
+            } else if snapshot.hasChild(userUid){
+                // user logged in before but has NO items in kitchen, go to Kitchen
+                // TODO: Add a layer to encourage user add recipe
                 
             } else { // new user
                 print("adding new user")
                 self.addNewUser(userUid: userUid)
-                //self.showViewWithIdentifier(identifier: "AddReceipt")
+                
             }
-
+            
         })
-
     }
     
     /*
@@ -189,9 +192,6 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
         self.rootRef.child("users").child(userUid).setValue(self.newUserInfo)
     }
     
-
-
- 
     
 }
 

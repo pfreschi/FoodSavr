@@ -46,6 +46,39 @@ class FirebaseProxy: NSObject {
     
     
     /*
+     private var _receiptRef: FIRDatabaseReference!
+     
+     private var _key: Int!
+     private var _pic: UIImage!
+     private var _deleted: Bool!
+     private var _dateAdded: String!
+     private var _creatorId: Int!
+     private var _items: Array<String>! //array of item id
+     private var _vendor: String!
+     
+     */
+    
+    func saveReceipt(pic: String, creatorId: String, items: [String], vendor: String) {
+        
+        let key = FirebaseProxy.firebaseProxy.receiptRef.childByAutoId().key
+        let currentDate = String(describing: NSDate())
+        
+        let newReceiptDetails : [String:Any] = [
+            "pic": pic,
+            "deleted": false,
+            "dateAdded": currentDate,
+            "creatorId": creatorId,
+            // TODO: fix this after text recognization pull in
+            "items": items,
+            // QUESTION: vendor of product or store?
+            "vendor": vendor
+        
+        ]
+        
+        self.receiptRef.child(key).setValue(newReceiptDetails)
+    }
+    
+    /*
     func getProfPic(fid: String) -> UIImage? {
         if (fid != "") {
             let imgURLString = "https://graph.facebook.com/" + fid + "/picture?type=large" //type=normal
