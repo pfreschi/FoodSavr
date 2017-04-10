@@ -27,6 +27,8 @@
 		F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463323D1E91FE2500A8C14C /* SecondViewController.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
 		F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */; };
+		F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE843E1E99DFF000606BDA /* HelloViewController.swift */; };
+		F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */; };
 		F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */; };
 		F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */; };
 		F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE294D1E8EC7F10026AD50 /* Main.storyboard */; };
@@ -74,6 +76,8 @@
 		F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodSavr.entitlements; sourceTree = "<group>"; };
 		F4AE6C671E920169009C5141 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		F4CE843E1E99DFF000606BDA /* HelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
+		F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPreferencesViewController.swift; sourceTree = "<group>"; };
 		F4FE29441E8EC7F10026AD50 /* FoodSavr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodSavr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
 				F46332371E91D0B700A8C14C /* FirebaseProxy.swift */,
+				F4CE843E1E99DFF000606BDA /* HelloViewController.swift */,
+				F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */,
 			);
 			path = FoodSavr;
 			sourceTree = "<group>";
@@ -532,6 +538,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
+				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
+				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
 				F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */,
 				F463323A1E91FACA00A8C14C /* Group.swift in Sources */,
 				F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */,
