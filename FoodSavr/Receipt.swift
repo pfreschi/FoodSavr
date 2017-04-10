@@ -15,11 +15,11 @@ class Receipt: NSObject {
     private var _receiptRef: FIRDatabaseReference!
     
     private var _key: Int!
-    private var _pic: UIImage!
+    private var _pic: String!
     private var _deleted: Bool!
     private var _dateAdded: String!
     private var _creatorId: Int!
-    private var _items: Array<Item>!
+    private var _items: Array<String>! //array of item id
     private var _vendor: String!
     
     var receiptRef: FIRDatabaseReference {
@@ -30,7 +30,7 @@ class Receipt: NSObject {
         return _key
     }
     
-    var pic: UIImage {
+    var pic: String {
         return _pic
     }
     
@@ -46,7 +46,7 @@ class Receipt: NSObject {
         return _creatorId
     }
     
-    var items: Array<Item> {
+    var items: Array<String> {
         return _items
     }
     
@@ -56,7 +56,7 @@ class Receipt: NSObject {
     
     init(key: Int, dictionary: Dictionary<String, AnyObject>) {
         self._key = key
-        if let newPic = dictionary["pic"] as? UIImage {
+        if let newPic = dictionary["pic"] as? String {
             self._pic = newPic
         }
         
@@ -72,7 +72,7 @@ class Receipt: NSObject {
             self._creatorId = newCreatorId
         }
         
-        if let newItems = dictionary["items"] as? Array<Item> {
+        if let newItems = dictionary["items"] as? Array<String> {
             self._items = newItems
         }
         
