@@ -38,9 +38,32 @@ class HelloViewController: UIViewController {
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var descriptionDietOrAllergyText: UILabel!
     @IBOutlet weak var welcomeOrEndContinue: BorderedButton!
+    @IBOutlet weak var preferenceTextBox: UITextField!
+    @IBOutlet weak var outerContinueButton: BorderedButton!
     
     var currentStep = 0 //Diet is 1, Allergy is 2, Preference is 3
     
+    @IBAction func editingPrefEnded(_ sender: UITextField, forEvent event: UIEvent) {
+        FirebaseProxy.firebaseProxy.myRootRef.child("ingredients").queryOrdered(byChild: "term").queryEqual(toValue: sender.text).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let result = snapshot.value as? NSDictionary
+            if (result == nil){
+                self.outerContinueButton.isEnabled = false
+                print("result not found")
+            } else {
+                self.outerContinueButton.isEnabled = true
+                print("result found")
+            }
+            
+            //let term = value?["term"] as? String ?? "none"
+            //print(term)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
+        
+    }
     @IBOutlet var dietCheckboxes: [M13Checkbox]!
     @IBOutlet var allergyCheckboxes: [M13Checkbox]!
 
@@ -93,31 +116,60 @@ class HelloViewController: UIViewController {
     
     
     @IBAction func continueToNextStep(_ sender: UIButton, forEvent event: UIEvent) {
-        
-        if (currentStep == 1){ //on diet page
-            dietView.isHidden = true
-            allergyView.isHidden = false
-            initializeCheckboxes(checkboxesArray: allergyCheckboxes)
-            titleText.text = "Allergy"
-            descriptionDietOrAllergyText.text = "Please tell us about your \n food allergies."
+        if (currentStep == 3) { //pref check
+            FirebaseProxy.firebaseProxy.myRootRef.child("ingredients").queryOrdered(byChild: "term").queryEqual(toValue: preferenceTextBox.text).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let result = snapshot.value as? NSDictionary
+                if (result == nil){
+                    print("result not found")
+                } else {
+                    print("result found")
+                    self.outerView.isHidden = true
+                    self.welcomeOrEndView.isHidden = false
+                    self.welcomeOrEndText.text = "Thank you very much for \n telling us about you. We hope you enjoy FoodSavr!"
+                    self.welcomeOrEndContinue.setTitle("Get Started", for: .normal)
+                    self.currentStep += 1
+                    // save collected info to Firebase
+                    let currentUser = FIRAuth.auth()?.currentUser?.uid
+                    FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("diet").setValue(
+                        Array(self.dietPreferences.keys)
+                    )
+                    FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("allergy").setValue(
+                        Array(self.allergyPreferences.keys)
+                    )
+                    FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("excludedIngredients").setValue(
+                        self.preferenceTextBox.text
+                    )
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+
+        } else {
+            if (currentStep == 1){ //on diet page
+                dietView.isHidden = true
+                allergyView.isHidden = false
+                initializeCheckboxes(checkboxesArray: allergyCheckboxes)
+                titleText.text = "Allergy"
+                descriptionDietOrAllergyText.text = "Please tell us about your \n food allergies."
+                
+            } else if (currentStep == 2){ //on allergy page
+                allergyView.isHidden = true
+                preferenceView.isHidden = false
+                titleText.text = "Preference"
+                descriptionDietOrAllergyText.isHidden = true
+                
+            } else if (currentStep == 4){
+                
+            }
             
-        } else if (currentStep == 2){ //on allergy page
-            allergyView.isHidden = true
-            preferenceView.isHidden = false
-            titleText.text = "Preference"
-            descriptionDietOrAllergyText.isHidden = true
-        } else if (currentStep == 3){ //on preference page
-            outerView.isHidden = true
-            welcomeOrEndView.isHidden = false
-            welcomeOrEndText.text = "Thank you very much for \n telling us about you. We hope you enjoy FoodSavr!"
-            welcomeOrEndContinue.setTitle("Get Started", for: .normal)
             
+            print(currentStep)
+            currentStep += 1
+
         }
-        currentStep += 1
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,8 +188,6 @@ class HelloViewController: UIViewController {
         self.profileImageView.clipsToBounds = true;
         self.profileImageView.layer.borderWidth = 5.0
         self.profileImageView.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor
-    
-
 
     }
     

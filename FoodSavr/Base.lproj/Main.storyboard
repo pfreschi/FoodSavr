@@ -174,6 +174,35 @@
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slu-2x-gye" userLabel="Preference Options">
+                                        <rect key="frame" x="0.0" y="89" width="375" height="275"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akt-xp-b9C">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Please tell us about the food
+that you do not like. We will
+exclude them in recipe
+reccommendations.
+</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="0.40806224940000002" green="0.55739378930000005" blue="0.20458033680000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a food" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L96-Xm-DBf" userLabel="PreferenceTextBox">
+                                                <rect key="frame" x="8" y="122" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="editingPrefEnded:forEvent:" destination="U2Q-0o-L6a" eventType="editingDidEnd" id="imW-6X-QLI"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </view>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ruV-AL-RNk" userLabel="Diet Options">
                                         <rect key="frame" x="0.0" y="156" width="375" height="208"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -455,32 +484,6 @@
                                             </label>
                                         </subviews>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slu-2x-gye" userLabel="Preference Options">
-                                        <rect key="frame" x="0.0" y="89" width="375" height="275"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akt-xp-b9C">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Please tell us about the food
-that you do not like. We will
-exclude them in recipe
-reccommendations.
-</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" red="0.40806224940000002" green="0.55739378930000005" blue="0.20458033680000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43J-tw-btX">
-                                                <rect key="frame" x="8" y="162" width="359" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOL-RO-jTO" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
                                         <rect key="frame" x="204" y="375" width="121" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -559,7 +562,9 @@ get started.</string>
                         <outlet property="descriptionDietOrAllergyText" destination="ph8-Ex-grb" id="f06-pD-TNo"/>
                         <outlet property="dietView" destination="ruV-AL-RNk" id="1ga-ZZ-oMX"/>
                         <outlet property="mainView" destination="uE7-AL-ajG" id="O4c-CL-AhA"/>
+                        <outlet property="outerContinueButton" destination="cOL-RO-jTO" id="3kQ-1i-gwr"/>
                         <outlet property="outerView" destination="pH1-Z3-ZxA" id="WbT-nC-BW3"/>
+                        <outlet property="preferenceTextBox" destination="L96-Xm-DBf" id="93l-HB-eyp"/>
                         <outlet property="preferenceView" destination="slu-2x-gye" id="RFx-Yb-S3R"/>
                         <outlet property="profileImageView" destination="bBc-DL-wyp" id="tFf-zP-Fi4"/>
                         <outlet property="titleText" destination="cfZ-1D-sui" id="LNZ-k5-Txu"/>
@@ -587,34 +592,6 @@ get started.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDT-oL-AMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3191.1999999999998" y="1022.3388305847077"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="zAi-2w-q5O">
-            <objects>
-                <tableViewController storyboardIdentifier="preferenceTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hwy-gI-Ia5" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xCQ-F5-jsp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="s1c-3c-8eD">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1c-3c-8eD" id="QP9-vL-aeR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="hwy-gI-Ia5" id="e0s-TZ-Zwd"/>
-                            <outlet property="delegate" destination="hwy-gI-Ia5" id="2W1-cs-wfi"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9lS-sl-5D0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2446" y="1021"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

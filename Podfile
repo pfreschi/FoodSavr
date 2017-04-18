@@ -27,6 +27,7 @@ target 'FoodSavr' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'M13Checkbox'
+  pod 'Alamofire', '~> 4.4'
   
 
 end
