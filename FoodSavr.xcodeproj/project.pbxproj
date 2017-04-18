@@ -25,6 +25,7 @@
 		F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332371E91D0B700A8C14C /* FirebaseProxy.swift */; };
 		F463323A1E91FACA00A8C14C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332391E91FACA00A8C14C /* Group.swift */; };
 		F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463323D1E91FE2500A8C14C /* SecondViewController.swift */; };
+		F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F13B91EA003F1004534D9 /* BorderedButton.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
 		F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */; };
 		F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE843E1E99DFF000606BDA /* HelloViewController.swift */; };
@@ -74,6 +75,7 @@
 		F46332391E91FACA00A8C14C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F463323D1E91FE2500A8C14C /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodSavr.entitlements; sourceTree = "<group>"; };
+		F49F13B91EA003F1004534D9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		F4AE6C671E920169009C5141 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		F4CE843E1E99DFF000606BDA /* HelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				F46332371E91D0B700A8C14C /* FirebaseProxy.swift */,
 				F4CE843E1E99DFF000606BDA /* HelloViewController.swift */,
 				F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */,
+				F49F13B91EA003F1004534D9 /* BorderedButton.swift */,
 			);
 			path = FoodSavr;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			files = (
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
 				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
+				F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */,
 				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
 				F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */,
 				F463323A1E91FACA00A8C14C /* Group.swift in Sources */,
