@@ -25,8 +25,11 @@
 		F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332371E91D0B700A8C14C /* FirebaseProxy.swift */; };
 		F463323A1E91FACA00A8C14C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332391E91FACA00A8C14C /* Group.swift */; };
 		F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463323D1E91FE2500A8C14C /* SecondViewController.swift */; };
+		F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F13B91EA003F1004534D9 /* BorderedButton.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
 		F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */; };
+		F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE843E1E99DFF000606BDA /* HelloViewController.swift */; };
+		F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */; };
 		F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */; };
 		F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */; };
 		F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE294D1E8EC7F10026AD50 /* Main.storyboard */; };
@@ -72,8 +75,11 @@
 		F46332391E91FACA00A8C14C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F463323D1E91FE2500A8C14C /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodSavr.entitlements; sourceTree = "<group>"; };
+		F49F13B91EA003F1004534D9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		F4AE6C671E920169009C5141 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		F4CE843E1E99DFF000606BDA /* HelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
+		F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPreferencesViewController.swift; sourceTree = "<group>"; };
 		F4FE29441E8EC7F10026AD50 /* FoodSavr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodSavr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +195,9 @@
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
 				F46332371E91D0B700A8C14C /* FirebaseProxy.swift */,
+				F4CE843E1E99DFF000606BDA /* HelloViewController.swift */,
+				F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */,
+				F49F13B91EA003F1004534D9 /* BorderedButton.swift */,
 			);
 			path = FoodSavr;
 			sourceTree = "<group>";
@@ -218,12 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FE296E1E8EC7F10026AD50 /* Build configuration list for PBXNativeTarget "FoodSavr" */;
 			buildPhases = (
-				E885D9A1380A32156505A0C3 /* 📦 Check Pods Manifest.lock */,
+				E885D9A1380A32156505A0C3 /* [CP] Check Pods Manifest.lock */,
 				F4FE29401E8EC7F10026AD50 /* Sources */,
 				F4FE29411E8EC7F10026AD50 /* Frameworks */,
 				F4FE29421E8EC7F10026AD50 /* Resources */,
-				13EC6568E7BD59D1D187377B /* 📦 Embed Pods Frameworks */,
-				6EE036037F986306B34CE66F /* 📦 Copy Pods Resources */,
+				13EC6568E7BD59D1D187377B /* [CP] Embed Pods Frameworks */,
+				6EE036037F986306B34CE66F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,12 +247,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FE29711E8EC7F10026AD50 /* Build configuration list for PBXNativeTarget "FoodSavrTests" */;
 			buildPhases = (
-				6DDD84E7A04DD75C6B7FE9B8 /* 📦 Check Pods Manifest.lock */,
+				6DDD84E7A04DD75C6B7FE9B8 /* [CP] Check Pods Manifest.lock */,
 				F4FE29561E8EC7F10026AD50 /* Sources */,
 				F4FE29571E8EC7F10026AD50 /* Frameworks */,
 				F4FE29581E8EC7F10026AD50 /* Resources */,
-				CD2C2F93E657D95E857716AF /* 📦 Embed Pods Frameworks */,
-				50F510381A6249860A0CF81A /* 📦 Copy Pods Resources */,
+				CD2C2F93E657D95E857716AF /* [CP] Embed Pods Frameworks */,
+				50F510381A6249860A0CF81A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,11 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FE29741E8EC7F10026AD50 /* Build configuration list for PBXNativeTarget "FoodSavrUITests" */;
 			buildPhases = (
-				8ACD13CC7C16A0FE8D446B9B /* 📦 Check Pods Manifest.lock */,
+				8ACD13CC7C16A0FE8D446B9B /* [CP] Check Pods Manifest.lock */,
 				F4FE29611E8EC7F10026AD50 /* Sources */,
 				F4FE29621E8EC7F10026AD50 /* Frameworks */,
 				F4FE29631E8EC7F10026AD50 /* Resources */,
-				C8C565831FF8BE625AC9F55B /* 📦 Copy Pods Resources */,
+				C8C565831FF8BE625AC9F55B /* [CP] Copy Pods Resources */,
+				A6B273CB07EA3B2496A2583E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,14 +414,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13EC6568E7BD59D1D187377B /* 📦 Embed Pods Frameworks */ = {
+		13EC6568E7BD59D1D187377B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,14 +429,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		50F510381A6249860A0CF81A /* 📦 Copy Pods Resources */ = {
+		50F510381A6249860A0CF81A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,29 +444,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6DDD84E7A04DD75C6B7FE9B8 /* 📦 Check Pods Manifest.lock */ = {
+		6DDD84E7A04DD75C6B7FE9B8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6EE036037F986306B34CE66F /* 📦 Copy Pods Resources */ = {
+		6EE036037F986306B34CE66F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,29 +474,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8ACD13CC7C16A0FE8D446B9B /* 📦 Check Pods Manifest.lock */ = {
+		8ACD13CC7C16A0FE8D446B9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C8C565831FF8BE625AC9F55B /* 📦 Copy Pods Resources */ = {
+		A6B273CB07EA3B2496A2583E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrUITests/Pods-FoodSavrUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8C565831FF8BE625AC9F55B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,14 +519,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrUITests/Pods-FoodSavrUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD2C2F93E657D95E857716AF /* 📦 Embed Pods Frameworks */ = {
+		CD2C2F93E657D95E857716AF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,19 +534,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E885D9A1380A32156505A0C3 /* 📦 Check Pods Manifest.lock */ = {
+		E885D9A1380A32156505A0C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -532,6 +557,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
+				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
+				F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */,
+				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
 				F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */,
 				F463323A1E91FACA00A8C14C /* Group.swift in Sources */,
 				F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */,

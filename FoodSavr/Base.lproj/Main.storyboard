@@ -34,6 +34,14 @@
                                     <action selector="takePhoto:" destination="9pv-A4-QxB" eventType="touchUpInside" id="kZe-Jd-Htp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGJ-98-Qrt">
+                                <rect key="frame" x="325" y="558" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Quiz"/>
+                                <connections>
+                                    <segue destination="U2Q-0o-L6a" kind="show" id="yY1-Kf-esT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -141,6 +149,449 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAn-pk-R1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1878" y="40"/>
+        </scene>
+        <!--Hello-->
+        <scene sceneID="fTv-o1-EWX">
+            <objects>
+                <viewController title="Hello" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U2Q-0o-L6a" customClass="HelloViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PeC-VW-q9t"/>
+                        <viewControllerLayoutGuide type="bottom" id="JXd-Pi-YTb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uE7-AL-ajG" userLabel="MainView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pH1-Z3-ZxA" userLabel="Outer">
+                                <rect key="frame" x="0.0" y="20" width="375" height="612"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please tell us about your" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph8-Ex-grb" userLabel="Description (Diet/Allergy)">
+                                        <rect key="frame" x="8" y="89" width="359" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.40806224940000002" green="0.55739378930000005" blue="0.20458033680000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slu-2x-gye" userLabel="Preference Options">
+                                        <rect key="frame" x="0.0" y="89" width="375" height="275"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akt-xp-b9C">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Please tell us about the food
+that you do not like. We will
+exclude them in recipe
+reccommendations.
+</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="0.40806224940000002" green="0.55739378930000005" blue="0.20458033680000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a food" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L96-Xm-DBf" userLabel="PreferenceTextBox">
+                                                <rect key="frame" x="8" y="122" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="editingPrefEnded:forEvent:" destination="U2Q-0o-L6a" eventType="editingDidEnd" id="imW-6X-QLI"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ruV-AL-RNk" userLabel="Diet Options">
+                                        <rect key="frame" x="0.0" y="156" width="375" height="208"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLZ-Ji-jSg" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="101" y="47" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="AqO-XI-JPd"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vegetarian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAL-XD-96b">
+                                                <rect key="frame" x="128" y="47" width="83" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.5177420973777771" green="0.67984086275100708" blue="0.24955907464027405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjx-Pz-eof" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="101" y="73" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="bmd-29-DhP"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lacto Vegetarian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDq-1V-Yzs">
+                                                <rect key="frame" x="128" y="73" width="130" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7mL-bD-q7g" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="101" y="99" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="9hP-DE-m3e"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ovo Vegetarian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGY-nj-XmR">
+                                                <rect key="frame" x="128" y="99" width="118" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFf-t2-IaH" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="101" y="125" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="hM9-DR-PSZ"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vegan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoD-yb-8RY">
+                                                <rect key="frame" x="128" y="125" width="49" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNM-qF-3Dh" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="101" y="151" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="Uee-sk-DbH"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pescetarian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jL9-uq-UaW">
+                                                <rect key="frame" x="128" y="151" width="90" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pS8-j3-44e" userLabel="Allergy Options">
+                                        <rect key="frame" x="-1" y="156" width="376" height="211"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Xd-QR-hUs" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="19" y="8" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="tZh-U2-kch"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dairy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCL-RW-j26">
+                                                <rect key="frame" x="45" y="8" width="40" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UeM-h0-RPN" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="19" y="35" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="ZHz-sz-O2Q"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Peanut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Maa-Aa-xiL">
+                                                <rect key="frame" x="44" y="35" width="54" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czE-5s-6Ql" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="19" y="63" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="jqX-S5-krp"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Soy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7k-14-fMO">
+                                                <rect key="frame" x="45" y="63" width="29" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bpi-qe-mN8" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="19" y="92" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="Xr8-wc-TcP"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tree Nut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-dD-wpG">
+                                                <rect key="frame" x="45" y="92" width="66" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqt-R7-fut" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="155" y="8" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="IHb-v1-O1U"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Egg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdm-el-cXy">
+                                                <rect key="frame" x="181" y="8" width="30" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzl-us-EDR" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="155" y="35" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="ECt-Lh-shj"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seafood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohI-l3-uWd">
+                                                <rect key="frame" x="181" y="35" width="64" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DaV-qr-wqb" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="155" y="63" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="lS4-gD-2Xf"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sulfite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9q-x0-pyf">
+                                                <rect key="frame" x="181" y="63" width="49" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="7" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nK9-t4-TbC" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="272" y="8" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="Gry-k7-ZVp"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gluten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujp-80-83z">
+                                                <rect key="frame" x="298" y="8" width="51" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mcu-hI-W4R" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="272" y="35" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="Gq1-y0-084"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sesame" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-Gc-dS4">
+                                                <rect key="frame" x="298" y="35" width="61" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="9" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K37-jR-06y" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <rect key="frame" x="272" y="62" width="22" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" button="YES"/>
+                                                </accessibility>
+                                                <connections>
+                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="udF-Gt-Lec"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wheat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNr-bf-7Uf">
+                                                <rect key="frame" x="298" y="62" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5e-xZ-e6v">
+                                                <rect key="frame" x="80" y="141" width="277" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-kT-QiM">
+                                                <rect key="frame" x="19" y="146" width="53" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.51774209739999999" green="0.6798408628" blue="0.24955907460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOL-RO-jTO" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
+                                        <rect key="frame" x="204" y="375" width="121" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" red="0.60934907199999999" green="0.77524656059999997" blue="0.36608356240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueToNextStep:forEvent:" destination="U2Q-0o-L6a" eventType="touchUpInside" id="EaJ-ah-yj7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoR-6g-Gmn" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
+                                        <rect key="frame" x="56" y="375" width="78" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfZ-1D-sui" userLabel="Title">
+                                        <rect key="frame" x="8" y="38" width="359" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                        <color key="textColor" red="0.40806224942207336" green="0.55739378929138184" blue="0.20458033680915833" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arq-7a-PSg" userLabel="Welcome/End">
+                                <rect key="frame" x="0.0" y="28" width="375" height="590"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBc-DL-wyp">
+                                        <rect key="frame" x="112" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMn-vg-QgE" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
+                                        <rect key="frame" x="209" y="321" width="121" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" red="0.60934907197952271" green="0.77524656057357788" blue="0.36608356237411499" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueFromWelcomeOrEnd:" destination="U2Q-0o-L6a" eventType="touchUpInside" id="LLk-Fg-GHS"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTY-dN-ufL" userLabel="Welcome/End Text">
+                                        <rect key="frame" x="45" y="158" width="285" height="155"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Hello.
+ Welcome to FoodSavr!
+We would love to get to
+know you before you 
+get started.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.60784313725490191" green="0.77647058823529413" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgN-DL-Jn4" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
+                                        <rect key="frame" x="45" y="321" width="78" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </subviews>
+                    </view>
+                    <navigationItem key="navigationItem" id="eaW-qL-9XV"/>
+                    <connections>
+                        <outlet property="allergyView" destination="pS8-j3-44e" id="OuF-0s-orF"/>
+                        <outlet property="descriptionDietOrAllergyText" destination="ph8-Ex-grb" id="f06-pD-TNo"/>
+                        <outlet property="dietView" destination="ruV-AL-RNk" id="1ga-ZZ-oMX"/>
+                        <outlet property="mainView" destination="uE7-AL-ajG" id="O4c-CL-AhA"/>
+                        <outlet property="outerContinueButton" destination="cOL-RO-jTO" id="3kQ-1i-gwr"/>
+                        <outlet property="outerView" destination="pH1-Z3-ZxA" id="WbT-nC-BW3"/>
+                        <outlet property="preferenceTextBox" destination="L96-Xm-DBf" id="93l-HB-eyp"/>
+                        <outlet property="preferenceView" destination="slu-2x-gye" id="RFx-Yb-S3R"/>
+                        <outlet property="profileImageView" destination="bBc-DL-wyp" id="tFf-zP-Fi4"/>
+                        <outlet property="titleText" destination="cfZ-1D-sui" id="LNZ-k5-Txu"/>
+                        <outlet property="welcomeOrEndContinue" destination="aMn-vg-QgE" id="RXT-sL-deN"/>
+                        <outlet property="welcomeOrEndText" destination="wTY-dN-ufL" id="wNX-55-uUE"/>
+                        <outlet property="welcomeOrEndView" destination="arq-7a-PSg" id="aKN-Co-8xY"/>
+                        <outletCollection property="dietCheckboxes" destination="bLZ-Ji-jSg" collectionClass="NSMutableArray" id="cmX-5W-dJc"/>
+                        <outletCollection property="dietCheckboxes" destination="gjx-Pz-eof" collectionClass="NSMutableArray" id="BrO-b4-TLF"/>
+                        <outletCollection property="dietCheckboxes" destination="7mL-bD-q7g" collectionClass="NSMutableArray" id="6gr-vU-hef"/>
+                        <outletCollection property="dietCheckboxes" destination="RFf-t2-IaH" collectionClass="NSMutableArray" id="dJq-QG-dbf"/>
+                        <outletCollection property="dietCheckboxes" destination="fNM-qF-3Dh" collectionClass="NSMutableArray" id="gov-zA-KT3"/>
+                        <outletCollection property="allergyCheckboxes" destination="1Xd-QR-hUs" collectionClass="NSMutableArray" id="dY8-JM-nI6"/>
+                        <outletCollection property="allergyCheckboxes" destination="UeM-h0-RPN" collectionClass="NSMutableArray" id="dbE-ve-Qga"/>
+                        <outletCollection property="allergyCheckboxes" destination="czE-5s-6Ql" collectionClass="NSMutableArray" id="oHd-Qn-8JM"/>
+                        <outletCollection property="allergyCheckboxes" destination="Bpi-qe-mN8" collectionClass="NSMutableArray" id="jjq-yd-ljr"/>
+                        <outletCollection property="allergyCheckboxes" destination="fqt-R7-fut" collectionClass="NSMutableArray" id="lu5-GR-vn5"/>
+                        <outletCollection property="allergyCheckboxes" destination="mzl-us-EDR" collectionClass="NSMutableArray" id="MYk-bb-44x"/>
+                        <outletCollection property="allergyCheckboxes" destination="DaV-qr-wqb" collectionClass="NSMutableArray" id="MUm-Yy-XhA"/>
+                        <outletCollection property="allergyCheckboxes" destination="nK9-t4-TbC" collectionClass="NSMutableArray" id="0ah-c4-MdG"/>
+                        <outletCollection property="allergyCheckboxes" destination="mcu-hI-W4R" collectionClass="NSMutableArray" id="jH5-53-Yfg"/>
+                        <outletCollection property="allergyCheckboxes" destination="mcu-hI-W4R" collectionClass="NSMutableArray" id="uJg-BP-LMM"/>
+                        <outletCollection property="allergyCheckboxes" destination="K37-jR-06y" collectionClass="NSMutableArray" id="9BA-1P-uTO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UDT-oL-AMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3191.1999999999998" y="1022.3388305847077"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
