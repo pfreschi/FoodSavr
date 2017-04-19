@@ -17,21 +17,30 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+//    override init() {
+//        //firebase init
+//        
+//        
+//        FIRDatabase.database().persistenceEnabled = true
+//    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         FIRApp.configure()
+
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Override point for customization after application launch.
         
-         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if  UserDefaults.standard.value(forKey: "uid") != nil {
-                let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
-                self.window?.rootViewController = vc
-            } else {
-                let vc = storyboard.instantiateViewController(withIdentifier: "login")
-                self.window?.rootViewController = vc
-            }
+//         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if  UserDefaults.standard.value(forKey: "uid") != nil {
+//                let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
+//                self.window?.rootViewController = vc
+//            } else {
+//                let vc = storyboard.instantiateViewController(withIdentifier: "login")
+//                self.window?.rootViewController = vc
+//            }
         
         return true
     }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6DDC56BCF2B20543D6DC32BD /* Pods_FoodSavrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036AB353EDF684D6F56242BC /* Pods_FoodSavrTests.framework */; };
 		AAEC4EFC137D048A9F49E5EB /* Pods_FoodSavr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */; };
+		AE43F0701EA7BB87008D34E1 /* KitchenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F06F1EA7BB87008D34E1 /* KitchenTableViewController.swift */; };
+		AE43F0711EA7BB87008D34E1 /* KitchenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F06F1EA7BB87008D34E1 /* KitchenTableViewController.swift */; };
+		AE43F0721EA7BB87008D34E1 /* KitchenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F06F1EA7BB87008D34E1 /* KitchenTableViewController.swift */; };
 		AE63D3421E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
 		AE63D3431E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
 		AE63D3441E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
@@ -18,6 +21,13 @@
 		AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
+		AEB7A14A1EA155B600DFF5F1 /* mykitchen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB7A1491EA155B600DFF5F1 /* mykitchen.storyboard */; };
+		AEB7A1501EA5A61B00DFF5F1 /* CustomProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7A14F1EA5A61B00DFF5F1 /* CustomProductCell.swift */; };
+		AEB7A1511EA5A61B00DFF5F1 /* CustomProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7A14F1EA5A61B00DFF5F1 /* CustomProductCell.swift */; };
+		AEB7A1521EA5A61B00DFF5F1 /* CustomProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7A14F1EA5A61B00DFF5F1 /* CustomProductCell.swift */; };
+		AED389D31EA6E828006FFA9B /* MyKitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED389D21EA6E828006FFA9B /* MyKitchenFeedViewController.swift */; };
+		AED389D41EA6E828006FFA9B /* MyKitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED389D21EA6E828006FFA9B /* MyKitchenFeedViewController.swift */; };
+		AED389D51EA6E828006FFA9B /* MyKitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED389D21EA6E828006FFA9B /* MyKitchenFeedViewController.swift */; };
 		AEFBA9E51E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		AEFBA9E61E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		AEFBA9E71E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
@@ -60,9 +70,13 @@
 		438C92A686327C8730F8854A /* Pods-FoodSavr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavr.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr.release.xcconfig"; sourceTree = "<group>"; };
 		5FDA1B10A39832BA4AED6041 /* Pods-FoodSavrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.release.xcconfig"; sourceTree = "<group>"; };
 		9BEE1D4164D8E61755BED9AB /* Pods-FoodSavr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr.debug.xcconfig"; sourceTree = "<group>"; };
+		AE43F06F1EA7BB87008D34E1 /* KitchenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenTableViewController.swift; sourceTree = "<group>"; };
 		AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		AE63D3451E971B2400AC6936 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		AE788B181E904AE4000DF559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AEB7A1491EA155B600DFF5F1 /* mykitchen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mykitchen.storyboard; sourceTree = "<group>"; };
+		AEB7A14F1EA5A61B00DFF5F1 /* CustomProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProductCell.swift; sourceTree = "<group>"; };
+		AED389D21EA6E828006FFA9B /* MyKitchenFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKitchenFeedViewController.swift; sourceTree = "<group>"; };
 		AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 21-48-33-041.xcassets"; sourceTree = "<group>"; };
 		BC31EA20D851F2F2D64C38E8 /* Pods-FoodSavrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,15 +190,19 @@
 			children = (
 				AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */,
 				F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */,
+				AED389D21EA6E828006FFA9B /* MyKitchenFeedViewController.swift */,
+				AEB7A14F1EA5A61B00DFF5F1 /* CustomProductCell.swift */,
 				F4AE6C671E920169009C5141 /* Item.swift */,
 				F4FE29791E90617B0026AD50 /* User.swift */,
 				F4FE297B1E90697F0026AD50 /* Receipt.swift */,
 				F46332391E91FACA00A8C14C /* Group.swift */,
 				F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */,
+				AE43F06F1EA7BB87008D34E1 /* KitchenTableViewController.swift */,
 				F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */,
 				F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */,
 				F463323D1E91FE2500A8C14C /* SecondViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
+				AEB7A1491EA155B600DFF5F1 /* mykitchen.storyboard */,
 				F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */,
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
@@ -380,6 +398,7 @@
 				F4FE29541E8EC7F10026AD50 /* LaunchScreen.storyboard in Resources */,
 				AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 				F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */,
+				AEB7A14A1EA155B600DFF5F1 /* mykitchen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,8 +552,11 @@
 			files = (
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
 				F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */,
+				AEB7A1501EA5A61B00DFF5F1 /* CustomProductCell.swift in Sources */,
 				F463323A1E91FACA00A8C14C /* Group.swift in Sources */,
+				AE43F0701EA7BB87008D34E1 /* KitchenTableViewController.swift in Sources */,
 				F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */,
+				AED389D31EA6E828006FFA9B /* MyKitchenFeedViewController.swift in Sources */,
 				F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */,
 				F4AE6C681E920169009C5141 /* Item.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
@@ -547,6 +569,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE43F0711EA7BB87008D34E1 /* KitchenTableViewController.swift in Sources */,
+				AED389D41EA6E828006FFA9B /* MyKitchenFeedViewController.swift in Sources */,
+				AEB7A1511EA5A61B00DFF5F1 /* CustomProductCell.swift in Sources */,
 				F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +580,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE43F0721EA7BB87008D34E1 /* KitchenTableViewController.swift in Sources */,
+				AED389D51EA6E828006FFA9B /* MyKitchenFeedViewController.swift in Sources */,
+				AEB7A1521EA5A61B00DFF5F1 /* CustomProductCell.swift in Sources */,
 				F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
