@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		6DDC56BCF2B20543D6DC32BD /* Pods_FoodSavrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036AB353EDF684D6F56242BC /* Pods_FoodSavrTests.framework */; };
 		AAEC4EFC137D048A9F49E5EB /* Pods_FoodSavr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */; };
+		AE43F0741EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */; };
+		AE43F0751EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */; };
+		AE43F0761EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */; };
+		AE43F07C1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */; };
+		AE43F07D1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */; };
+		AE43F07E1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */; };
 		AE63D3421E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
 		AE63D3431E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
 		AE63D3441E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
@@ -63,6 +69,8 @@
 		438C92A686327C8730F8854A /* Pods-FoodSavr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavr.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr.release.xcconfig"; sourceTree = "<group>"; };
 		5FDA1B10A39832BA4AED6041 /* Pods-FoodSavrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.release.xcconfig"; sourceTree = "<group>"; };
 		9BEE1D4164D8E61755BED9AB /* Pods-FoodSavr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr.debug.xcconfig"; sourceTree = "<group>"; };
+		AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenItemsTableViewCell.swift; sourceTree = "<group>"; };
+		AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenFeedViewController.swift; sourceTree = "<group>"; };
 		AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		AE63D3451E971B2400AC6936 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		AE788B181E904AE4000DF559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -182,6 +190,7 @@
 			children = (
 				AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */,
 				F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */,
+				AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */,
 				F4AE6C671E920169009C5141 /* Item.swift */,
 				F4FE29791E90617B0026AD50 /* User.swift */,
 				F4FE297B1E90697F0026AD50 /* Receipt.swift */,
@@ -191,6 +200,7 @@
 				F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */,
 				F463323D1E91FE2500A8C14C /* SecondViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
+				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
 				F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */,
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
@@ -227,12 +237,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FE296E1E8EC7F10026AD50 /* Build configuration list for PBXNativeTarget "FoodSavr" */;
 			buildPhases = (
+				52174E2133F075231B1E4AB2 /* [CP] Check Pods Manifest.lock */,
 				E885D9A1380A32156505A0C3 /* [CP] Check Pods Manifest.lock */,
 				F4FE29401E8EC7F10026AD50 /* Sources */,
 				F4FE29411E8EC7F10026AD50 /* Frameworks */,
 				F4FE29421E8EC7F10026AD50 /* Resources */,
 				13EC6568E7BD59D1D187377B /* [CP] Embed Pods Frameworks */,
 				6EE036037F986306B34CE66F /* [CP] Copy Pods Resources */,
+				A018B36FA936D79F3BF0B270 /* 📦 Embed Pods Frameworks */,
+				3063C3A765662BB04FC0DC81 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,12 +260,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FE29711E8EC7F10026AD50 /* Build configuration list for PBXNativeTarget "FoodSavrTests" */;
 			buildPhases = (
+				B5C273F927F44A2A76E7B6E6 /* [CP] Check Pods Manifest.lock */,
 				6DDD84E7A04DD75C6B7FE9B8 /* [CP] Check Pods Manifest.lock */,
 				F4FE29561E8EC7F10026AD50 /* Sources */,
 				F4FE29571E8EC7F10026AD50 /* Frameworks */,
 				F4FE29581E8EC7F10026AD50 /* Resources */,
 				CD2C2F93E657D95E857716AF /* [CP] Embed Pods Frameworks */,
 				50F510381A6249860A0CF81A /* [CP] Copy Pods Resources */,
+				86C4D9DD9CD30431852C15CB /* 📦 Embed Pods Frameworks */,
+				ADC5400D3A856F0A29850D0F /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,12 +284,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4FE29741E8EC7F10026AD50 /* Build configuration list for PBXNativeTarget "FoodSavrUITests" */;
 			buildPhases = (
+				72C4AAA61DABBC2FE2207267 /* [CP] Check Pods Manifest.lock */,
 				8ACD13CC7C16A0FE8D446B9B /* [CP] Check Pods Manifest.lock */,
 				F4FE29611E8EC7F10026AD50 /* Sources */,
 				F4FE29621E8EC7F10026AD50 /* Frameworks */,
 				F4FE29631E8EC7F10026AD50 /* Resources */,
 				C8C565831FF8BE625AC9F55B /* [CP] Copy Pods Resources */,
 				A6B273CB07EA3B2496A2583E /* [CP] Embed Pods Frameworks */,
+				D932844D872F6B3F7D746F2A /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -429,6 +447,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3063C3A765662BB04FC0DC81 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		50F510381A6249860A0CF81A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,6 +475,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52174E2133F075231B1E4AB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6DDD84E7A04DD75C6B7FE9B8 /* [CP] Check Pods Manifest.lock */ = {
@@ -474,6 +522,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		72C4AAA61DABBC2FE2207267 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		86C4D9DD9CD30431852C15CB /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8ACD13CC7C16A0FE8D446B9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,6 +567,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		A018B36FA936D79F3BF0B270 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A6B273CB07EA3B2496A2583E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -502,6 +595,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrUITests/Pods-FoodSavrUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADC5400D3A856F0A29850D0F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5C273F927F44A2A76E7B6E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C8C565831FF8BE625AC9F55B /* [CP] Copy Pods Resources */ = {
@@ -534,6 +657,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D932844D872F6B3F7D746F2A /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodSavrUITests/Pods-FoodSavrUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E885D9A1380A32156505A0C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,8 +694,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE43F0741EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
 				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
+				AE43F07C1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
 				F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */,
 				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
 				F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */,
@@ -576,6 +716,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */,
+				AE43F07D1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
+				AE43F0751EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +726,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */,
+				AE43F07E1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
+				AE43F0761EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

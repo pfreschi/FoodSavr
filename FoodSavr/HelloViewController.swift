@@ -219,6 +219,7 @@ class HelloViewController: UIViewController {
         let userID = FIRAuth.auth()?.currentUser?.uid
         userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user's name
+            print("this is printing user name")
             let value = snapshot.value as? NSDictionary
             let fullName = value?["name"] as? String ?? "User"
             

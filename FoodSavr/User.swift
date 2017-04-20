@@ -26,7 +26,7 @@ class User: NSObject {
     
     private var _groups: Array<String>!
     private var _pic: String!
-    
+    private var _itemIDs: Array<String>!
     var key: String {
         return _key
     }
@@ -70,6 +70,9 @@ class User: NSObject {
     var pic: String {
         return _pic
     }
+    var itemIDs: Array<String> {
+        return _itemIDs
+    }
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self._key = key
@@ -108,6 +111,10 @@ class User: NSObject {
         }
         if let newPic = dictionary["pic"] as? String {
             self._pic = newPic
+        }
+        
+        if let newItemIDs = dictionary["itemIDs"] as? Array<String> {
+            self._itemIDs = newItemIDs
         }
         
         //the above properties added to their key?!
