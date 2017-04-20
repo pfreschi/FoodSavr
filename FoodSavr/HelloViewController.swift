@@ -110,6 +110,8 @@ class HelloViewController: UIViewController {
             descriptionDietOrAllergyText.text = "Please tell us about your diet."
         } else if (currentStep == 4){ // at end get started
             // TODO: segue to next screen!!
+            let nextView = (self.storyboard?.instantiateViewController(withIdentifier: "tabBar"))! as UIViewController
+            self.present(nextView, animated: true, completion: nil)
         }
         
     }
