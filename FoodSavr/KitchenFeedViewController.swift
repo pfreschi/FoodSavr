@@ -14,7 +14,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     var ref : FIRDatabaseReference?
     var itemRef: FIRDatabaseReference?
     var itemList:[Item] = []
-    
+    var curUser : FIRUser?
     
     
     @IBOutlet weak var table: UITableView!
@@ -22,12 +22,13 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupUI()
         ref = FirebaseProxy.firebaseProxy.myRootRef
         itemRef = FirebaseProxy.firebaseProxy.itemRef
+        curUser = (FIRAuth.auth()?.currentUser)!
         
-        ref?.child("items").observe(.value, with: { (snapshot) in
+        
+        itemRef?.queryOrdered(byChild: "expirationDate").observe(.value, with: { (snapshot) in
             
             var newItems : [Item] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -59,7 +60,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     // MARK: - Table view data source
@@ -70,8 +71,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print("this is count: \(itemList.count)")
+
         return itemList.count
     }
     
@@ -86,7 +86,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         cell.itemName.text = self.itemList[indexPath.row].name
         //TODO: convert to name!
         //cell.addedby.text = self.itemList[indexPath.row].creatorId
-        cell.expiration.text = String(self.itemList[indexPath.row].expirationDate)
+        cell.expiration.text = expDate(days: self.itemList[indexPath.row].expirationDate)
         
         //TODO: ask about how to store images
         cell.itemPic.image = fetchImage(firUrl: self.itemList[indexPath.row].pic)
@@ -112,6 +112,25 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         img.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor;
     }
     
+    func expDate(days: Int) -> String {
+        
+        if (days < 30) {
+            return "\(days)d"
+        } else {
+            return "\(days)d+"
+        }
+        
+    }
+    
+    func addedByWho(userId: String) -> String {
+        
+        if (curUser?.uid == userId) {
+            return "by me"
+        } else {
+            let userName = curUser?.displayName
+            return "by \(String(describing: userName))"
+        }
+    }
     
 
     
@@ -122,21 +141,27 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(true)
-    //        if let row = table.indexPathForSelectedRow {
-    //            self.table.deselectRow(at: row, animated: false)
-    //        }
-    //    }
+    
+    @IBAction func addWasTapped(_ sender: UIBarButtonItem) {
+//        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewControllerWithIdentifier("PopoverViewController") as! UIViewController
+//        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+//        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+//        popover.barButtonItem = sender
+//        presentViewController(vc, animated: true, completion:nil)
+    }
     
     
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "showItemDetail" {
+            if let cell = sender as? UITableViewCell {
+                let i = table.indexPath(for: cell)!.row
+                let vc = segue.destination as! ItemDetailViewController
+//                vc.currentFavor = self.favorsList[i]
+//                vc.favorsList = self.favorsList
+//                vc.usersList = self.usersList
+            }
+        }
+    }
     
 }

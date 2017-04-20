@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wfY-tQ-osw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dDw-LV-twm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -39,7 +39,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Quiz"/>
                                 <connections>
-                                    <segue destination="U2Q-0o-L6a" kind="show" id="yY1-Kf-esT"/>
+                                    <segue destination="U2Q-0o-L6a" kind="show" id="1il-nK-kb0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -52,9 +52,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="1778" y="-325"/>
         </scene>
-        <!--Second-->
+        <!--Groups-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
@@ -88,11 +88,11 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Groups" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1777" y="381"/>
         </scene>
         <!--Authentication-->
         <scene sceneID="T3n-ob-lCN">
@@ -106,12 +106,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signIn" translatesAutoresizingMaskIntoConstraints="NO" id="oAK-U9-4ZR">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login1" translatesAutoresizingMaskIntoConstraints="NO" id="oAK-U9-4ZR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oAK-U9-4ZR" secondAttribute="height" multiplier="375:667" id="KZ1-XN-rr6"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Savr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJc-vZ-Sxa">
+                                <rect key="frame" x="126" y="328" width="233" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="38"/>
+                                <color key="textColor" red="0.47058823529411764" green="0.66274509803921566" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Be the master of " textAlignment="natural" lineBreakMode="wordWrap" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVg-o7-eLp">
+                                <rect key="frame" x="76" y="412" width="165" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="your own kitchen." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-m3-Rm3">
+                                <rect key="frame" x="126" y="449" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -120,40 +141,15 @@
                             <constraint firstItem="oAK-U9-4ZR" firstAttribute="leading" secondItem="Y8d-j5-AWO" secondAttribute="leading" id="d7W-YR-GNI"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="49e-Tb-3d3" kind="show" id="e7T-lh-RcQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fR-TV-LY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="-1"/>
-        </scene>
-        <!--Initial View Controller-->
-        <scene sceneID="cYt-0L-S0v">
-            <objects>
-                <viewController id="wfY-tQ-osw" customClass="InitialViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dqG-bw-QJE"/>
-                        <viewControllerLayoutGuide type="bottom" id="T5y-RT-wLr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Z2-Rv-qIK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="dDw-LV-twm" kind="show" identifier="showlogin" id="3wn-En-hnH"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="showKitchen" id="F77-wA-ZFQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IAn-pk-R1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1878" y="40"/>
+            <point key="canvasLocation" x="-865" y="-45"/>
         </scene>
         <!--Hello-->
         <scene sceneID="fTv-o1-EWX">
             <objects>
-                <viewController title="Hello" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U2Q-0o-L6a" customClass="HelloViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="quiz" title="Hello" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U2Q-0o-L6a" customClass="HelloViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PeC-VW-q9t"/>
                         <viewControllerLayoutGuide type="bottom" id="JXd-Pi-YTb"/>
@@ -591,7 +587,7 @@ get started.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDT-oL-AMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3191.1999999999998" y="1022.3388305847077"/>
+            <point key="canvasLocation" x="-33" y="-45"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -611,7 +607,7 @@ get started.</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="881"/>
+            <point key="canvasLocation" x="750" y="-45"/>
         </scene>
         <!--My Kitchen-->
         <scene sceneID="Qbh-FU-en9">
@@ -628,7 +624,7 @@ get started.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIG-CC-XOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1262"/>
+            <point key="canvasLocation" x="750" y="1067"/>
         </scene>
         <!--My Kitchen-->
         <scene sceneID="onY-tU-0yc">
@@ -672,8 +668,8 @@ get started.</string>
                                                     <rect key="frame" x="15" y="8" width="58" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q3-Hs-rex">
-                                                    <rect key="frame" x="302" y="2" width="65" height="66"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q3-Hs-rex">
+                                                    <rect key="frame" x="279" y="2" width="83" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                                     <color key="textColor" red="0.36470588235294116" green="0.51372549019607838" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -686,6 +682,7 @@ get started.</string>
                                             <outlet property="expiration" destination="9q3-Hs-rex" id="Ywd-TM-eFV"/>
                                             <outlet property="itemName" destination="oWK-ca-LqB" id="nCg-kK-raa"/>
                                             <outlet property="itemPic" destination="ObO-Qa-wRU" id="oCY-fi-p1s"/>
+                                            <segue destination="h95-9M-cwZ" kind="show" id="gNp-T6-Oo4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -693,21 +690,43 @@ get started.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Kitchen" id="dfK-RB-0sb"/>
+                    <navigationItem key="navigationItem" title="My Kitchen" id="dfK-RB-0sb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ym1-ay-pLf">
+                            <connections>
+                                <action selector="addWasTapped:" destination="exN-tz-9Hj" id="gIK-4a-yqO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="Jtj-0x-Mux" id="BPI-ku-w8I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xbd-Tl-cHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="1261.6191904047978"/>
+            <point key="canvasLocation" x="1776.8" y="1066.4167916041979"/>
+        </scene>
+        <!--Item Detail View Controller-->
+        <scene sceneID="djf-W4-3Gf">
+            <objects>
+                <viewController id="h95-9M-cwZ" customClass="ItemDetailViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nbe-Kb-QQl"/>
+                        <viewControllerLayoutGuide type="bottom" id="50n-C0-lmw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ee3-wf-Pv8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Eb-Z5-6xg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3036" y="1068"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="signIn" width="324" height="579"/>
+        <image name="login1" width="375" height="667"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="e7T-lh-RcQ"/>
-    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
 </document>

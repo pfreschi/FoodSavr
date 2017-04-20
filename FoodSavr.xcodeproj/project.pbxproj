@@ -24,6 +24,9 @@
 		AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
+		AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
+		AEC4556E1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
+		AEC4556F1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
 		AEFBA9E51E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		AEFBA9E61E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		AEFBA9E71E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
@@ -74,6 +77,7 @@
 		AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		AE63D3451E971B2400AC6936 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		AE788B181E904AE4000DF559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 21-48-33-041.xcassets"; sourceTree = "<group>"; };
 		BC31EA20D851F2F2D64C38E8 /* Pods-FoodSavrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +204,7 @@
 				F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */,
 				F463323D1E91FE2500A8C14C /* SecondViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
+				AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */,
 				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
 				F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */,
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
@@ -699,6 +704,7 @@
 				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
 				AE43F07C1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
 				F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */,
+				AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
 				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
 				F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */,
 				F463323A1E91FACA00A8C14C /* Group.swift in Sources */,
@@ -717,6 +723,7 @@
 			files = (
 				F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */,
 				AE43F07D1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
+				AEC4556E1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
 				AE43F0751EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +734,7 @@
 			files = (
 				F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */,
 				AE43F07E1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
+				AEC4556F1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
 				AE43F0761EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

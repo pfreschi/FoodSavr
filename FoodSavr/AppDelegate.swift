@@ -22,18 +22,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        customizeAppearance()
         // Override point for customization after application launch.
         
+        
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if  UserDefaults.standard.value(forKey: "uid") != nil {
+            if  UserDefaults.standard.value(forKey: "uid") == nil {
+                //let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
+                let vc = AuthenticationViewController()
+                self.window?.rootViewController?.present(vc, animated: false, completion: nil)
+                
+        
+            } else {
                 let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
                 self.window?.rootViewController = vc
-            } else {
-                let vc = storyboard.instantiateViewController(withIdentifier: "login")
-                self.window?.rootViewController = vc
             }
-        
+    
         return true
+    }
+    
+    
+    
+    func customizeAppearance() {
+        //top nav bar
+        UINavigationBar.appearance().barTintColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

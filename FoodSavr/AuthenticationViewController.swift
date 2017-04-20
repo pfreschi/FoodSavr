@@ -33,7 +33,7 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 250)
+        let newCenter = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height - 150)
         
         
         let loginButton = FBSDKLoginButton()
@@ -109,26 +109,31 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     // navigate to the next page after login
     func afterSuccessfulFBLogin(userUid : String) {
-        //every one goes to kitchen page
-        self.showViewWithIdentifier(identifier: "tabBar")
         
+
+        
+   
         self.userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             // if user had logged in before and has items in their kitchen, go to Kitchen
             if snapshot.hasChild(userUid) && snapshot.childSnapshot(forPath: userUid).childSnapshot(forPath: "receipts").childrenCount > 0  {
+                self.showViewWithIdentifier(identifier: "tabBar")
 
                 
             } else if snapshot.hasChild(userUid){
                 // user logged in before but has NO items in kitchen, go to Kitchen
                 // TODO: Add a layer to encourage user add recipe
+                self.showViewWithIdentifier(identifier: "tabBar")
                 
             } else { // new user
+                self.showViewWithIdentifier(identifier: "quiz")
                 print("adding new user")
                 self.addNewUser(userUid: userUid)
                 
             }
             
         })
+        
     }
     
     /*
@@ -153,9 +158,11 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
  */
     
-    func showViewWithIdentifier(identifier: String) {
+    func showViewWithIdentifier(identifier: String){
         let nextView = (self.storyboard?.instantiateViewController(withIdentifier: identifier))! as UIViewController
         self.present(nextView, animated: true, completion: nil)
+        
+        
     }
     
     
