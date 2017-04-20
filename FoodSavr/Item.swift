@@ -7,6 +7,15 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd yyyy"
+        return dateFormatter.string(from: self)
+    }
+}
+
 class Item: NSObject {
     private var _itemRef: FIRDatabaseReference!
     
@@ -15,7 +24,7 @@ class Item: NSObject {
     private var _pic: String!
     private var _deleted: Bool!
     private var _disposed: Bool!
-    private var _expirationDate: String!
+    private var _expirationDate: Int!
     private var _dateAdded: String!
     private var _creatorId: Int!
     //group ID
@@ -48,7 +57,7 @@ class Item: NSObject {
         return _disposed
     }
     
-    var expirationDate: String {
+    var expirationDate: Int {
         return _expirationDate
     }
     
@@ -90,7 +99,7 @@ class Item: NSObject {
             self._disposed = newDisposed
         }
         
-        if let newExpirationDate = dictionary["expirationDate"] as? String {
+        if let newExpirationDate = dictionary["expirationDate"] as? Int {
             self._expirationDate = newExpirationDate
         }
         
@@ -118,7 +127,5 @@ class Item: NSObject {
         self._itemRef = FirebaseProxy.firebaseProxy.itemRef.child((String(self._key)))
         
     }
-    
-    
     
 }

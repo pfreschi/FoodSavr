@@ -28,4 +28,7 @@ class KitchenItemsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addedBy: UILabel!
     @IBOutlet weak var expiration: UILabel!
+    
+
+    
 }

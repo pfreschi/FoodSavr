@@ -12,6 +12,7 @@ import Firebase
 class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref : FIRDatabaseReference?
+    var itemRef: FIRDatabaseReference?
     var itemList:[Item] = []
     
     
@@ -21,12 +22,14 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupUI()
         ref = FirebaseProxy.firebaseProxy.myRootRef
-        print(ref)
+        itemRef = FirebaseProxy.firebaseProxy.itemRef
         
         ref?.child("items").observe(.value, with: { (snapshot) in
             
+            var newItems : [Item] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 print(snapshots)
                 for snap in snapshots {
@@ -34,14 +37,17 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                         let key = snap.key
                         let item = Item(key: key, dictionary: itemDict)
                         //self.itemList.insert(item, at: 0)
-                        self.itemList.append(item)
+                        newItems.append(item)
                         print("this is key" + item.name)
                         
                     }
                 }
+                self.itemList = newItems
+                self.table.reloadData()
+                
             }
             
-            self.table.reloadData()
+            
         }) { (error) in
             print("there is error")
             
@@ -76,18 +82,44 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("hi")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! KitchenItemsTableViewCell
         cell.itemName.text = self.itemList[indexPath.row].name
         //TODO: convert to name!
         //cell.addedby.text = self.itemList[indexPath.row].creatorId
-        cell.expiration.text = self.itemList[indexPath.row].expirationDate
+        cell.expiration.text = String(self.itemList[indexPath.row].expirationDate)
         
         //TODO: ask about how to store images
-        //cell.itemPic.image.
-        
+        cell.itemPic.image = fetchImage(firUrl: self.itemList[indexPath.row].pic)
+        setRoundBorder(img: cell.itemPic)
         
         return cell
+    }
+    
+    // fetch image from firebase storage
+    func fetchImage(firUrl: String) -> UIImage {
+        let url = URL(string: firUrl)
+        let data = try! Data(contentsOf: url!)
+        
+        return UIImage(data: data)!
+        
+    }
+    
+    
+    func setRoundBorder(img: UIImageView) {
+        img.layer.cornerRadius = img.frame.size.width/2
+        img.clipsToBounds = true;
+        img.layer.borderWidth = 1.0;
+        img.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor;
+    }
+    
+    
+
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            itemList.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
     
     //    override func viewWillAppear(_ animated: Bool) {
