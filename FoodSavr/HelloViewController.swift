@@ -38,6 +38,7 @@ class HelloViewController: UIViewController {
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var descriptionDietOrAllergyText: UILabel!
     @IBOutlet weak var welcomeOrEndContinue: BorderedButton!
+    @IBOutlet weak var welcomeOrEndSkip: BorderedButton!
     @IBOutlet weak var preferenceTextBox: UITextField!
     @IBOutlet weak var outerContinueButton: BorderedButton!
     
@@ -98,6 +99,13 @@ class HelloViewController: UIViewController {
         
     }
     
+    @IBAction func skipFromWelcome(_ sender: BorderedButton, forEvent event: UIEvent) {
+            // segue to main app area
+            let nextView = (self.storyboard?.instantiateViewController(withIdentifier: "tabBar"))! as UIViewController
+            self.present(nextView, animated: true, completion: nil)
+
+
+    }
     
     @IBAction func continueFromWelcomeOrEnd(_ sender: UIButton) {
         if (currentStep == 0){ // at welcome screen
@@ -116,6 +124,36 @@ class HelloViewController: UIViewController {
         
     }
     
+    @IBAction func skipToNextStep(_ sender: BorderedButton, forEvent event: UIEvent) {
+        if (currentStep == 3) { //pref check
+
+            self.outerView.isHidden = true
+            self.welcomeOrEndView.isHidden = false
+            self.welcomeOrEndText.text = "Thank you very much for \n telling us about you. We hope you enjoy FoodSavr!"
+            self.welcomeOrEndContinue.setTitle("Get Started", for: .normal)
+            self.welcomeOrEndSkip.isHidden = true
+            self.currentStep += 1
+
+        } else {
+            if (currentStep == 1){ //on diet page
+                dietView.isHidden = true
+                allergyView.isHidden = false
+                initializeCheckboxes(checkboxesArray: allergyCheckboxes)
+                titleText.text = "Allergy"
+                descriptionDietOrAllergyText.text = "Please tell us about your \n food allergies."
+                
+            } else if (currentStep == 2){ //on allergy page
+                allergyView.isHidden = true
+                preferenceView.isHidden = false
+                titleText.text = "Preference"
+                descriptionDietOrAllergyText.isHidden = true
+                
+            }
+            print(currentStep)
+            currentStep += 1
+        }
+    }
+    
     
     @IBAction func continueToNextStep(_ sender: UIButton, forEvent event: UIEvent) {
         if (currentStep == 3) { //pref check
@@ -130,6 +168,7 @@ class HelloViewController: UIViewController {
                     self.welcomeOrEndView.isHidden = false
                     self.welcomeOrEndText.text = "Thank you very much for \n telling us about you. We hope you enjoy FoodSavr!"
                     self.welcomeOrEndContinue.setTitle("Get Started", for: .normal)
+                    self.welcomeOrEndSkip.isHidden = true
                     self.currentStep += 1
                     // save collected info to Firebase
                     let currentUser = FIRAuth.auth()?.currentUser?.uid
