@@ -526,6 +526,9 @@ reccommendations.
                                         <state key="normal" title="Skip">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="skipToNextStep:forEvent:" destination="U2Q-0o-L6a" eventType="touchUpInside" id="s3E-gT-m6g"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfZ-1D-sui" userLabel="Title">
                                         <rect key="frame" x="8" y="38" width="359" height="52"/>
@@ -575,6 +578,9 @@ get started.</string>
                                         <state key="normal" title="Skip">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="skipFromWelcome:forEvent:" destination="U2Q-0o-L6a" eventType="touchUpInside" id="xW5-Nk-uV6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </view>
@@ -593,6 +599,7 @@ get started.</string>
                         <outlet property="profileImageView" destination="bBc-DL-wyp" id="tFf-zP-Fi4"/>
                         <outlet property="titleText" destination="cfZ-1D-sui" id="LNZ-k5-Txu"/>
                         <outlet property="welcomeOrEndContinue" destination="aMn-vg-QgE" id="RXT-sL-deN"/>
+                        <outlet property="welcomeOrEndSkip" destination="UgN-DL-Jn4" id="FUS-1S-6AM"/>
                         <outlet property="welcomeOrEndText" destination="wTY-dN-ufL" id="wNX-55-uUE"/>
                         <outlet property="welcomeOrEndView" destination="arq-7a-PSg" id="aKN-Co-8xY"/>
                         <outletCollection property="dietCheckboxes" destination="bLZ-Ji-jSg" collectionClass="NSMutableArray" id="cmX-5W-dJc"/>
@@ -675,7 +682,7 @@ get started.</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xw6-it-j0j" id="3Oz-Ts-tOB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="78.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWK-ca-LqB">
