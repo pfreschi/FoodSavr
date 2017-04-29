@@ -5,4 +5,3 @@ const fakeEvent = {
 };
 
 myFunctions.makeUppercase(fakeEvent);
-
