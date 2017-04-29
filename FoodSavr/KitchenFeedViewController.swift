@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 
-class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate{
     
     var ref : FIRDatabaseReference?
     var itemRef: FIRDatabaseReference?
     var itemList:[Item] = []
     var curUser : FIRUser?
+     var imagePicker: UIImagePickerController!
     
     
     @IBOutlet weak var table: UITableView!
@@ -132,17 +133,18 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            //TODO: delete item from database!
             itemList.remove(at: indexPath.row)
+            
             tableView.reloadData()
         }
     }
     
     
-    @IBAction func addWasTapped(_ sender: UIBarButtonItem) {
+    @IBAction func cameraWasTapped(_ sender: UIBarButtonItem) {
 //        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewControllerWithIdentifier("PopoverViewController") as! UIViewController
 //        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
@@ -157,9 +159,9 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             if let cell = sender as? UITableViewCell {
                 let i = table.indexPath(for: cell)!.row
                 let vc = segue.destination as! ItemDetailViewController
-//                vc.currentFavor = self.favorsList[i]
-//                vc.favorsList = self.favorsList
-//                vc.usersList = self.usersList
+                 vc.currentItem = self.itemList[i]
+                print(self.itemList[i])
+                
             }
         }
     }
