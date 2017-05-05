@@ -15,7 +15,6 @@
 		AE43F07C1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */; };
 		AE43F07D1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */; };
 		AE43F07E1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */; };
-		AE5B45611EB522AB00A87805 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B45601EB522AB00A87805 /* GroupsViewController.swift */; };
 		AE5B45621EB522AB00A87805 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B45601EB522AB00A87805 /* GroupsViewController.swift */; };
 		AE5B45631EB522AB00A87805 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B45601EB522AB00A87805 /* GroupsViewController.swift */; };
 		AE63D3421E971B1C00AC6936 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */; };
@@ -27,10 +26,8 @@
 		AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
-		AE84628F1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
 		AE8462901EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
 		AE8462911EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
-		AEA35A2A1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEA35A2B1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEA35A2C1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
@@ -722,10 +719,8 @@
 			files = (
 				AE43F0741EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
-				AEA35A2A1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */,
 				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
 				AE43F07C1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
-				AE5B45611EB522AB00A87805 /* GroupsViewController.swift in Sources */,
 				F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */,
 				AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
 				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
