@@ -42,6 +42,9 @@
 		F463323A1E91FACA00A8C14C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332391E91FACA00A8C14C /* Group.swift */; };
 		F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463323D1E91FE2500A8C14C /* SecondViewController.swift */; };
 		F4682F101EBAE40F00ED3BAB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4682F0F1EBAE40F00ED3BAB /* RecipeTableViewCell.swift */; };
+		F46C0A151EBCF8CF007C951E /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
+		F46C0A161EBCF8D6007C951E /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
+		F46C0A171EBCF8DD007C951E /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B45601EB522AB00A87805 /* GroupsViewController.swift */; };
 		F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F13B91EA003F1004534D9 /* BorderedButton.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
 		F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */; };
@@ -717,6 +720,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46C0A171EBCF8DD007C951E /* GroupsViewController.swift in Sources */,
+				F46C0A161EBCF8D6007C951E /* AutoCompleteUserTableViewCell.swift in Sources */,
+				F46C0A151EBCF8CF007C951E /* AddGroupViewController.swift in Sources */,
 				AE43F0741EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
 				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
@@ -732,7 +738,6 @@
 				F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
 				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
-				AE84628F1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,
 				F4682F101EBAE40F00ED3BAB /* RecipeTableViewCell.swift in Sources */,
 				F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */,
 			);
