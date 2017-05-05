@@ -10,10 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Recipe-->
+        <!--Camera-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" sceneMemberID="viewController">
+
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -41,7 +42,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Recipe" selectedImage="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Recipe" selectedImage="first" id="acW-dT-cKf" userLabel="Camera"/>
                     <connections>
                         <outlet property="imageView" destination="v7i-Fo-b8M" id="hJk-Ni-RhZ"/>
                     </connections>
@@ -240,6 +241,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u5-Uz-tNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3805.5999999999999" y="380.95952023988008"/>
+        </scene>
+        <!--Recipes-->
+        <scene sceneID="qzz-FA-ofm">
+            <objects>
+                <viewController id="ope-yX-dO6" customClass="RecipeViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oMi-hJ-H5g"/>
+                        <viewControllerLayoutGuide type="bottom" id="B02-Pl-rS2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="50W-0O-HGP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaG-Xi-O99">
+                                <rect key="frame" x="166" y="288" width="33" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Recipes" id="k5e-M4-ZuA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Zg-2L-Zad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2740" y="145"/>
         </scene>
         <!--Authentication-->
         <scene sceneID="T3n-ob-lCN">
@@ -757,6 +786,7 @@ get started.</string>
                         <segue destination="4ag-2h-EGa" kind="relationship" relationship="viewControllers" id="9ah-YG-5Pk"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="2c1-o0-fbB" kind="relationship" relationship="viewControllers" id="gpV-tA-khr"/>
+
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

@@ -40,6 +40,7 @@
 		AEFBA9E61E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		AEFBA9E71E97F91500DD9DAC /* Assets 21-48-33-041.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */; };
 		C833E6FE2AB2E7AA5B2FBE98 /* Pods_FoodSavrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */; };
+		F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */; };
 		F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332371E91D0B700A8C14C /* FirebaseProxy.swift */; };
 		F463323A1E91FACA00A8C14C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332391E91FACA00A8C14C /* Group.swift */; };
 		F463323E1E91FE2500A8C14C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463323D1E91FE2500A8C14C /* SecondViewController.swift */; };
@@ -95,6 +96,7 @@
 		C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8744CF339A1D9DF10C94F1B /* Pods-FoodSavrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrUITests/Pods-FoodSavrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		F46332371E91D0B700A8C14C /* FirebaseProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseProxy.swift; sourceTree = "<group>"; };
 		F46332391E91FACA00A8C14C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F463323D1E91FE2500A8C14C /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				F463323D1E91FE2500A8C14C /* SecondViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
 				AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */,
+				F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */,
 				AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */,
 				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
 				F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */,
@@ -728,6 +731,7 @@
 				F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */,
 				F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */,
 				F4AE6C681E920169009C5141 /* Item.swift in Sources */,
+				F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
 				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
 				AE84628F1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,

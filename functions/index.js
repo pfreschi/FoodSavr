@@ -11,12 +11,14 @@ exports.getReceiptText = functions.database.ref('/receipts/{receiptId}/pic')
     .onWrite(event => {
       // Only edit data when it is first created.
       if (event.data.previous.exists()) {
+        console.log("receipt was added");
         return;
       }
       // Exit when the data is deleted.
       if (!event.data.exists()) {
-        return;
+        console.log("receitp was deleted");
       }
+    });
 
 
 // // create the request_url
