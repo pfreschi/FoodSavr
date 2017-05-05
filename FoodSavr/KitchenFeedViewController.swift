@@ -51,7 +51,6 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             
             
         }) { (error) in
-            print("there is error")
             
             print("this is error" + error.localizedDescription)
         }

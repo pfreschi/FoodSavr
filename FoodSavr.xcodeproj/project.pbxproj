@@ -27,6 +27,9 @@
 		AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
 		AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE788B181E904AE4000DF559 /* GoogleService-Info.plist */; };
+		AE84628F1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
+		AE8462901EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
+		AE8462911EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
 		AEA35A2A1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEA35A2B1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEA35A2C1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
@@ -84,6 +87,7 @@
 		AE63D3411E971B1C00AC6936 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		AE63D3451E971B2400AC6936 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		AE788B181E904AE4000DF559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteUserTableViewCell.swift; sourceTree = "<group>"; };
 		AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		AEFBA9E41E97F91500DD9DAC /* Assets 21-48-33-041.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 21-48-33-041.xcassets"; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
 				F46332371E91D0B700A8C14C /* FirebaseProxy.swift */,
+				AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */,
 				F4CE843E1E99DFF000606BDA /* HelloViewController.swift */,
 				F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */,
 				F49F13B91EA003F1004534D9 /* BorderedButton.swift */,
@@ -725,6 +730,7 @@
 				F4AE6C681E920169009C5141 /* Item.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
 				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
+				AE84628F1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,
 				F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,6 +739,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8462901EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,
 				F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */,
 				AE43F07D1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
 				AEC4556E1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
@@ -746,6 +753,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8462911EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,
 				F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */,
 				AE43F07E1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
 				AEC4556F1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
