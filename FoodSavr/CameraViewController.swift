@@ -25,6 +25,17 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
         // receipts storage
         storageRef = FIRStorage.storage().reference().child("receipts")
+        if (UIImagePickerController.isSourceTypeAvailable(.camera))  {
+            
+            imagePicker =  UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            print("the device does not have a camera")
+            //imagePicker.sourceType = .photoLibrary
+        }
     }
     
 
@@ -36,17 +47,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 
     
     @IBAction func takePhoto(_ sender: UIButton) {
-        if (UIImagePickerController.isSourceTypeAvailable(.camera))  {
-        
-            imagePicker =  UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-        
-            self.present(imagePicker, animated: true, completion: nil)
-        } else {
-            print("the device does not have a camera")
-            //imagePicker.sourceType = .photoLibrary
-        }
+
     }
     
     
