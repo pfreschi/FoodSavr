@@ -28,6 +28,7 @@ target 'FoodSavr' do
   pod 'FBSDKShareKit'
   pod 'M13Checkbox'
   pod 'Alamofire', '~> 4.4'
+  pod 'SDWebImage', '~>3.8'
   
 
 end

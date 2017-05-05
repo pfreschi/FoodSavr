@@ -58,6 +58,9 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - M13Checkbox (3.1.3)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -71,6 +74,7 @@ DEPENDENCIES:
   - FirebaseUI/Auth
   - FirebaseUI/Facebook
   - M13Checkbox
+  - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -89,7 +93,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 78529a4f191a44bd8369afc61358e7164e9a08a5
+PODFILE CHECKSUM: 740aef667afa22139c082de432a5057a0aa6c74e
 
 COCOAPODS: 1.2.1

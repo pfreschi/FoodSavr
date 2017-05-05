@@ -240,6 +240,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u5-Uz-tNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3805.5999999999999" y="380.95952023988008"/>
+
         </scene>
         <!--Recipes-->
         <scene sceneID="qzz-FA-ofm">
@@ -260,14 +261,73 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wsW-yf-vBx">
+                                <rect key="frame" x="16" y="77" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Recipes"/>
+                                    <segment title="Saved"/>
+                                </segments>
+                                <connections>
+                                    <action selector="recipesSavedSwitch:forEvent:" destination="ope-yX-dO6" eventType="valueChanged" id="Srd-P3-OP2"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p1v-We-Pfe">
+                                <rect key="frame" x="0.0" y="113" width="375" height="505"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="82" id="rCd-wh-OY1" customClass="RecipeTableViewCell" customModule="FoodSavr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rCd-wh-OY1" id="npm-Yw-vrt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIv-ex-a2p">
+                                                    <rect key="frame" x="30" y="8" width="319" height="66"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hd0-bX-Gdv">
+                                                    <rect key="frame" x="8" y="4" width="359" height="74"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="CIv-ex-a2p" id="gPF-5Y-ODb"/>
+                                            <outlet property="recipeImage" destination="CIv-ex-a2p" id="DlZ-7G-NXB"/>
+                                            <outlet property="recipeTitle" destination="Hd0-bX-Gdv" id="tbe-xp-5uu"/>
+                                            <outlet property="view" destination="npm-Yw-vrt" id="VFn-Ut-K1a"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ope-yX-dO6" id="HyM-Mr-O5K"/>
+                                    <outlet property="delegate" destination="ope-yX-dO6" id="9rl-Iw-zgG"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="Search Items" translatesAutoresizingMaskIntoConstraints="NO" id="CLo-Xj-X1S">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Recipes" id="k5e-M4-ZuA"/>
+                    <connections>
+                        <outlet property="searchBar" destination="CLo-Xj-X1S" id="pGC-qx-8JF"/>
+                        <outlet property="tableView" destination="p1v-We-Pfe" id="9kb-yk-PcH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zg-2L-Zad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2610" y="-245"/>
+            <point key="canvasLocation" x="2740" y="144.3778110944528"/>
         </scene>
         <!--Authentication-->
         <scene sceneID="T3n-ob-lCN">
