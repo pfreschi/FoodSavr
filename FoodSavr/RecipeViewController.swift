@@ -100,12 +100,11 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
 
         cell.recipeImage.contentMode = .center
         cell.recipeImage.alpha = 0.8
-        // TODO: add spacing between recipes, this doesn't work below
-        /*
+        
         cell.view.layer.masksToBounds = true
         cell.view.layer.borderColor = UIColor.white.cgColor
-        cell.view.layer.borderWidth = 9.0
-        */
+        cell.view.layer.borderWidth = 6.0
+    
         
         
         // this blur is too blurred and dark
