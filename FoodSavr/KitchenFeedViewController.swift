@@ -108,7 +108,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             cell.expiration.text = expDate(days: self.filteredItemList[indexPath.row].expirationDate)
             
             //TODO: ask about how to store images
-            cell.itemPic.sd_setImage(with: URL(string: self.filteredItemList[indexPath.row].pic), placeholderImage: UIImage(named: "fakerecipe"))
+            cell.itemPic.sd_setImage(with: URL(string: self.filteredItemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
 
         } else {
             cell.itemName.text = self.itemList[indexPath.row].name
@@ -116,7 +116,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             cell.expiration.text = expDate(days: self.itemList[indexPath.row].expirationDate)
             
             //TODO: ask about how to store images
-            cell.itemPic.sd_setImage(with: URL(string: self.itemList[indexPath.row].pic), placeholderImage: UIImage(named: "fakerecipe"))
+            cell.itemPic.sd_setImage(with: URL(string: self.itemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
         }
         setRoundBorder(img: cell.itemPic)
         
