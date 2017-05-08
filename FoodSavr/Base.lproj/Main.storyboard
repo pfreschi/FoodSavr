@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dDw-LV-twm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dDw-LV-twm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,7 +81,7 @@
         <scene sceneID="Bxd-cu-car">
             <objects>
                 <navigationController id="2c1-o0-fbB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="zFB-Vv-XIB"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="group" selectedImage="group" id="zFB-Vv-XIB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d4z-nC-6vk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -110,6 +110,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="GROUPS" id="SQX-EK-rso">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZSN-01-DJ3">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="xk0-XU-Z6a" kind="show" id="wCC-Ew-srp"/>
                             </connections>
@@ -201,6 +202,9 @@
                                 <rect key="frame" x="111" y="562" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ADD"/>
+                                <connections>
+                                    <action selector="addGroup:" destination="xk0-XU-Z6a" eventType="touchUpInside" id="bnH-C9-JNR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fr-fI-aKZ">
                                 <rect key="frame" x="239" y="562" width="36" height="30"/>
@@ -301,7 +305,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Recipes" id="k5e-M4-ZuA"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="list" id="k5e-M4-ZuA">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="searchBar" destination="CLo-Xj-X1S" id="pGC-qx-8JF"/>
                         <outlet property="tableView" destination="p1v-We-Pfe" id="9kb-yk-PcH"/>
@@ -822,6 +832,7 @@ get started.</string>
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="4ag-2h-EGa" kind="relationship" relationship="viewControllers" id="9ah-YG-5Pk"/>
@@ -837,7 +848,7 @@ get started.</string>
         <scene sceneID="Qbh-FU-en9">
             <objects>
                 <navigationController id="4ag-2h-EGa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Kitchen" id="bvV-ua-SCc"/>
+                    <tabBarItem key="tabBarItem" title="My Kitchen" image="cutlery" id="bvV-ua-SCc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4SR-U1-qIh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -916,6 +927,11 @@ get started.</string>
                     </view>
                     <navigationItem key="navigationItem" title="My Kitchen" id="dfK-RB-0sb">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="ym1-ay-pLf">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="cameraWasTapped:" destination="exN-tz-9Hj" id="iH3-jf-Als"/>
                                 <segue destination="LXu-W8-T7j" kind="show" id="fU2-1v-Vjq"/>
@@ -1029,8 +1045,11 @@ get started.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="cutlery" width="19" height="25"/>
         <image name="first" width="30" height="30"/>
+        <image name="group" width="25" height="24"/>
+        <image name="list" width="25" height="24"/>
         <image name="login1" width="375" height="667"/>
     </resources>
-    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

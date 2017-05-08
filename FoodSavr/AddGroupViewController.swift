@@ -20,6 +20,9 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var memText: UITextField!
     
+    @IBAction func addGroup(_ sender: Any) {
+    }
+
     @IBOutlet weak var groupName: UITextField!
     @IBAction func Clear(_ sender: Any) {
         memText.text = ""
