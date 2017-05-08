@@ -26,7 +26,7 @@ class Item: NSObject {
     private var _disposed: Bool!
     private var _expirationDate: Int!
     private var _dateAdded: String!
-    private var _creatorId: Int!
+    private var _creatorId: String!
     //group ID
     private var _sharedWith: String!
     //private var _ingredients: Array<String>!
@@ -65,7 +65,7 @@ class Item: NSObject {
         return _dateAdded
     }
     
-    var creatorId: Int {
+    var creatorId: String {
         return _creatorId
     }
     
@@ -107,7 +107,7 @@ class Item: NSObject {
             self._dateAdded = newDateAdded
         }
         
-        if let newCreatorId = dictionary["creatorId"] as? Int {
+        if let newCreatorId = dictionary["creatorId"] as? String {
             self._creatorId = newCreatorId
         }
         
