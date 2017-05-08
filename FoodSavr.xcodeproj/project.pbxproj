@@ -341,7 +341,7 @@
 				TargetAttributes = {
 					F4FE29431E8EC7F10026AD50 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 33G7MEJKT7;
+						DevelopmentTeam = CMHG5573MR;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -907,7 +907,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = FoodSavr/FoodSavr.entitlements;
-				DEVELOPMENT_TEAM = 33G7MEJKT7;
+				DEVELOPMENT_TEAM = CMHG5573MR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20160412",
@@ -915,7 +915,7 @@
 				);
 				INFOPLIST_FILE = FoodSavr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiaowenfeng.FoodSavr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peterfreschi.FoodSavr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -927,7 +927,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = FoodSavr/FoodSavr.entitlements;
-				DEVELOPMENT_TEAM = 33G7MEJKT7;
+				DEVELOPMENT_TEAM = CMHG5573MR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20160412",
@@ -935,7 +935,7 @@
 				);
 				INFOPLIST_FILE = FoodSavr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xiaowenfeng.FoodSavr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peterfreschi.FoodSavr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
