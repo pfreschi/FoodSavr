@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+import Foundation
 
 class ItemDetailViewController: UIViewController {
     
@@ -37,7 +39,7 @@ class ItemDetailViewController: UIViewController {
     func showitemInfo() {
         itemName.text = currentItem.name
         expirationDate.text = expDate(days: currentItem.expirationDate)
-        itemPic.image = fetchImage(firUrl: currentItem.pic)
+        itemPic.sd_setImage(with: URL(string: currentItem.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
         setRoundBorder(img: itemPic)
        // added.text = currentItem.dateAdded
         

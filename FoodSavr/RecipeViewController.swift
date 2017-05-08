@@ -14,27 +14,7 @@ import FirebaseAuth
 import Alamofire
 import SDWebImage
 
-extension UIImageView {
-    public func imageFromServerURL(urlString: String) {
-        
-        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            DispatchQueue.main.async(execute: { () -> Void in
-                let image = UIImage(data: data!)
-                
-                self.image = image
-            })
-            
-        }).resume()
-    }}
-
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-
-    var fakeIngredientList = ["apple","eggs","rice","turkey","mustard","lettuce"]
     
     struct Recipe {
         var title : String
@@ -109,15 +89,22 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         
         if isSearching {
             cell.recipeTitle.text = filteredRecipes[row].title
-            cell.recipeImage.sd_setImage(with: URL(string: filteredRecipes[row].pic), placeholderImage: UIImage(named: "fakerecipe"))
+            cell.recipeImage.sd_setImage(with: URL(string: filteredRecipes[row].pic), placeholderImage: UIImage(named: "genericrecipe"))
             
         } else {
             cell.recipeTitle.text = recipes[row].title
-            cell.recipeImage.sd_setImage(with: URL(string: recipes[row].pic), placeholderImage: UIImage(named: "fakerecipe"))
+            cell.recipeImage.sd_setImage(with: URL(string: recipes[row].pic), placeholderImage: UIImage(named: "genericrecipe"))
 
         }
-        cell.recipeImage.contentMode = UIViewContentMode.center
+        // TODO: add spacing between recipes, this doesn't work below
+        /*
+        cell.recipeImage.contentMode = .center
         cell.recipeImage.alpha = 0.8
+        
+        cell.view.layer.masksToBounds = true
+        cell.view.layer.borderColor = UIColor.white.cgColor
+        cell.view.layer.borderWidth = 9.0
+        */
         
         
         // this blur is too blurred and dark
