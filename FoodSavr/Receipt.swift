@@ -19,7 +19,7 @@ class Receipt: NSObject {
     private var _deleted: Bool!
     private var _dateAdded: String!
     private var _creatorId: Int!
-    private var _items: Array<String>! //array of item id
+    private var _items: Dictionary<String, Bool>! //array of item id
     private var _vendor: String!
     
     var receiptRef: FIRDatabaseReference {
@@ -46,7 +46,7 @@ class Receipt: NSObject {
         return _creatorId
     }
     
-    var items: Array<String> {
+    var items: Dictionary<String, Bool> {
         return _items
     }
     
@@ -72,7 +72,7 @@ class Receipt: NSObject {
             self._creatorId = newCreatorId
         }
         
-        if let newItems = dictionary["items"] as? Array<String> {
+        if let newItems = dictionary["items"] as? Dictionary<String, Bool> {
             self._items = newItems
         }
         
