@@ -28,7 +28,7 @@ class Item: NSObject {
     private var _dateAdded: String!
     private var _creatorId: String!
     //group ID
-    private var _sharedWith: String!
+    private var _sharedWith: Array<String>!
     //private var _ingredients: Array<String>!
     //private var _category: String!
     
@@ -69,7 +69,7 @@ class Item: NSObject {
         return _creatorId
     }
     
-    var sharedWith: String {
+    var sharedWith: Array<String> {
         return _sharedWith
     }
     
@@ -111,7 +111,7 @@ class Item: NSObject {
             self._creatorId = newCreatorId
         }
         
-        if let newSharedWith = dictionary["sharedWith"] as? String {
+        if let newSharedWith = dictionary["sharedWith"] as? Array<String> {
             self._sharedWith = newSharedWith
         }
         
