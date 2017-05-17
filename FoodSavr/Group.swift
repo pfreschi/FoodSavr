@@ -13,19 +13,18 @@ import Foundation
 
 class Group: NSObject {
     private var _groupRef: FIRDatabaseReference!
-    
-    private var _key: Int!
+    private var _key: String!
     private var _name: String!
     private var _deleted: Bool!
     private var _dateAdded: String!
-    private var _creatorId: Int!
-    private var _users: Array<User>!
+    private var _creatorId: String!
+    private var _users: [String]!
     
     var groupRef: FIRDatabaseReference {
         return _groupRef
     }
     
-    var key: Int {
+    var key: String {
         return _key
     }
     
@@ -41,15 +40,15 @@ class Group: NSObject {
         return _dateAdded
     }
     
-    var creatorId: Int {
+    var creatorId: String {
         return _creatorId
     }
     
-    var users: Array<User> {
+    var users: [String] {
         return _users
     }
     
-    init(key: Int, dictionary: Dictionary<String, AnyObject>) {
+    init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self._key = key
         
         if let newName = dictionary["name"] as? String {
@@ -64,11 +63,11 @@ class Group: NSObject {
             self._dateAdded = newDateAdded
         }
         
-        if let newCreatorId = dictionary["creatorId"] as? Int {
+        if let newCreatorId = dictionary["creatorId"] as? String {
             self._creatorId = newCreatorId
         }
         
-        if let newUsers = dictionary["users"] as? Array<User> {
+        if let newUsers = dictionary["users"] as? [String] {
             self._users = newUsers
         }
         

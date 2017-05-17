@@ -24,7 +24,7 @@ class User: NSObject {
     private var _restrictedIngredients: Array<String>!
     private var _receipts: Array<String>!
     
-    private var _groups: Array<String>!
+    private var _groups: Dictionary<String, Bool>!
     private var _pic: String!
     private var _itemIDs: Array<String>!
     var key: String {
@@ -63,7 +63,7 @@ class User: NSObject {
         return _receipts
     }
     
-    var groups: Array<String> {
+    var groups: Dictionary<String, Bool> {
         return _groups
     }
     
@@ -106,7 +106,7 @@ class User: NSObject {
         if let newReceipts = dictionary["receipts"] as? Array<String> {
             self._receipts = newReceipts
         }
-        if let newGroups = dictionary["groups"] as? Array<String> {
+        if let newGroups = dictionary["groups"] as? Dictionary<String, Bool> {
             self._groups = newGroups
         }
         if let newPic = dictionary["pic"] as? String {

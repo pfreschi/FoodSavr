@@ -15,18 +15,25 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     var autoComplete = [User]()
     var userRef : FIRDatabaseReference?
     var selectedVals : NSMutableArray = []
+    var selectedUsers: [String] = []
+    var groupRef : FIRDatabaseReference?
 
     @IBOutlet weak var memTableView: UITableView!
     
+    @IBOutlet weak var warning: UILabel!
     @IBOutlet weak var memText: UITextField!
     
     @IBAction func addGroup(_ sender: Any) {
+        print(selectedUsers)
+        //groupName.text
+        createGroup(gName: groupName.text!, users: selectedUsers)
     }
 
     @IBOutlet weak var groupName: UITextField!
     @IBAction func Clear(_ sender: Any) {
         memText.text = ""
         groupName.text = ""
+        selectedVals = []
     }
     
     override func viewDidLoad() {
@@ -37,6 +44,7 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         memTableView.isHidden = true
 
         userRef = FirebaseProxy.firebaseProxy.userRef
+        groupRef = FirebaseProxy.firebaseProxy.groupRef
         fetchUsers()
     }
 
@@ -77,20 +85,19 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         userRef?.observe(.value, with: {(snapshot) in
             var userlist : [User] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                print(snapshots)
                 for snap in snapshots {
                     if let userDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let user = User(key: key, dictionary: userDict)
-                        
-                        userlist.append(user)
-                        
+                        // don't show the current user him/herself
+                        if key != FirebaseProxy.firebaseProxy.getCurrentUser() {
+                            userlist.append(user)
+                        }
                     }
                 }
                 self.users = userlist
                 self.memTableView.reloadData()
             }
-        
         
         }) {(error) in
             print("this is error" + error.localizedDescription)
@@ -116,8 +123,9 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         
         cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.width / 2;
         cell.profilePic.clipsToBounds = true;
-    
+        cell.key = self.autoComplete[indexPath.row].key
         
+    
         return cell
     }
     
@@ -125,7 +133,7 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let selectedCell: AutoCompleteUserTableViewCell = memTableView.cellForRow(at: indexPath)! as! AutoCompleteUserTableViewCell
         
-        //memText.text = trimFirstname(string: selectedCell.username!.text!)
+        selectedUsers.append(selectedCell.key)
         
         selectedVals.add(trimFirstname(string: selectedCell.username!.text!))
         memText.text = selectedVals.componentsJoined(by: ",")
@@ -136,17 +144,43 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         return string.components(separatedBy: " ").first!
     }
     
-
+    func createGroup(gName: String, users: [String] ){
+        if (groupName.text!.isEmpty || selectedUsers.count == 0) {
+            warning.text = "Please fill out all the information!"
+        } else {
+            //check if it's logged in
+            if (FIRAuth.auth()?.currentUser) != nil {
+                // add current user into member list
+                selectedUsers.append(FirebaseProxy.firebaseProxy.getCurrentUser())
+                FirebaseProxy.firebaseProxy.saveGroup(name: gName,
+                creatorId: (FIRAuth.auth()?.currentUser?.uid)!, members: selectedUsers)
+            
+            }
+        }
+    }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showGroups" {
+            
+        }
+        
+//        if segue.identifier == "showFavorDetail"{
+//            if let cell = sender as? UITableViewCell {
+//                let i = tableView.indexPathForCell(cell)!.row
+//                let vc = segue.destinationViewController as! FavorDetailViewController
+//                vc.currentFavor = self.favorsList[i]
+//                vc.favorsList = self.favorsList
+//                vc.usersList = self.usersList
+//            }
+//        }
     }
-    */
+
 
 }

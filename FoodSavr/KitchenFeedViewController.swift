@@ -41,14 +41,12 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             
             var newItems : [Item] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                print(snapshots)
                 for snap in snapshots {
                     if let itemDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let item = Item(key: key, dictionary: itemDict)
                         //self.itemList.insert(item, at: 0)
                         newItems.append(item)
-                        print("this is key" + item.name + item.key)
                         
                     }
                 }

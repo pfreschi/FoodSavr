@@ -24,6 +24,7 @@ class FirebaseProxy: NSObject {
     private var _receiptRef = FIRDatabase.database().reference().child("receipts")
     private var _userRef = FIRDatabase.database().reference().child("users")
     private var _groupRef = FIRDatabase.database().reference().child("groups")
+    private var _userGroupsRef = FIRDatabase.database().reference().child("userGroups")
     
 
     
@@ -43,6 +44,9 @@ class FirebaseProxy: NSObject {
     var groupRef: FIRDatabaseReference {
         return _groupRef
     }
+    var userGroupsRef: FIRDatabaseReference {
+        return _userGroupsRef
+    }
     
     
     /*
@@ -61,7 +65,7 @@ class FirebaseProxy: NSObject {
     func saveReceipt(pic: String, creatorId: String, items: [String], vendor: String) {
         
         let key = FirebaseProxy.firebaseProxy.receiptRef.childByAutoId().key
-        let currentDate = String(describing: NSDate())
+        let currentDate = String(describing: Date())
         
         let newReceiptDetails : [String:Any] = [
             "pic": pic,
@@ -76,6 +80,37 @@ class FirebaseProxy: NSObject {
         ]
         
         self.receiptRef.child(key).setValue(newReceiptDetails)
+    }
+    
+    func saveGroup(name: String, creatorId: String, members: [String]){
+        let key = groupRef.childByAutoId().key
+        let currentDate = String(describing: Date())
+        var userGroupsUpd : Dictionary<String, Any> = [:]
+        //var users : Dictionary<String, Bool> = [:]
+
+        
+        // this is under groupRef
+        let newGroup : [String:Any] = [
+            "name": name,
+            "deleted": false,
+            "dateAdded" : currentDate,
+            "creatorId": creatorId,
+            "users": members
+        ]
+        
+        for m in members {
+            userGroupsUpd["/\(m)/\(key)"] = newGroup
+        }
+        
+        //update group, update userGroups for each memeber!!!
+        
+        self.groupRef.child(key).updateChildValues(newGroup)
+        self.userGroupsRef.updateChildValues(userGroupsUpd)
+        
+    }
+    
+    func getCurrentUser() -> String {
+        return (FIRAuth.auth()?.currentUser?.uid)!
     }
     
     /*

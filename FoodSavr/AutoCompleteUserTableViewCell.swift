@@ -23,4 +23,5 @@ class AutoCompleteUserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var username: UILabel!
+    var key: String = ""
 }
