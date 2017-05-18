@@ -18,7 +18,7 @@ class Group: NSObject {
     private var _deleted: Bool!
     private var _dateAdded: String!
     private var _creatorId: String!
-    private var _users: [String]!
+    private var _users: Dictionary<String,Any>!
     
     var groupRef: FIRDatabaseReference {
         return _groupRef
@@ -44,7 +44,7 @@ class Group: NSObject {
         return _creatorId
     }
     
-    var users: [String] {
+    var users: Dictionary<String,Any>!{
         return _users
     }
     
@@ -67,7 +67,7 @@ class Group: NSObject {
             self._creatorId = newCreatorId
         }
         
-        if let newUsers = dictionary["users"] as? [String] {
+        if let newUsers = dictionary["users"] as? Dictionary<String,Any>! {
             self._users = newUsers
         }
         

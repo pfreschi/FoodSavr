@@ -24,8 +24,6 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var memText: UITextField!
     
     @IBAction func addGroup(_ sender: Any) {
-        print(selectedUsers)
-        //groupName.text
         createGroup(gName: groupName.text!, users: selectedUsers)
     }
 
@@ -89,10 +87,9 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
                     if let userDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let user = User(key: key, dictionary: userDict)
-                        // don't show the current user him/herself
-                        if key != FirebaseProxy.firebaseProxy.getCurrentUser() {
-                            userlist.append(user)
-                        }
+                        // TODO: don't show the current user him/herself
+                        print(user)
+                        userlist.append(user)
                     }
                 }
                 self.users = userlist
@@ -152,11 +149,21 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
             if (FIRAuth.auth()?.currentUser) != nil {
                 // add current user into member list
                 selectedUsers.append(FirebaseProxy.firebaseProxy.getCurrentUser())
+                let members = getUserObjfromID(userIDs: selectedUsers)
                 FirebaseProxy.firebaseProxy.saveGroup(name: gName,
-                creatorId: (FIRAuth.auth()?.currentUser?.uid)!, members: selectedUsers)
-            
+                creatorId: (FIRAuth.auth()?.currentUser?.uid)!, members: members)
             }
         }
+    }
+    
+    func getUserObjfromID(userIDs: Array<String>) -> [User] {
+        var userlist : [User] = []
+        
+        for u in userIDs {
+            let user = self.users.first(where: {$0.key == u})
+            userlist.append(user!)
+        }
+        return userlist
     }
     
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var group = Group(key:"none", dictionary: Dictionary<String, AnyObject>())
@@ -19,8 +20,12 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     @IBOutlet weak var groupTableview: UITableView!
+    var userRef : FIRDatabaseReference!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userRef = FirebaseProxy.firebaseProxy.userRef
         loadGroupData()
         
         
@@ -69,6 +74,34 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //            cell.itemPic.sd_setImage(with: URL(string: self.itemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
         return cell
     }
+    
+//    func fetchMembers() {
+//        for i in group.users.count {
+//            userRef?.observe(.value, with: {(snapshot) in
+//                var userlist : [User] = []
+//                if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+//                    for snap in snapshots {
+//                        if let userDict = snap.value as? Dictionary<String, AnyObject> {
+//                            let key = snap.key
+//                            let user = User(key: key, dictionary: userDict)
+//                            // don't show the current user him/herself
+//                            if key != FirebaseProxy.firebaseProxy.getCurrentUser() {
+//                                userlist.append(user)
+//                            }
+//                        }
+//                    }
+//                    self.users = userlist
+//                    self.memTableView.reloadData()
+//                }
+//                
+//            }) {(error) in
+//                print("this is error" + error.localizedDescription)
+//                
+//            }
+//        }
+//        
+//    }
+
 
 
 

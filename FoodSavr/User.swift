@@ -20,7 +20,7 @@ class User: NSObject {
     private var _zipCode: Int!
 
     private var _phone: Int!
-    private var _dietaryRestrictions: Array<String>!
+    private var _diet: Array<String>!
     private var _restrictedIngredients: Array<String>!
     private var _receipts: Array<String>!
     
@@ -51,8 +51,8 @@ class User: NSObject {
         return _phone
     }
     
-    var dietaryRestrictions: Array<String> {
-        return _dietaryRestrictions
+    var diet: Array<String> {
+        return _diet
     }
     
     var restrictedIngredients: Array<String> {
@@ -96,8 +96,8 @@ class User: NSObject {
             self._phone = newPhone
         }
         
-        if let newDietaryRestrictions = dictionary["dietaryRestrictions"] as? Array<String> {
-            self._dietaryRestrictions = newDietaryRestrictions
+        if let newDiet = dictionary["diet"] as? Array<String> {
+            self._diet = newDiet
         }
         
         if let newRestrictedIngredients = dictionary["restrictedIngredients"] as? Array<String> {

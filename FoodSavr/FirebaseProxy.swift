@@ -82,20 +82,27 @@ class FirebaseProxy: NSObject {
         self.receiptRef.child(key).setValue(newReceiptDetails)
     }
     
-    func saveGroup(name: String, creatorId: String, members: [String]){
+    func saveGroup(name: String, creatorId: String, members: [User]) {
         let key = groupRef.childByAutoId().key
         let currentDate = String(describing: Date())
         var userGroupsUpd : Dictionary<String, Any> = [:]
+        var membersString : Dictionary<String,Any> = [:]
         //var users : Dictionary<String, Bool> = [:]
-
+        for m in members {
+            let member : Dictionary<String, Any> = [
+                "name": m.name,
+                "pic":  m.pic
+               // "diet": m.diet
+            ]
+            membersString[m.key] = member
+        }
         
         // this is under groupRef
         let newGroup : [String:Any] = [
             "name": name,
             "deleted": false,
             "dateAdded" : currentDate,
-            "creatorId": creatorId,
-            "users": members
+            "creatorId": creatorId
         ]
         
         for m in members {
@@ -105,7 +112,9 @@ class FirebaseProxy: NSObject {
         //update group, update userGroups for each memeber!!!
         
         self.groupRef.child(key).updateChildValues(newGroup)
-        self.userGroupsRef.updateChildValues(userGroupsUpd)
+        self.groupRef.child("\(key)/users").updateChildValues(membersString)
+       // self.userGroupsRef.updateChildValues(userGroupsUpd)
+       // self.userGroupsRef.child("\(m)/\(key)/users").updateChildValues(membersString)
         
     }
     
@@ -128,6 +137,8 @@ class FirebaseProxy: NSObject {
         return strDateFormatter.string(from: date!)
         
     }
+    
+    
     
     /*
     func getProfPic(fid: String) -> UIImage? {
