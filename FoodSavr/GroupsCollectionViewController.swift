@@ -20,8 +20,7 @@ class GroupsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+
         groupRef = FirebaseProxy.firebaseProxy.groupRef
         userRef = FirebaseProxy.firebaseProxy.userRef
         userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
@@ -44,10 +43,8 @@ class GroupsCollectionViewController: UICollectionViewController {
     func fetchGroups() {
         var newGroups :[Group] = []
         userGroupsRef.child(FirebaseProxy.firebaseProxy.getCurrentUser()).observe(.childAdded , with: {(snapshot) in
-                //self.groups.append(snapshot)
         if let groupDict = snapshot.value as? Dictionary<String, AnyObject>{
-            print("hello")
-            print(groupDict)
+            print(snapshot)
             let key = snapshot.key
             let g = Group(key: key, dictionary: groupDict)
             newGroups.append(g)
@@ -139,5 +136,16 @@ class GroupsCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "showAgroup" {
+            if let cell = sender as? UICollectionViewCell {
+                let i = self.collectionView!.indexPath(for: cell)!.row
+                let vc = segue.destination as! GroupViewController
+                vc.group = self.groups[i]
+                print(vc.group)
+            }
+        }
+    }
 
 }

@@ -120,7 +120,7 @@
         <scene sceneID="V66-Mk-yVD">
             <objects>
                 <collectionViewController id="2Pq-hp-G2b" customClass="GroupsCollectionViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="yEN-2t-6p3">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="yEN-2t-6p3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -155,6 +155,7 @@
                                 <connections>
                                     <outlet property="groupName" destination="R9N-S7-fuW" id="bgC-bZ-i4v"/>
                                     <outlet property="userPic" destination="YDA-sb-fTM" id="8vd-5G-ze2"/>
+                                    <segue destination="tmI-sn-Hhk" kind="show" identifier="showAgroup" id="IwX-Hk-sKW"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -164,7 +165,8 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="GROUPS" id="F76-1R-Jil">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xnx-nA-Jeg">
+                        <barButtonItem key="rightBarButtonItem" image="add" id="xnx-nA-Jeg">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="xk0-XU-Z6a" kind="show" id="AZg-iR-xeS"/>
                             </connections>
@@ -175,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="2781.5999999999999" y="394.45277361319341"/>
         </scene>
-        <!--View Controller-->
+        <!--Group View Controller-->
         <scene sceneID="EKe-iQ-DbM">
             <objects>
-                <viewController id="tmI-sn-Hhk" sceneMemberID="viewController">
+                <viewController id="tmI-sn-Hhk" customClass="GroupViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0EM-Xd-HJe"/>
                         <viewControllerLayoutGuide type="bottom" id="nM4-kK-skA"/>
@@ -186,12 +188,83 @@
                     <view key="view" contentMode="scaleToFill" id="8Fj-PW-hMz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGu-vF-is1">
+                                <rect key="frame" x="16" y="91" width="283" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBd-tV-k1j">
+                                <rect key="frame" x="16" y="138" width="343" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcv-ff-PM2">
+                                <rect key="frame" x="318" y="103" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="edit"/>
+                                <connections>
+                                    <action selector="editButton:" destination="tmI-sn-Hhk" eventType="touchUpInside" id="zNb-TG-6zW"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cre-xM-8Tn">
+                                <rect key="frame" x="16" y="190" width="343" height="425"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="nMu-Ch-wTk" customClass="GroupMemberTableViewCell" customModule="FoodSavr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nMu-Ch-wTk" id="YMU-On-fhD">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="109.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q7K-Ix-Xsm">
+                                                    <rect key="frame" x="19" y="17" width="60" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFK-Wn-dr4">
+                                                    <rect key="frame" x="97" y="17" width="233" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjX-yY-k7s">
+                                                    <rect key="frame" x="100" y="57" width="233" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="allergy" destination="rjX-yY-k7s" id="L9N-I9-nv5"/>
+                                            <outlet property="profilePic" destination="q7K-Ix-Xsm" id="aA6-uy-clv"/>
+                                            <outlet property="userName" destination="QFK-Wn-dr4" id="muM-E3-oiH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="createdAt" destination="uBd-tV-k1j" id="4ar-Dr-ONX"/>
+                        <outlet property="groupName" destination="PGu-vF-is1" id="Ljx-yN-PJa"/>
+                        <outlet property="groupTableview" destination="cre-xM-8Tn" id="wFu-KR-mbU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAD-vE-jgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3687" y="617"/>
+            <point key="canvasLocation" x="3685.5999999999999" y="651.72413793103453"/>
         </scene>
         <!--Add-->
         <scene sceneID="FmW-5n-GfS">
@@ -1133,14 +1206,16 @@ get started.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="25" height="25"/>
         <image name="cutlery" width="19" height="25"/>
+        <image name="edit" width="25" height="25"/>
         <image name="first" width="30" height="30"/>
         <image name="group" width="25" height="24"/>
         <image name="list" width="25" height="24"/>
         <image name="login1" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jpS-bF-CJt"/>
+        <segue reference="97x-in-y2c"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

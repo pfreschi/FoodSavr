@@ -59,7 +59,7 @@ class Group: NSObject {
             self._deleted = newDeleted
         }
         
-        if let newDateAdded = dictionary["datedAdded"] as? String {
+        if let newDateAdded = dictionary["dateAdded"] as? String {
             self._dateAdded = newDateAdded
         }
         

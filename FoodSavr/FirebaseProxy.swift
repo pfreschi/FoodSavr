@@ -113,6 +113,22 @@ class FirebaseProxy: NSObject {
         return (FIRAuth.auth()?.currentUser?.uid)!
     }
     
+    
+    func convertToDate(dateString : String) -> String {
+        let localeStr = "en_US"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: localeStr)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        let date = dateFormatter.date(from: dateString)
+        
+        let strDateFormatter = DateFormatter()
+        strDateFormatter.dateStyle = .medium
+        strDateFormatter.timeStyle = .none
+        return strDateFormatter.string(from: date!)
+        
+    }
+    
     /*
     func getProfPic(fid: String) -> UIImage? {
         if (fid != "") {
@@ -125,15 +141,7 @@ class FirebaseProxy: NSObject {
         return nil
     }
     
-    func convertStringDatetoNSDate(dateString : String) -> NSDate {
-        let localeStr = "us"
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: localeStr)
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
-        let date: NSDate? = dateFormatter.dateFromString(dateString)
-        return date!
-    }
+
     
     
     //fair use of function from jacks205 on GitHub
