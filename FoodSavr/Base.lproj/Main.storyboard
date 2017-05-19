@@ -851,11 +851,55 @@ get started.</string>
                         <segue destination="4ag-2h-EGa" kind="relationship" relationship="viewControllers" id="9ah-YG-5Pk"/>
                         <segue destination="2c1-o0-fbB" kind="relationship" relationship="viewControllers" id="gpV-tA-khr"/>
                         <segue destination="m94-P4-uPB" kind="relationship" relationship="viewControllers" id="TS6-mU-h82"/>
+                        <segue destination="PZQ-Xx-YAr" kind="relationship" relationship="viewControllers" id="JNN-Jc-gZZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-45"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="G8M-qN-8mD">
+            <objects>
+                <viewController title="Profile" id="FrO-KO-YoK" customClass="ProfileViewController" customModule="FoodSavr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mhp-SG-tMj"/>
+                        <viewControllerLayoutGuide type="bottom" id="nYC-wc-yUQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZMY-Y3-zkg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0xN-yX-tCv">
+                                <rect key="frame" x="16" y="72" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="25q-su-8jE"/>
+                    <navigationItem key="navigationItem" id="Cmi-O8-aZo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kCh-KY-iKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-836" y="712"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="km0-kW-2Bp">
+            <objects>
+                <navigationController id="PZQ-Xx-YAr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="1Ab-7c-Mcq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yQj-oM-8d0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FrO-KO-YoK" kind="relationship" relationship="rootViewController" id="beY-jd-pCF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihR-bT-wdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1" y="688"/>
         </scene>
         <!--My Kitchen-->
         <scene sceneID="Qbh-FU-en9">
