@@ -17,15 +17,13 @@ class FirebaseProxy: NSObject {
     static let firebaseProxy = FirebaseProxy()
 
 
-    
     // Connect to Firebase DB
     private var _myRootRef = FIRDatabase.database().reference()
     private var _itemRef = FIRDatabase.database().reference().child("items")
     private var _receiptRef = FIRDatabase.database().reference().child("receipts")
     private var _userRef = FIRDatabase.database().reference().child("users")
     private var _groupRef = FIRDatabase.database().reference().child("groups")
-    
-
+    private var _userGroupsRef = FIRDatabase.database().reference().child("userGroups")
     
     
     var myRootRef: FIRDatabaseReference {
@@ -43,8 +41,9 @@ class FirebaseProxy: NSObject {
     var groupRef: FIRDatabaseReference {
         return _groupRef
     }
-    
-    
+    var userGroupsRef: FIRDatabaseReference {
+        return _userGroupsRef
+    }
     /*
      private var _receiptRef: FIRDatabaseReference!
      
@@ -61,7 +60,7 @@ class FirebaseProxy: NSObject {
     func saveReceipt(pic: String, creatorId: String, items: [String], vendor: String) {
         
         let key = FirebaseProxy.firebaseProxy.receiptRef.childByAutoId().key
-        let currentDate = String(describing: NSDate())
+        let currentDate = String(describing: Date())
         
         let newReceiptDetails : [String:Any] = [
             "pic": pic,
@@ -72,10 +71,65 @@ class FirebaseProxy: NSObject {
             "items": items,
             // QUESTION: vendor of product or store?
             "vendor": vendor
-        
         ]
         
         self.receiptRef.child(key).setValue(newReceiptDetails)
+    }
+    
+    func saveGroup(name: String, creatorId: String, members: [User]) {
+        let key = groupRef.childByAutoId().key
+        let currentDate = String(describing: Date())
+        var userGroupsUpd : Dictionary<String, Any> = [:]
+        var membersString : Dictionary<String,Any> = [:]
+        //var users : Dictionary<String, Bool> = [:]
+        for m in members {
+            let member : Dictionary<String, Any> = [
+                "name": m.name,
+                "pic":  m.pic,
+                "diet": m.diet
+            ]
+            membersString[m.key] = member
+        }
+        
+        // this is under groupRef
+        let newGroup : [String:Any] = [
+            "name": name,
+            "deleted": false,
+            "dateAdded" : currentDate,
+            "creatorId": creatorId
+        ]
+        
+        for m in members {
+            print("/\(m)/\(key)")
+            userGroupsUpd["/\(m.key)/\(key)"] = newGroup
+            
+        }
+        //update group, update userGroups for each memeber!!!
+        
+        self.groupRef.child(key).updateChildValues(newGroup)
+        self.userGroupsRef.updateChildValues(userGroupsUpd)
+        self.groupRef.child("\(key)/users").updateChildValues(membersString)
+        for m in members {
+            self.userGroupsRef.child("\(m.key)/\(key)/users").updateChildValues(membersString)
+        }
+    }
+    
+    func getCurrentUser() -> String {
+        return (FIRAuth.auth()?.currentUser?.uid)!
+    }
+    
+    func convertToDate(dateString : String) -> String {
+        let localeStr = "en_US"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: localeStr)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        let date = dateFormatter.date(from: dateString)
+        
+        let strDateFormatter = DateFormatter()
+        strDateFormatter.dateStyle = .medium
+        strDateFormatter.timeStyle = .none
+        return strDateFormatter.string(from: date!)
     }
     
     /*
@@ -88,16 +142,6 @@ class FirebaseProxy: NSObject {
             return image
         }
         return nil
-    }
-    
-    func convertStringDatetoNSDate(dateString : String) -> NSDate {
-        let localeStr = "us"
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: localeStr)
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
-        let date: NSDate? = dateFormatter.dateFromString(dateString)
-        return date!
     }
     
     

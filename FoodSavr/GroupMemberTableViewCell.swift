@@ -1,15 +1,22 @@
 //
-//  AutoCompleteUserTableViewCell.swift
+//  GroupMemberTableViewCell.swift
 //  FoodSavr
 //
-//  Created by Xiaowen Feng on 5/4/17.
+//  Created by Xiaowen Feng on 5/18/17.
 //  Copyright © 2017 FoodSavr. All rights reserved.
 //
 
 import UIKit
 
-class AutoCompleteUserTableViewCell: UITableViewCell {
+class GroupMemberTableViewCell: UITableViewCell {
+    
 
+    @IBOutlet weak var profilePic: UIImageView!
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var allergy: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,8 +27,5 @@ class AutoCompleteUserTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var username: UILabel!
-    var key: String = ""
+    
 }
