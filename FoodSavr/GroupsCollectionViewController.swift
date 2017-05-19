@@ -26,12 +26,13 @@ class GroupsCollectionViewController: UICollectionViewController {
         userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
         fetchGroups()
         
+        let padding: CGFloat = 30
+        let collectionCellSize = collectionView!.frame.size.width - padding
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 0, right: 2)
-        layout.itemSize = CGSize(width: width / 2, height: width / 2)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: collectionCellSize/2, height: collectionCellSize/2)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
+        layout.minimumInteritemSpacing = 3
+        layout.minimumLineSpacing = 3
         collectionView!.collectionViewLayout = layout
     }
 
@@ -44,7 +45,6 @@ class GroupsCollectionViewController: UICollectionViewController {
         var newGroups :[Group] = []
         userGroupsRef.child(FirebaseProxy.firebaseProxy.getCurrentUser()).observe(.childAdded , with: {(snapshot) in
         if let groupDict = snapshot.value as? Dictionary<String, AnyObject>{
-            print(snapshot)
             let key = snapshot.key
             let g = Group(key: key, dictionary: groupDict)
             newGroups.append(g)
@@ -52,29 +52,7 @@ class GroupsCollectionViewController: UICollectionViewController {
 
         self.groups = newGroups
         self.collectionView!.reloadData()
-        
-
         })
-//        userRef.queryOrdered(byChild: "groups").observe(.value, with: {(snapshot) in
-//        if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-//            for snap in snapshots {
-//                self.groupRef.child(snap.key).observeSingleEvent(of: .value, with: { (s) in
-//                    print(s)
-//                    if let groupDict = s.value as? Dictionary<String, AnyObject> {
-//                        let k = s.key
-//                        let g = Group(key: k, dictionary: groupDict)
-//                        newGroups.append(g)
-//                        print(g)
-//                        
-//                    }
-//                })
-//                
-//            }
-//            self.groups = newGroups
-//        }
-        
-        //})
-        
         
     }
 
@@ -97,10 +75,8 @@ class GroupsCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor
         cell.groupName.layer.backgroundColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 1
         cell.groupName.text = self.groups[indexPath.row].name
-        
-        
         
     
         return cell
@@ -143,9 +119,8 @@ class GroupsCollectionViewController: UICollectionViewController {
                 let i = self.collectionView!.indexPath(for: cell)!.row
                 let vc = segue.destination as! GroupViewController
                 vc.group = self.groups[i]
-                print(vc.group)
+                vc.groupKey = self.groups[i].key
             }
         }
     }
-
 }

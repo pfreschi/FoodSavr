@@ -11,13 +11,32 @@ import Firebase
 
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var group = Group(key:"none", dictionary: Dictionary<String, AnyObject>())
+    var groupKey : String = ""
+    var userlist : [User] = []
+    var groupRef : FIRDatabaseReference!
+    var userGroupsRef : FIRDatabaseReference!
+    
 
     @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var createdAt: UILabel!
+    
+    @IBAction func doneButton(_ sender: Any) {
+        editPressed.isHidden = false
+        donePressed.isHidden = true
+        groupName.isUserInteractionEnabled = false
+        //TODO: update group name
+        if groupName.text?.characters != nil {
+            updateGroupName(name: groupName.text!)
+        }
+    }
+    
+    @IBOutlet weak var editPressed: UIButton!
+    @IBOutlet weak var donePressed: UIButton!
     @IBAction func editButton(_ sender: Any) {
         groupName.isUserInteractionEnabled = true
         groupName.becomeFirstResponder()
-        
+        donePressed.isHidden = false
+        editPressed.isHidden = true
     }
     @IBOutlet weak var groupTableview: UITableView!
     var userRef : FIRDatabaseReference!
@@ -27,7 +46,9 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         userRef = FirebaseProxy.firebaseProxy.userRef
         loadGroupData()
-        
+        donePressed.isHidden = true
+        groupRef = FirebaseProxy.firebaseProxy.groupRef
+        userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
         
     }
 
@@ -43,6 +64,19 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         createdAt.text = "Created on \(dateStr)"
         groupTableview.delegate = self
         groupTableview.dataSource = self
+        //usersArr = Array(group.users.values.map{ $0 })
+        for u in group.users {
+            let user = User.init(key: u.key, dictionary: u.value as! Dictionary<String, AnyObject>)
+            userlist.append(user)
+        }
+        
+    }
+    
+    func updateGroupName(name: String) {
+        groupRef.child(groupKey).updateChildValues(["name": name])
+        
+        //TODO : update group name for all users!!!
+       // userGroupsRef.(fireba)
         
     }
     
@@ -64,46 +98,21 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! KitchenItemsTableViewCell
-        
-//            cell.itemName.text = self.itemList[indexPath.row].name
-//            setWhoAddedItem(cell: cell, indexPath: indexPath)
-//            cell.expiration.text = expDate(days: self.itemList[indexPath.row].expirationDate)
-//            
-//            //TODO: ask about how to store images
-//            cell.itemPic.sd_setImage(with: URL(string: self.itemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! GroupMemberTableViewCell
+        cell.userName.text = userlist[indexPath.row].name
+        cell.profilePic.sd_setImage(with: URL(string: userlist[indexPath.row].pic))
+        let dietStr = userlist[indexPath.row].diet.joined(separator: ",")
+        cell.allergy.text = "Preference: \(dietStr)"
+
+        setRoundBorder(img: cell.profilePic)
         return cell
     }
     
-//    func fetchMembers() {
-//        for i in group.users.count {
-//            userRef?.observe(.value, with: {(snapshot) in
-//                var userlist : [User] = []
-//                if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-//                    for snap in snapshots {
-//                        if let userDict = snap.value as? Dictionary<String, AnyObject> {
-//                            let key = snap.key
-//                            let user = User(key: key, dictionary: userDict)
-//                            // don't show the current user him/herself
-//                            if key != FirebaseProxy.firebaseProxy.getCurrentUser() {
-//                                userlist.append(user)
-//                            }
-//                        }
-//                    }
-//                    self.users = userlist
-//                    self.memTableView.reloadData()
-//                }
-//                
-//            }) {(error) in
-//                print("this is error" + error.localizedDescription)
-//                
-//            }
-//        }
-//        
-//    }
-
-
-
+    func setRoundBorder(img: UIImageView) {
+        img.layer.cornerRadius = img.frame.size.width/2
+        img.clipsToBounds = true
+    }
+    
 
     /*
     // MARK: - Navigation

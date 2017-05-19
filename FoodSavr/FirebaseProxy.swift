@@ -17,7 +17,6 @@ class FirebaseProxy: NSObject {
     static let firebaseProxy = FirebaseProxy()
 
 
-    
     // Connect to Firebase DB
     private var _myRootRef = FIRDatabase.database().reference()
     private var _itemRef = FIRDatabase.database().reference().child("items")
@@ -25,8 +24,6 @@ class FirebaseProxy: NSObject {
     private var _userRef = FIRDatabase.database().reference().child("users")
     private var _groupRef = FIRDatabase.database().reference().child("groups")
     private var _userGroupsRef = FIRDatabase.database().reference().child("userGroups")
-    
-
     
     
     var myRootRef: FIRDatabaseReference {
@@ -47,8 +44,6 @@ class FirebaseProxy: NSObject {
     var userGroupsRef: FIRDatabaseReference {
         return _userGroupsRef
     }
-    
-    
     /*
      private var _receiptRef: FIRDatabaseReference!
      
@@ -76,7 +71,6 @@ class FirebaseProxy: NSObject {
             "items": items,
             // QUESTION: vendor of product or store?
             "vendor": vendor
-        
         ]
         
         self.receiptRef.child(key).setValue(newReceiptDetails)
@@ -91,8 +85,8 @@ class FirebaseProxy: NSObject {
         for m in members {
             let member : Dictionary<String, Any> = [
                 "name": m.name,
-                "pic":  m.pic
-               // "diet": m.diet
+                "pic":  m.pic,
+                "diet": m.diet
             ]
             membersString[m.key] = member
         }
@@ -106,22 +100,23 @@ class FirebaseProxy: NSObject {
         ]
         
         for m in members {
-            userGroupsUpd["/\(m)/\(key)"] = newGroup
+            print("/\(m)/\(key)")
+            userGroupsUpd["/\(m.key)/\(key)"] = newGroup
+            
         }
-        
         //update group, update userGroups for each memeber!!!
         
         self.groupRef.child(key).updateChildValues(newGroup)
+        self.userGroupsRef.updateChildValues(userGroupsUpd)
         self.groupRef.child("\(key)/users").updateChildValues(membersString)
-       // self.userGroupsRef.updateChildValues(userGroupsUpd)
-       // self.userGroupsRef.child("\(m)/\(key)/users").updateChildValues(membersString)
-        
+        for m in members {
+            self.userGroupsRef.child("\(m.key)/\(key)/users").updateChildValues(membersString)
+        }
     }
     
     func getCurrentUser() -> String {
         return (FIRAuth.auth()?.currentUser?.uid)!
     }
-    
     
     func convertToDate(dateString : String) -> String {
         let localeStr = "en_US"
@@ -135,10 +130,7 @@ class FirebaseProxy: NSObject {
         strDateFormatter.dateStyle = .medium
         strDateFormatter.timeStyle = .none
         return strDateFormatter.string(from: date!)
-        
     }
-    
-    
     
     /*
     func getProfPic(fid: String) -> UIImage? {
@@ -151,8 +143,6 @@ class FirebaseProxy: NSObject {
         }
         return nil
     }
-    
-
     
     
     //fair use of function from jacks205 on GitHub

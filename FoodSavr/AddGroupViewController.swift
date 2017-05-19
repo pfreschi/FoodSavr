@@ -167,27 +167,5 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "showGroups" {
-            
-        }
-        
-//        if segue.identifier == "showFavorDetail"{
-//            if let cell = sender as? UITableViewCell {
-//                let i = tableView.indexPathForCell(cell)!.row
-//                let vc = segue.destinationViewController as! FavorDetailViewController
-//                vc.currentFavor = self.favorsList[i]
-//                vc.favorsList = self.favorsList
-//                vc.usersList = self.usersList
-//            }
-//        }
-    }
-
 
 }

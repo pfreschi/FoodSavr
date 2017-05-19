@@ -112,8 +112,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             cell.itemName.text = self.itemList[indexPath.row].name
             setWhoAddedItem(cell: cell, indexPath: indexPath)
             cell.expiration.text = expDate(days: self.itemList[indexPath.row].expirationDate)
-            
-            //TODO: ask about how to store images
+
             cell.itemPic.sd_setImage(with: URL(string: self.itemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
         }
         setRoundBorder(img: cell.itemPic)
