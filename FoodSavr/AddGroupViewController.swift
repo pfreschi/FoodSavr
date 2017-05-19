@@ -15,15 +15,23 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     var autoComplete = [User]()
     var userRef : FIRDatabaseReference?
     var selectedVals : NSMutableArray = []
+    var selectedUsers: [String] = []
+    var groupRef : FIRDatabaseReference?
 
     @IBOutlet weak var memTableView: UITableView!
     
+    @IBOutlet weak var warning: UILabel!
     @IBOutlet weak var memText: UITextField!
     
+    @IBAction func addGroup(_ sender: Any) {
+        createGroup(gName: groupName.text!, users: selectedUsers)
+    }
+
     @IBOutlet weak var groupName: UITextField!
     @IBAction func Clear(_ sender: Any) {
         memText.text = ""
         groupName.text = ""
+        selectedVals = []
     }
     
     override func viewDidLoad() {
@@ -34,6 +42,7 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         memTableView.isHidden = true
 
         userRef = FirebaseProxy.firebaseProxy.userRef
+        groupRef = FirebaseProxy.firebaseProxy.groupRef
         fetchUsers()
     }
 
@@ -74,20 +83,18 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         userRef?.observe(.value, with: {(snapshot) in
             var userlist : [User] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                print(snapshots)
                 for snap in snapshots {
                     if let userDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let user = User(key: key, dictionary: userDict)
-                        
+                        // TODO: don't show the current user him/herself
+                        print(user)
                         userlist.append(user)
-                        
                     }
                 }
                 self.users = userlist
                 self.memTableView.reloadData()
             }
-        
         
         }) {(error) in
             print("this is error" + error.localizedDescription)
@@ -113,8 +120,9 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         
         cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.width / 2;
         cell.profilePic.clipsToBounds = true;
-    
+        cell.key = self.autoComplete[indexPath.row].key
         
+    
         return cell
     }
     
@@ -122,7 +130,7 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let selectedCell: AutoCompleteUserTableViewCell = memTableView.cellForRow(at: indexPath)! as! AutoCompleteUserTableViewCell
         
-        //memText.text = trimFirstname(string: selectedCell.username!.text!)
+        selectedUsers.append(selectedCell.key)
         
         selectedVals.add(trimFirstname(string: selectedCell.username!.text!))
         memText.text = selectedVals.componentsJoined(by: ",")
@@ -133,17 +141,31 @@ class AddGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         return string.components(separatedBy: " ").first!
     }
     
-
+    func createGroup(gName: String, users: [String] ){
+        if (groupName.text!.isEmpty || selectedUsers.count == 0) {
+            warning.text = "Please fill out all the information!"
+        } else {
+            //check if it's logged in
+            if (FIRAuth.auth()?.currentUser) != nil {
+                // add current user into member list
+                selectedUsers.append(FirebaseProxy.firebaseProxy.getCurrentUser())
+                let members = getUserObjfromID(userIDs: selectedUsers)
+                FirebaseProxy.firebaseProxy.saveGroup(name: gName,
+                creatorId: (FIRAuth.auth()?.currentUser?.uid)!, members: members)
+            }
+        }
+    }
+    
+    func getUserObjfromID(userIDs: Array<String>) -> [User] {
+        var userlist : [User] = []
+        
+        for u in userIDs {
+            let user = self.users.first(where: {$0.key == u})
+            userlist.append(user!)
+        }
+        return userlist
+    }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

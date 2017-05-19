@@ -20,11 +20,11 @@ class User: NSObject {
     private var _zipCode: Int!
 
     private var _phone: Int!
-    private var _dietaryRestrictions: Array<String>!
+    private var _diet: Array<String>!
     private var _restrictedIngredients: Array<String>!
     private var _receipts: Array<String>!
     
-    private var _groups: Array<String>!
+    private var _groups: Dictionary<String, Bool>!
     private var _pic: String!
     private var _itemIDs: Array<String>!
     var key: String {
@@ -51,8 +51,8 @@ class User: NSObject {
         return _phone
     }
     
-    var dietaryRestrictions: Array<String> {
-        return _dietaryRestrictions
+    var diet: Array<String> {
+        return _diet
     }
     
     var restrictedIngredients: Array<String> {
@@ -63,7 +63,7 @@ class User: NSObject {
         return _receipts
     }
     
-    var groups: Array<String> {
+    var groups: Dictionary<String, Bool> {
         return _groups
     }
     
@@ -96,8 +96,8 @@ class User: NSObject {
             self._phone = newPhone
         }
         
-        if let newDietaryRestrictions = dictionary["dietaryRestrictions"] as? Array<String> {
-            self._dietaryRestrictions = newDietaryRestrictions
+        if let newDiet = dictionary["diet"] as? Array<String> {
+            self._diet = newDiet
         }
         
         if let newRestrictedIngredients = dictionary["restrictedIngredients"] as? Array<String> {
@@ -106,7 +106,7 @@ class User: NSObject {
         if let newReceipts = dictionary["receipts"] as? Array<String> {
             self._receipts = newReceipts
         }
-        if let newGroups = dictionary["groups"] as? Array<String> {
+        if let newGroups = dictionary["groups"] as? Dictionary<String, Bool> {
             self._groups = newGroups
         }
         if let newPic = dictionary["pic"] as? String {
