@@ -30,7 +30,7 @@ class GroupsCollectionViewController: UICollectionViewController {
         let collectionCellSize = collectionView!.frame.size.width - padding
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: collectionCellSize/2, height: collectionCellSize/2)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 25, right: 3)
         layout.minimumInteritemSpacing = 3
         layout.minimumLineSpacing = 3
         collectionView!.collectionViewLayout = layout
