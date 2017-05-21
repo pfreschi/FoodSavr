@@ -57,8 +57,6 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         itemPic.sd_setImage(with: URL(string: currentItem.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
         setRoundBorder(img: itemPic)
         self.title = "Detail"
-       
-        print(self.creatorName)
         added.text = "Added by \(self.creatorName)"
     }
     
