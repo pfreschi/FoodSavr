@@ -132,6 +132,23 @@ class FirebaseProxy: NSObject {
         return strDateFormatter.string(from: date!)
     }
     
+    func markedAsShared(isShared: Bool, groupName: String, groupId: String, itemId: String) {
+        if (isShared) {
+            //update item sharewith field! 
+            // get group name and id and update
+            let groupUpd = [
+                "id" : groupId,
+                "name" : groupName
+            ]
+            itemRef.child("\(itemId)/groups/\(groupId)").updateChildValues(groupUpd)
+            
+        } else {
+            //delete group!
+            itemRef.child("\(itemId)/groups/\(groupId)").removeValue()
+        }
+        
+    }
+    
     /*
     func getProfPic(fid: String) -> UIImage? {
         if (fid != "") {

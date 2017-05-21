@@ -19,9 +19,11 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     
     var ref : FIRDatabaseReference?
     var itemRef: FIRDatabaseReference?
+    var userRef : FIRDatabaseReference?
     var itemList:[Item] = []
     var filteredItemList:[Item] = []
     var curUser : FIRUser?
+    var nameArr : [String] = []
     var imagePicker: UIImagePickerController!
     
     
@@ -35,6 +37,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         setupUI()
         ref = FirebaseProxy.firebaseProxy.myRootRef
         itemRef = FirebaseProxy.firebaseProxy.itemRef
+        userRef = FirebaseProxy.firebaseProxy.userRef
         curUser = (FIRAuth.auth()?.currentUser)!
         
         itemRef?.queryOrdered(byChild: "expirationDate").observe(.value, with: { (snapshot) in
@@ -164,8 +167,8 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                 // Get name value
                 let value = snapshot.value as? NSDictionary
                 let name = value?["name"] as? String ?? "some"
-                let nameArr = name.components(separatedBy: " ")
-                cell.addedBy.text = "added by " + nameArr[0]
+                self.nameArr = name.components(separatedBy: " ")
+                cell.addedBy.text = "added by " + self.nameArr[0]
             }) { (error) in
                 print(error.localizedDescription)
                 cell.addedBy.text = "added by someone"
@@ -208,9 +211,12 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                 let vc = segue.destination as! ItemDetailViewController
                 if isSearching {
                     vc.currentItem = self.filteredItemList[i]
+                    vc.itemKey = self.filteredItemList[i].key
                 } else {
                     vc.currentItem = self.itemList[i]
+                    vc.itemKey = self.itemList[i].key
                 }
+                vc.creatorName = self.nameArr[0]
                 
             }
         }

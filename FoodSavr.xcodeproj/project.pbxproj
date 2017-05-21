@@ -41,6 +41,9 @@
 		AE9CCD411ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9CCD401ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift */; };
 		AE9CCD421ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9CCD401ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift */; };
 		AE9CCD431ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9CCD401ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift */; };
+		AE9CCD451ECF520200B943D2 /* SharingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */; };
+		AE9CCD461ECF520200B943D2 /* SharingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */; };
+		AE9CCD471ECF520200B943D2 /* SharingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */; };
 		AEA35A2B1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEA35A2C1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
@@ -105,6 +108,7 @@
 		AE9CCD381ECAB9B700B943D2 /* GroupCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		AE9CCD3C1ECD091600B943D2 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		AE9CCD401ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberTableViewCell.swift; sourceTree = "<group>"; };
+		AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingTableViewCell.swift; sourceTree = "<group>"; };
 		AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		BC31EA20D851F2F2D64C38E8 /* Pods-FoodSavrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */,
 				F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */,
 				AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */,
+				AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */,
 				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
 				F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */,
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
@@ -360,7 +365,7 @@
 				TargetAttributes = {
 					F4FE29431E8EC7F10026AD50 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = CMHG5573MR;
+						DevelopmentTeam = 33G7MEJKT7;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -743,6 +748,7 @@
 				F46C0A151EBCF8CF007C951E /* AddGroupViewController.swift in Sources */,
 				AE43F0741EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 				F4FE297C1E90697F0026AD50 /* Receipt.swift in Sources */,
+				AE9CCD451ECF520200B943D2 /* SharingTableViewCell.swift in Sources */,
 				F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */,
 				AE43F07C1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
 				AE9CCD411ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift in Sources */,
@@ -780,6 +786,7 @@
 				AEC4556E1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
 				AE43F0751EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 				AEA35A2B1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */,
+				AE9CCD461ECF520200B943D2 /* SharingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +804,7 @@
 				AEC4556F1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
 				AE43F0761EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift in Sources */,
 				AEA35A2C1EB53D1E00DFCE45 /* AddGroupViewController.swift in Sources */,
+				AE9CCD471ECF520200B943D2 /* SharingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,7 +944,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = FoodSavr/FoodSavr.entitlements;
-				DEVELOPMENT_TEAM = CMHG5573MR;
+				DEVELOPMENT_TEAM = 33G7MEJKT7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20160412",
@@ -944,7 +952,7 @@
 				);
 				INFOPLIST_FILE = FoodSavr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.peterfreschi.FoodSavr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaowenfeng.FoodSavr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -956,7 +964,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = FoodSavr/FoodSavr.entitlements;
-				DEVELOPMENT_TEAM = CMHG5573MR;
+				DEVELOPMENT_TEAM = 33G7MEJKT7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDKs-iOS-20160412",
@@ -964,7 +972,7 @@
 				);
 				INFOPLIST_FILE = FoodSavr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.peterfreschi.FoodSavr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaowenfeng.FoodSavr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

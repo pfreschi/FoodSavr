@@ -64,12 +64,10 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         createdAt.text = "Created on \(dateStr)"
         groupTableview.delegate = self
         groupTableview.dataSource = self
-        //usersArr = Array(group.users.values.map{ $0 })
         for u in group.users {
             let user = User.init(key: u.key, dictionary: u.value as! Dictionary<String, AnyObject>)
             userlist.append(user)
         }
-        
     }
     
     func updateGroupName(name: String) {
