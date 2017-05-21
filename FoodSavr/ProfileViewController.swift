@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 import FBSDKLoginKit
 
 
@@ -17,9 +18,17 @@ class ProfileViewController: UIViewController {
     var dietPreferences = [String: Bool]()
     var allergyPreferences = [String: Bool]()
 
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var dietaryText: UILabel!
+    @IBOutlet weak var allergyText: UILabel!
+    @IBOutlet weak var dislikeText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setProfilePic()
+        setNameAndPrefs()
 
     }
     
@@ -44,24 +53,72 @@ class ProfileViewController: UIViewController {
             }
         }
         
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+        self.profileImageView.clipsToBounds = true;
+        self.profileImageView.layer.borderWidth = 5.0
+        self.profileImageView.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor
+        
     }
     
-    func setName() {
+    func setNameAndPrefs() {
         let userRef = FirebaseProxy.firebaseProxy.userRef
         let userID = FIRAuth.auth()?.currentUser?.uid
         userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user's name
-            print("this is printing user name")
             let value = snapshot.value as? NSDictionary
             let fullName = value?["name"] as? String ?? "User"
+            self.name.text = fullName
             
-            let fullNameArr = fullName.components(separatedBy: " ")
+            let email = value?["email"] as? String ?? "Email"
+            self.email.text = email
             
-            let name    = fullNameArr[0]
-            let lastName = fullNameArr[1]
-            self.welcomeOrEndText.text = "Hello, \(name).\n Welcome to FoodSavr!\n We would love to get to \n know you before you \n get started."
+            let diet = value?["diet"] as? NSArray ?? NSArray()
+            print(diet)
+            self.dietaryText.text = "Dietary: "
+            if diet.count != 0 {
+                for (index, elem) in diet.enumerated() {
+                    if index != diet.count - 1 {
+                        self.dietaryText.text?.append("\(elem), ")
+                    } else {
+                        self.dietaryText.text?.append("\(elem) ")
+                    }
+                    
+                }
+            } else {
+                self.dietaryText.text?.append("N/A")
+            }
+            let allergy = value?["allergy"] as? NSArray ?? NSArray()
+            self.allergyText.text = "Allergies: "
+            if allergy.count != 0 {
+                for (index, elem) in allergy.enumerated() {
+                    if index != diet.count - 1 {
+                        self.allergyText.text?.append("\(elem), ")
+                    } else {
+                        self.allergyText.text?.append("\(elem) ")
+                    }
+                    
+                }
+            } else {
+                self.allergyText.text?.append("N/A")
+            }
+            let excludedIngredients = value?["excludedIngredients"] as? NSArray ?? NSArray()
+            self.dislikeText.text = "Dislikes: "
+            if excludedIngredients.count != 0 {
+                for (index, elem) in excludedIngredients.enumerated() {
+                    if index != excludedIngredients.count - 1 {
+                        self.dislikeText.text?.append("\(elem), ")
+                    } else {
+                        self.dislikeText.text?.append("\(elem) ")
+                    }
+                    
+                }
+            } else {
+                self.dislikeText.text?.append("N/A")
+            }
+
+
             
-            // ...
+
         }) { (error) in
             print(error.localizedDescription)
         }

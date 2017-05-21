@@ -20,7 +20,6 @@ class BorderedButton: UIButton {
         super.init(frame: frame)
         
         // set other operations after super.init, if required
-        backgroundColor = .red
     }
     
     required init?(coder aDecoder: NSCoder) {
