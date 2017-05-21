@@ -11,12 +11,18 @@ import SDWebImage
 import Foundation
 import Firebase
 
-class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol sharingDelegate {
+    func sharingSwitchTapped(cell : SharingTableViewCell, isSwitchOn : Bool)
+}
+
+class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, sharingDelegate {
     
     var currentItem = Item(key:"none", dictionary: Dictionary<String, AnyObject>())
     var userGroupsRef : FIRDatabaseReference!
     var userRef : FIRDatabaseReference!
     var groups : [Group] = []
+    var itemKey : String = ""
+    var creatorName : String = ""
     @IBOutlet weak var itemPic: UIImageView!
     
     @IBOutlet weak var itemName: UILabel!
@@ -45,13 +51,15 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func showitemInfo() {
+        
         itemName.text = currentItem.name
         expirationDate.text = "Expire in \(expDate(days: currentItem.expirationDate))"
         itemPic.sd_setImage(with: URL(string: currentItem.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
         setRoundBorder(img: itemPic)
-        self.title = "DETAIL"
-        added.text = "Added by \(currentItem.creatorId)"
-        
+        self.title = "Detail"
+       
+        print(self.creatorName)
+        added.text = "Added by \(self.creatorName)"
     }
     
     // fetch image from firebase storage
@@ -62,17 +70,6 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         return UIImage(data: data)!
     }
     
-    func getUsername(userId: String) {
-//        userRef.child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
-//            // Get name value
-//            let value = snapshot.value as? NSDictionary
-//            let name = value?["name"] as? String ?? "some"
-//            let nameArr = name.components(separatedBy: " ")
-//        }) { (error) in
-//            print(error.localizedDescription)
-//        }
-
-    }
     func expDate(days: Int) -> String {
         
         if (days < 30) {
@@ -110,8 +107,21 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sharingCell", for: indexPath) as! SharingTableViewCell
-        cell.groupName.text = groups[indexPath.row].name
+        let groupName = groups[indexPath.row].name
+        cell.itemName = itemName.text!
+        cell.groupName.text = groupName
+        cell.delegate = self
+
         return cell
+    }
+    
+    func sharingSwitchTapped(cell : SharingTableViewCell, isSwitchOn : Bool) {
+        let group = groups[(groupsTableview.indexPath(for: cell)?.row)!]
+        UserDefaults.standard.set(isSwitchOn, forKey: "\(itemName.text!)sharing")
+    
+        UserDefaults.standard.synchronize()
+        
+        FirebaseProxy.firebaseProxy.markedAsShared(isShared: isSwitchOn, groupName: group.name, groupId: group.key, itemId: itemKey)
     }
     
     func fetchGroups() {

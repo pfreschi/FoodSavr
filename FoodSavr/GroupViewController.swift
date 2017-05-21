@@ -68,7 +68,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let user = User.init(key: u.key, dictionary: u.value as! Dictionary<String, AnyObject>)
             userlist.append(user)
         }
-        
     }
     
     func updateGroupName(name: String) {

@@ -10,6 +10,9 @@ import UIKit
 
 class SharingTableViewCell: UITableViewCell {
 
+    var delegate : sharingDelegate!
+    var itemName : String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,23 +20,17 @@ class SharingTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        isShared.setOn(UserDefaults.standard.bool(forKey: "\(itemName)sharing"), animated: animated)
     }
 
     @IBOutlet weak var isShared: UISwitch!
     @IBOutlet weak var groupName: UILabel!
     
-    @IBAction func switchTapped(_ sender: Any) {
-        if isShared.isOn {
-            
-        } else {
-            
-        }
-    }
-    
-    func itemShared() {
-        
+    @IBAction func switchTapped(_ sender: UISwitch) {
+        let sharingSwitch = sender
+       
+        delegate.sharingSwitchTapped(cell: self, isSwitchOn: sharingSwitch.isOn)
+       
     }
     
     
