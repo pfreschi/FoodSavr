@@ -78,9 +78,9 @@ class ProfileViewController: UIViewController {
             if diet.count != 0 {
                 for (index, elem) in diet.enumerated() {
                     if index != diet.count - 1 {
-                        self.dietaryText.text?.append("\(elem), ")
+                        self.dietaryText.text?.append("\((elem as! String).capitalized), ")
                     } else {
-                        self.dietaryText.text?.append("\(elem) ")
+                        self.dietaryText.text?.append("\((elem as! String).capitalized) ")
                     }
                     
                 }
@@ -92,26 +92,21 @@ class ProfileViewController: UIViewController {
             if allergy.count != 0 {
                 for (index, elem) in allergy.enumerated() {
                     if index != diet.count - 1 {
-                        self.allergyText.text?.append("\(elem), ")
+                        self.allergyText.text?.append("\((elem as! String).capitalized), ")
                     } else {
-                        self.allergyText.text?.append("\(elem) ")
+                        self.allergyText.text?.append("\((elem as! String).capitalized) ")
                     }
                     
                 }
             } else {
                 self.allergyText.text?.append("N/A")
             }
-            let excludedIngredients = value?["excludedIngredients"] as? NSArray ?? NSArray()
+            let excludedIngredients = value?["excludedIngredients"] as? String ?? ""
             self.dislikeText.text = "Dislikes: "
-            if excludedIngredients.count != 0 {
-                for (index, elem) in excludedIngredients.enumerated() {
-                    if index != excludedIngredients.count - 1 {
-                        self.dislikeText.text?.append("\(elem), ")
-                    } else {
-                        self.dislikeText.text?.append("\(elem) ")
-                    }
-                    
-                }
+            if excludedIngredients.characters.count != 0 {
+                
+                self.dislikeText.text?.append(excludedIngredients.capitalized)
+                
             } else {
                 self.dislikeText.text?.append("N/A")
             }
