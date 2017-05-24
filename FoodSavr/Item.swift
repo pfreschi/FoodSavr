@@ -11,7 +11,7 @@ import FirebaseDatabase
 extension Date {
     func toString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd yyyy"
+        dateFormatter.dateFormat = "yyyy mm dd"
         return dateFormatter.string(from: self)
     }
 }
@@ -28,7 +28,7 @@ class Item: NSObject {
     private var _dateAdded: String!
     private var _creatorId: String!
     //group ID
-    private var _sharedWith: Array<String>!
+    private var _groups: Dictionary<String,AnyObject>!
     //private var _ingredients: Array<String>!
     //private var _category: String!
     
@@ -69,8 +69,8 @@ class Item: NSObject {
         return _creatorId
     }
     
-    var sharedWith: Array<String> {
-        return _sharedWith
+    var groups: Dictionary<String,AnyObject> {
+        return _groups
     }
     
     //    var ingredients: Array<String> {
@@ -111,17 +111,9 @@ class Item: NSObject {
             self._creatorId = newCreatorId
         }
         
-        if let newSharedWith = dictionary["sharedWith"] as? Array<String> {
-            self._sharedWith = newSharedWith
+        if let groups = dictionary["groups"] as? Dictionary<String,AnyObject> {
+            self._groups = groups
         }
-        
-        //        if let newIngredients = dictionary["ingredients"] as? Array<String> {
-        //            self._ingredients = newIngredients
-        //        }
-        //
-        //        if let newCategory = dictionary["category"] as? String {
-        //            self._category = newCategory
-        //        }
         
         //the above properties added to their key?!
         self._itemRef = FirebaseProxy.firebaseProxy.itemRef.child((String(self._key)))

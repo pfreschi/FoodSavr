@@ -20,6 +20,8 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     var ref : FIRDatabaseReference?
     var itemRef: FIRDatabaseReference?
     var userRef : FIRDatabaseReference?
+    var userGroupsRef : FIRDatabaseReference?
+    var groupIDs = Set<String>()
     var itemList:[Item] = []
     var filteredItemList:[Item] = []
     var curUser : FIRUser?
@@ -35,11 +37,13 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
         ref = FirebaseProxy.firebaseProxy.myRootRef
         itemRef = FirebaseProxy.firebaseProxy.itemRef
         userRef = FirebaseProxy.firebaseProxy.userRef
+        userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
         curUser = (FIRAuth.auth()?.currentUser)!
-        
+        fetchGroups()
         itemRef?.queryOrdered(byChild: "expirationDate").observe(.value, with: { (snapshot) in
             
             var newItems : [Item] = []
@@ -48,29 +52,59 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                     if let itemDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let item = Item(key: key, dictionary: itemDict)
-                        //self.itemList.insert(item, at: 0)
-                        newItems.append(item)
+                        // only added if item is created by current user or user is in the group
+                        if item.creatorId == self.curUser?.uid {
+                            newItems.append(item)
+                        }
                         
+                        if itemDict.index(forKey: "groups") != nil {
+                            //print(item.groups.keys)
+                            let keys = Set(item.groups.keys)
+                            // get the common groupID back
+                            //let filter = keys.filter() {self.groupIDs.contains($0)}
+                            if keys.isSubset(of: self.groupIDs) {
+                                newItems.append(item)
+                            }
+                        }
                     }
                 }
                 self.itemList = newItems
-                self.table.reloadData()
                 
+                // save all items to userdefault
+                var itemNames : [String] = []
+                for i in newItems {
+                    itemNames.append(i.name)
+                }
+                UserDefaults.standard.set(itemNames, forKey: "inventory")
+                UserDefaults.standard.synchronize()
+
+                self.table.reloadData()
             }
-            
-            
         }) { (error) in
             
             print("this is error" + error.localizedDescription)
         }
-        
-        
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
+    func fetchGroups() {
+        var userGroupIDs = Set<String>()
+        userGroupsRef?.child((curUser?.uid)!).observeSingleEvent(of: .value , with: {(snapshot) in
+            if let groupDict = snapshot.value as? Dictionary<String, AnyObject>{
+                for (_, value) in groupDict {
+                    let data = value as! Dictionary<String, Any>
+                    userGroupIDs.insert(data["id"]! as! String)
+                }
+            }
+            self.groupIDs = userGroupIDs
+            
+        })
+        
+    }
+    
     
     // MARK: - Table view data source
     
@@ -161,6 +195,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         let userId = list[indexPath.row].creatorId
         if (userId == curUser?.uid) {
             cell.addedBy.text = "added by me"
+            self.nameArr.append("me")
         } else {
             
             ref?.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -173,8 +208,6 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                 print(error.localizedDescription)
                 cell.addedBy.text = "added by someone"
             }
- 
-            
         }
     }
     

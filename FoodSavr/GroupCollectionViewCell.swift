@@ -12,7 +12,9 @@ class GroupCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userPic: UIImageView!
     
+    @IBOutlet weak var userPic2: UIImageView!
     @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var userPic3: UIImageView!
     
     
 }
