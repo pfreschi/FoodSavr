@@ -119,7 +119,7 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
         UserDefaults.standard.synchronize()
         
-        FirebaseProxy.firebaseProxy.markedAsShared(isShared: isSwitchOn, groupName: group.name, groupId: group.key, itemId: itemKey)
+        FirebaseProxy.firebaseProxy.markedAsShared(isShared: isSwitchOn, groupName: group.name, groupId: group.key, itemId: itemKey, members: group.users)
     }
     
     func fetchGroups() {

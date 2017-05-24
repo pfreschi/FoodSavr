@@ -25,6 +25,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
         // receipts storage
         storageRef = FIRStorage.storage().reference().child("receipts")
+           }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if (UIImagePickerController.isSourceTypeAvailable(.camera))  {
             
             imagePicker =  UIImagePickerController()
@@ -36,8 +40,9 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             print("the device does not have a camera")
             //imagePicker.sourceType = .photoLibrary
         }
+        
+        
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,7 +64,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             print("priting user uid: \(FIRAuth.auth()!.currentUser!.uid)")
             let uid = FIRAuth.auth()!.currentUser!.uid
             guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-            guard let imageData = UIImageJPEGRepresentation(pickedImage, 0.8) else { return }
+            guard let imageData = UIImageJPEGRepresentation(pickedImage, 0.5) else { return }
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             

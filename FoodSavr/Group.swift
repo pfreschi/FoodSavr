@@ -19,6 +19,7 @@ class Group: NSObject {
     private var _dateAdded: String!
     private var _creatorId: String!
     private var _users: Dictionary<String,Any>!
+    private var _id: String!
     
     var groupRef: FIRDatabaseReference {
         return _groupRef
@@ -47,6 +48,9 @@ class Group: NSObject {
     var users: Dictionary<String,Any>!{
         return _users
     }
+    var id : String {
+        return _id
+    }
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         self._key = key
@@ -69,6 +73,9 @@ class Group: NSObject {
         
         if let newUsers = dictionary["users"] as? Dictionary<String,Any>! {
             self._users = newUsers
+        }
+        if let newID = dictionary["id"] as? String {
+            self._id = newID
         }
         
         //the above properties added to their key?!

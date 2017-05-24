@@ -51,10 +51,19 @@ class GroupsCollectionViewController: UICollectionViewController {
         }
 
         self.groups = newGroups
+        
         self.collectionView!.reloadData()
         })
         
     }
+    
+    func makeRoundcorner(imgv: UIImageView) {
+        imgv.layer.cornerRadius = imgv.frame.size.width / 2;
+        imgv.clipsToBounds = true;
+        //self.profileImageView.layer.borderWidth = 5.0
+    }
+
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -71,16 +80,33 @@ class GroupsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GroupCollectionViewCell
-        //cell.backgroundColor = UIColor.black
         // Configure the cell
+        let group = self.groups[indexPath.row]
         cell.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor
         cell.groupName.layer.backgroundColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor
         cell.layer.borderWidth = 1
-        cell.groupName.text = self.groups[indexPath.row].name
-        
-    
+        cell.groupName.text = group.name
+            var count = 0
+            for u in group.users  {
+                print(group.users)
+                let data = u.value as! Dictionary<String, Any>
+                let picURL = data["pic"] as! String
+                if count == 0 {
+                    cell.userPic.sd_setImage(with: URL(string: picURL))
+                    makeRoundcorner(imgv: cell.userPic)
+                } else if count == 1 {
+                    cell.userPic2.sd_setImage(with: URL(string: picURL))
+                    makeRoundcorner(imgv: cell.userPic2)
+                    
+                } else {
+                    cell.userPic3.sd_setImage(with: URL(string: picURL))
+                    makeRoundcorner(imgv: cell.userPic3)
+                }
+                count += 1
+            }
         return cell
     }
+    
 
     // MARK: UICollectionViewDelegate
 
