@@ -24,10 +24,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
         // receipts storage
         storageRef = FIRStorage.storage().reference().child("receipts")
-           }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         if (UIImagePickerController.isSourceTypeAvailable(.camera))  {
             
             imagePicker =  UIImagePickerController()
@@ -39,6 +35,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             print("the device does not have a camera")
             //imagePicker.sourceType = .photoLibrary
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
         
         
     }
@@ -83,6 +84,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             imageView.image = pickedImage
             
             self.dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: "showKitchenView", sender: nil)
             
         } else {
             print("Please sign in")
@@ -105,10 +107,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         picker.dismiss(animated: true, completion:nil)
         
         //showKitchenView
-        //performSegue(withIdentifier: "showKitchenView", sender: nil)
+        performSegue(withIdentifier: "showKitchenView", sender: nil)
         //let registrationView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("YourStoryboardID") as! NewOrdoViewController
-        let kitchenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "kitchenView") as! KitchenFeedViewController
-        self.present(kitchenVC, animated: true, completion: nil)
+//        let kitchenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "kitchenView") as! KitchenFeedViewController
+//        self.present(kitchenVC, animated: true, completion: nil)
         
     }
 }
