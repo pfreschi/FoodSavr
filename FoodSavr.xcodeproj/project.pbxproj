@@ -51,6 +51,8 @@
 		AEC4556F1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
 		C833E6FE2AB2E7AA5B2FBE98 /* Pods_FoodSavrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */; };
 		F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */; };
+		F40E22881ED26DAE007DF937 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E22871ED26DAE007DF937 /* RecipeDetailViewController.swift */; };
+		F40E228A1ED27249007DF937 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E22891ED27249007DF937 /* Recipe.swift */; };
 		F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332371E91D0B700A8C14C /* FirebaseProxy.swift */; };
 		F463323A1E91FACA00A8C14C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46332391E91FACA00A8C14C /* Group.swift */; };
 		F4682F101EBAE40F00ED3BAB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4682F0F1EBAE40F00ED3BAB /* RecipeTableViewCell.swift */; };
@@ -59,6 +61,7 @@
 		F48ECB0B1ECBB57900427B77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48ECB0A1ECBB57900427B77 /* ProfileViewController.swift */; };
 		F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F13B91EA003F1004534D9 /* BorderedButton.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
+		F4B2262C1ED552FF008089B7 /* ExternalRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2262B1ED552FF008089B7 /* ExternalRecipeViewController.swift */; };
 		F4C2B6111E95FA1B00211778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */; };
 		F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE843E1E99DFF000606BDA /* HelloViewController.swift */; };
 		F4CE84411E99F95300606BDA /* FoodPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */; };
@@ -114,6 +117,8 @@
 		C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8744CF339A1D9DF10C94F1B /* Pods-FoodSavrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrUITests/Pods-FoodSavrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		F40E22871ED26DAE007DF937 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		F40E22891ED27249007DF937 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		F46332371E91D0B700A8C14C /* FirebaseProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseProxy.swift; sourceTree = "<group>"; };
 		F46332391E91FACA00A8C14C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F4682F0F1EBAE40F00ED3BAB /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		F48ECB0A1ECBB57900427B77 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F49F13B91EA003F1004534D9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		F4AE6C671E920169009C5141 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F4B2262B1ED552FF008089B7 /* ExternalRecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalRecipeViewController.swift; sourceTree = "<group>"; };
 		F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		F4CE843E1E99DFF000606BDA /* HelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloViewController.swift; sourceTree = "<group>"; };
 		F4CE84401E99F95300606BDA /* FoodPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 				F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */,
 				AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */,
 				F4AE6C671E920169009C5141 /* Item.swift */,
+				F40E22891ED27249007DF937 /* Recipe.swift */,
 				F4FE29791E90617B0026AD50 /* User.swift */,
 				F4FE297B1E90697F0026AD50 /* Receipt.swift */,
 				F46332391E91FACA00A8C14C /* Group.swift */,
@@ -241,6 +248,8 @@
 				AE9CCD381ECAB9B700B943D2 /* GroupCollectionViewCell.swift */,
 				AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */,
 				F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */,
+				F40E22871ED26DAE007DF937 /* RecipeDetailViewController.swift */,
+				F4B2262B1ED552FF008089B7 /* ExternalRecipeViewController.swift */,
 				AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */,
 				AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */,
 				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
@@ -751,6 +760,7 @@
 				F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */,
 				AE37B89C1EC40A5D00A7A950 /* GroupsCollectionViewController.swift in Sources */,
 				AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */,
+				F4B2262C1ED552FF008089B7 /* ExternalRecipeViewController.swift in Sources */,
 				F4CE843F1E99DFF000606BDA /* HelloViewController.swift in Sources */,
 				F463323A1E91FACA00A8C14C /* Group.swift in Sources */,
 				F46332381E91D0B700A8C14C /* FirebaseProxy.swift in Sources */,
@@ -759,9 +769,11 @@
 				F4AE6C681E920169009C5141 /* Item.swift in Sources */,
 				AE9CCD391ECAB9B700B943D2 /* GroupCollectionViewCell.swift in Sources */,
 				F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */,
+				F40E22881ED26DAE007DF937 /* RecipeDetailViewController.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
 				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
 				F48ECB0B1ECBB57900427B77 /* ProfileViewController.swift in Sources */,
+				F40E228A1ED27249007DF937 /* Recipe.swift in Sources */,
 				F4682F101EBAE40F00ED3BAB /* RecipeTableViewCell.swift in Sources */,
 				F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */,
 			);
