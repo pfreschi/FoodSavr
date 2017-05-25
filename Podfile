@@ -30,6 +30,7 @@ target 'FoodSavr' do
   pod 'AlamofireSwiftyJSON'
   pod 'SwiftyStarRatingView', '~> 1.0'
   pod 'SDWebImage', '~>3.8'
+  pod 'Levenshtein'
   
 
 end

@@ -13,6 +13,10 @@ import Firebase
 import Alamofire
 import SwiftyJSON
 import SwiftyStarRatingView
+import Levenshtein
+
+
+
 
 class RecipeDetailViewController: UIViewController {
     
@@ -21,11 +25,14 @@ class RecipeDetailViewController: UIViewController {
     var receiptRef : FIRDatabaseReference!
     var itemKey : String = ""
     
+    var haveIngredients = Array<String>()
+    var missingIngredients = Array<String>()
+    
     @IBOutlet weak var recipePic: UIImageView!
     
     @IBOutlet weak var recipeName: UILabel!
     @IBOutlet weak var recipeTime: UILabel!
-    @IBOutlet weak var recipeHaveIngredients: UILabel!
+    @IBOutlet weak var recipeHaveIngredients: UITextView!
     @IBOutlet weak var recipeMissingIngredients: UITextView!
   
     @IBOutlet weak var recipeServings: UILabel!
@@ -61,9 +68,15 @@ class RecipeDetailViewController: UIViewController {
         
         
         recipeTime.text = storedRecipe["totalTime"].stringValue
-        let ingredientLinesCombined = storedRecipe["ingredientLines"].arrayObject as! Array<String>
-        let combinedString = ingredientLinesCombined.joined(separator: "\r")
-        recipeMissingIngredients.text = combinedString
+        
+        // adds relevant ingredients to Have and Missing
+        differentiateIngredients()
+        
+        let combinedMissingIngredientsString = missingIngredients.joined(separator: "\r")
+        recipeMissingIngredients.text = combinedMissingIngredientsString
+        
+        let combinedHavingIngredientsString = haveIngredients.joined(separator: "\r")
+        recipeHaveIngredients.text = combinedHavingIngredientsString
         
         recipeServings.text = storedRecipe["numberOfServings"].stringValue + " people"
         
@@ -71,9 +84,6 @@ class RecipeDetailViewController: UIViewController {
         
         recipeRating.value = CGFloat.init(rating.floatValue)
         recipeRating.isUserInteractionEnabled = false
-        
-        
-        
         
         
         
@@ -88,8 +98,50 @@ class RecipeDetailViewController: UIViewController {
         return UIImage(data: data)!
     }
     
-    func fetchRecipeDetails() {
+    func differentiateIngredients() {
+        let buffer = UserDefaults.standard.array(forKey: "inventory") as! Array<String>
+        var allItemsInKitchen = Array<String>()
+        for item in buffer {
+            allItemsInKitchen.append(item.lowercased())
+        }
         
+        
+        let longIngredients = storedRecipe["ingredientLines"].arrayObject as! Array<String>
+        
+        
+        for (i, longIngredient) in longIngredients.enumerated() {
+            var shortIngredient = currentRecipe.ingredients[i]
+            shortIngredient = shortIngredient.replacingOccurrences(of: "organic", with: "")
+            shortIngredient = shortIngredient.replacingOccurrences(of: "florets", with: "")
+            
+            var suggestion = Levenshtein.suggest(shortIngredient, list: allItemsInKitchen, ratio: 0.4, ignoreType: .ignoreCase)
+            if suggestion == nil {
+                suggestion = ""
+            }
+            var rangeSug = ""
+            for itemInKitchen in allItemsInKitchen {
+                if itemInKitchen.range(of: shortIngredient) != nil {
+                    rangeSug = itemInKitchen
+                } else if shortIngredient.range(of: itemInKitchen) != nil {
+                    rangeSug = itemInKitchen
+                }
+            }
+            
+            print("suggestion for : " + shortIngredient + "-----> " + suggestion!)
+            print("range suggestion for : " + shortIngredient + "-----> " + rangeSug)
+            
+            
+            if !haveIngredients.contains(longIngredient) && !missingIngredients.contains(longIngredient) {
+                if suggestion != "" || rangeSug != "" || allItemsInKitchen.contains("organic " + shortIngredient.lowercased()) {
+                    haveIngredients.append(longIngredient)
+                    print("added to have (short is " + currentRecipe.ingredients[i] + " ) - long is " + longIngredient)
+                } else {
+                    missingIngredients.append(longIngredient)
+                    print("added to missing (short is " + currentRecipe.ingredients[i] + " ) - long is " + longIngredient)
+                }
+            }
+
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
