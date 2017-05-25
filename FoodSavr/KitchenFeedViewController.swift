@@ -14,6 +14,19 @@ import FirebaseAuth
 import FirebaseCore
 import SDWebImage
 
+extension Date {
+    
+    func interval(ofComponent comp: Calendar.Component, fromDate date: Date) -> Int {
+        
+        let currentCalendar = Calendar.current
+        
+        guard let start = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
+        guard let end = currentCalendar.ordinality(of: comp, in: .era, for: self) else { return 0 }
+        
+        return end - start
+    }
+}
+
 
 class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UISearchBarDelegate{
     
@@ -52,23 +65,29 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                     if let itemDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let item = Item(key: key, dictionary: itemDict)
+                        
                         // only added if item is created by current user or user is in the group
                         if item.creatorId == self.curUser?.uid {
                             newItems.append(item)
+                            //calculate expirtation date
+                            item.expirationDate = self.calculateExpDate(days: item.expirationDate, createdDate: item.dateAdded)
                         }
                         
                         if itemDict.index(forKey: "groups") != nil {
-                            //print(item.groups.keys)
                             let keys = Set(item.groups.keys)
                             // get the common groupID back
                             //let filter = keys.filter() {self.groupIDs.contains($0)}
                             if keys.isSubset(of: self.groupIDs) {
                                 newItems.append(item)
+                                //calculate expirtation date
+                                item.expirationDate = self.calculateExpDate(days: item.expirationDate, createdDate: item.dateAdded)
                             }
                         }
                     }
                 }
+                
                 self.itemList = newItems
+                
                 
                 // save all items to userdefault
                 var itemNames : [String] = []
@@ -77,7 +96,9 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 UserDefaults.standard.set(itemNames, forKey: "inventory")
                 UserDefaults.standard.synchronize()
-
+                
+                // sort the table by expiration date
+                self.itemList.sort(by: { $0.expirationDate < $1.expirationDate } )
                 self.table.reloadData()
             }
         }) { (error) in
@@ -102,7 +123,6 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             self.groupIDs = userGroupIDs
             
         })
-        
     }
     
     
@@ -137,22 +157,50 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! KitchenItemsTableViewCell
         
+        
         if isSearching {
-            cell.itemName.text = self.filteredItemList[indexPath.row].name
+            let i = self.filteredItemList[indexPath.row]
+            cell.itemName.text = i.name
             setWhoAddedItem(cell: cell, indexPath: indexPath)
             cell.expiration.text = expDate(days: self.filteredItemList[indexPath.row].expirationDate)
+            // make the text red!
+            if (i.expirationDate) < 0 {
+                cell.expiration.textColor = UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0)
+                
+                setRoundBorder(img: cell.itemPic, color: UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0))
+                
+            } else {
+                setRoundBorder(img: cell.itemPic, color: UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0))
+                
+            }
+
             
-            //TODO: ask about how to store images
-            cell.itemPic.sd_setImage(with: URL(string: self.filteredItemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
+//            let expIndays = calculateExpDate(days: i.expirationDate, createdDate: i.dateAdded)
+//            cell.expiration.text = "\(expIndays)"
+            
+            cell.itemPic.sd_setImage(with: URL(string: i.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
 
         } else {
-            cell.itemName.text = self.itemList[indexPath.row].name
+            let i = self.itemList[indexPath.row]
+            cell.itemName.text = i.name
             setWhoAddedItem(cell: cell, indexPath: indexPath)
-            cell.expiration.text = expDate(days: self.itemList[indexPath.row].expirationDate)
-
-            cell.itemPic.sd_setImage(with: URL(string: self.itemList[indexPath.row].pic), placeholderImage: UIImage(named: "genericinventoryitem"))
+            cell.expiration.text = expDate(days: i.expirationDate)
+            // make the text red!
+            if (i.expirationDate) < 0 {
+                cell.expiration.textColor = UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0)
+                setRoundBorder(img: cell.itemPic, color: UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0))
+                
+            } else {
+                setRoundBorder(img: cell.itemPic, color: UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0))
+                
+            }
+            cell.itemPic.sd_setImage(with: URL(string: i.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
+//            let expIndays = calculateExpDate(days: i.expirationDate, createdDate: i.dateAdded)
+//            cell.expiration.text = "\(expIndays)"
         }
-        setRoundBorder(img: cell.itemPic)
+        
+
+        
         
         return cell
     }
@@ -169,11 +217,25 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     */
     
     
-    func setRoundBorder(img: UIImageView) {
+    func setRoundBorder(img: UIImageView, color: UIColor) {
         img.layer.cornerRadius = img.frame.size.width/2
         img.clipsToBounds = true;
         img.layer.borderWidth = 1.0;
-        img.layer.borderColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0).cgColor;
+        img.layer.borderColor = color.cgColor;
+    }
+    
+    func calculateExpDate(days: Int, createdDate: String) -> Int {
+        let localeStr = "en_US"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: localeStr)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: createdDate)
+        let now = Date()
+        let expirationDate = Calendar.current.date(byAdding: .day, value: days, to: date!)
+
+        let timeOffset = expirationDate!.interval(ofComponent: .day, fromDate: now)
+        return timeOffset
     }
     
     func expDate(days: Int) -> String {
@@ -227,14 +289,14 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
-    @IBAction func cameraWasTapped(_ sender: UIBarButtonItem) {
+//  @IBAction func cameraWasTapped(_ sender: UIBarButtonItem) {
 //        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewControllerWithIdentifier("PopoverViewController") as! UIViewController
 //        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
 //        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
 //        popover.barButtonItem = sender
 //        presentViewController(vc, animated: true, completion:nil)
-    }
+//}
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {

@@ -58,7 +58,14 @@ class Item: NSObject {
     }
     
     var expirationDate: Int {
-        return _expirationDate
+        get {
+            return _expirationDate
+        }
+        
+        set(newDate) {
+            _expirationDate = newDate
+        }
+        
     }
     
     var dateAdded: String {
@@ -103,7 +110,7 @@ class Item: NSObject {
             self._expirationDate = newExpirationDate
         }
         
-        if let newDateAdded = dictionary["datedAdded"] as? String {
+        if let newDateAdded = dictionary["dateAdded"] as? String {
             self._dateAdded = newDateAdded
         }
         

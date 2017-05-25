@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6DDC56BCF2B20543D6DC32BD /* Pods_FoodSavrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036AB353EDF684D6F56242BC /* Pods_FoodSavrTests.framework */; };
 		AAEC4EFC137D048A9F49E5EB /* Pods_FoodSavr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */; };
+		AE125EA21ED624D60014335F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE125EA11ED624D60014335F /* Launch Screen.storyboard */; };
+		AE125EA31ED624D60014335F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE125EA11ED624D60014335F /* Launch Screen.storyboard */; };
+		AE125EA41ED624D60014335F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE125EA11ED624D60014335F /* Launch Screen.storyboard */; };
 		AE37B89C1EC40A5D00A7A950 /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE37B89B1EC40A5D00A7A950 /* GroupsCollectionViewController.swift */; };
 		AE37B89D1EC40A5D00A7A950 /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE37B89B1EC40A5D00A7A950 /* GroupsCollectionViewController.swift */; };
 		AE37B89E1EC40A5D00A7A950 /* GroupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE37B89B1EC40A5D00A7A950 /* GroupsCollectionViewController.swift */; };
@@ -68,7 +71,6 @@
 		F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */; };
 		F4FE294A1E8EC7F10026AD50 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */; };
 		F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE294D1E8EC7F10026AD50 /* Main.storyboard */; };
-		F4FE29541E8EC7F10026AD50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */; };
 		F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE295E1E8EC7F10026AD50 /* FoodSavrTests.swift */; };
 		F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29691E8EC7F10026AD50 /* FoodSavrUITests.swift */; };
 		F4FE297A1E90617B0026AD50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE29791E90617B0026AD50 /* User.swift */; };
@@ -98,6 +100,7 @@
 		438C92A686327C8730F8854A /* Pods-FoodSavr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavr.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr.release.xcconfig"; sourceTree = "<group>"; };
 		5FDA1B10A39832BA4AED6041 /* Pods-FoodSavrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.release.xcconfig"; sourceTree = "<group>"; };
 		9BEE1D4164D8E61755BED9AB /* Pods-FoodSavr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavr/Pods-FoodSavr.debug.xcconfig"; sourceTree = "<group>"; };
+		AE125EA11ED624D60014335F /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AE37B89B1EC40A5D00A7A950 /* GroupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCollectionViewController.swift; sourceTree = "<group>"; };
 		AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenItemsTableViewCell.swift; sourceTree = "<group>"; };
 		AE43F07B1EA7E1B2008D34E1 /* KitchenFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KitchenFeedViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +137,6 @@
 		F4FE29471E8EC7F10026AD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FE29491E8EC7F10026AD50 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F4FE294E1E8EC7F10026AD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F4FE29531E8EC7F10026AD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4FE29551E8EC7F10026AD50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4FE295A1E8EC7F10026AD50 /* FoodSavrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodSavrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FE295E1E8EC7F10026AD50 /* FoodSavrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSavrTests.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */,
 				AE37B89B1EC40A5D00A7A950 /* GroupsCollectionViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
+				AE125EA11ED624D60014335F /* Launch Screen.storyboard */,
 				AE9CCD401ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift */,
 				AE9CCD3C1ECD091600B943D2 /* GroupViewController.swift */,
 				AE9CCD381ECAB9B700B943D2 /* GroupCollectionViewCell.swift */,
@@ -253,7 +256,6 @@
 				AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */,
 				AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */,
 				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
-				F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */,
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
 				F46332371E91D0B700A8C14C /* FirebaseProxy.swift */,
@@ -460,8 +462,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE581AC71EBD048E004AA617 /* Assets 21-48-33-041.xcassets in Resources */,
-				F4FE29541E8EC7F10026AD50 /* LaunchScreen.storyboard in Resources */,
 				AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
+				AE125EA21ED624D60014335F /* Launch Screen.storyboard in Resources */,
 				F4FE294F1E8EC7F10026AD50 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +472,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE125EA31ED624D60014335F /* Launch Screen.storyboard in Resources */,
 				AE581AC81EBD048E004AA617 /* Assets 21-48-33-041.xcassets in Resources */,
 				AE788B1A1E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 			);
@@ -479,6 +482,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE125EA41ED624D60014335F /* Launch Screen.storyboard in Resources */,
 				AE581AC91EBD048E004AA617 /* Assets 21-48-33-041.xcassets in Resources */,
 				AE788B1B1E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 			);
@@ -839,14 +843,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F4FE29521E8EC7F10026AD50 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4FE29531E8EC7F10026AD50 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -949,7 +945,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9BEE1D4164D8E61755BED9AB /* Pods-FoodSavr.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FoodSavr/FoodSavr.entitlements;
 				DEVELOPMENT_TEAM = 33G7MEJKT7;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -969,7 +965,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 438C92A686327C8730F8854A /* Pods-FoodSavr.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FoodSavr/FoodSavr.entitlements;
 				DEVELOPMENT_TEAM = 33G7MEJKT7;
 				FRAMEWORK_SEARCH_PATHS = (
