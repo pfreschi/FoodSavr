@@ -124,7 +124,7 @@ class FirebaseProxy: NSObject {
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: localeStr)
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+        dateFormatter.dateFormat = "yyyy-mm-dd HH:mm:ss zzz"
         let date = dateFormatter.date(from: dateString)
         
         let strDateFormatter = DateFormatter()
