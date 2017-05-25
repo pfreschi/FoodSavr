@@ -12,18 +12,13 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import Alamofire
+import SwiftyJSON
 import SDWebImage
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    struct Recipe {
-        var title : String
-        var pic : String
-    }
-    
     var recipes = [Recipe]()
     var filteredRecipes = [Recipe]()
-
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -45,29 +40,64 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        recipes.append(Recipe(title: "Chicken Jambalaya", pic: "http://www.seriouseats.com/images/2017/02/20170217-jambalaya-vicky-wasik-23.jpg"))
-        recipes.append(Recipe(title: "Weeknight Party Snacks", pic: "http://images.radiotimes.com/namedimage/Improve_your_mood_with_feel_good_food.jpg?quality=85&mode=crop&width=620&height=374&404=tv&url=/uploads/images/original/79860.jpg"))
-        recipes.append(Recipe(title: "Herb-Crusted Salmon with Chickpeas", pic: "http://betheme.muffingroupsc.netdna-cdn.com/be/goodfood/wp-content/uploads/2016/06/home_goodfood_flatbox1.jpg"))
-        recipes.append(Recipe(title: "Spring Rolls with Jalapeno Peppers", pic: "https://eat24-files-live.s3.amazonaws.com/cuisines/v4/thai.jpg?Signature=9CcWLEAisRnKb06Z91EX%2BCrE5Nk%3D&Expires=1493966846&AWSAccessKeyId=AKIAIEJ2GCCJRT63TBYA"))
-        recipes.append(Recipe(title: "Tasty Pomegranate Salad", pic: "https://static.pexels.com/photos/5938/food-salad-healthy-lunch.jpg"))
-        recipes.append(Recipe(title: "Butter Chicken", pic: "http://mehfilbestcuisine.com/wp-content/uploads/2015/12/food-wide-wallpaper-334729.jpg"))
-        recipes.append(Recipe(title: "Green Pepper and Olive Pizza", pic: "http://www.wallpapers-web.com/data/out/82/4454160-food-wallpapers.jpg"))
-        
-        
-        
-    
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        FirebaseProxy.firebaseProxy.userRef.child(uid! + "/recipes").observe(.value, with: { (snapshot) in
+            
+            var newRecipes : [Recipe] = []
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+                    if let recipeDict = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let recipe = Recipe(key: key, dictionary: recipeDict)
+                        newRecipes.append(recipe)
+                        
+                        if (UserDefaults.standard.data(forKey: recipe.id) == nil) {
+                            Alamofire.request("http://api.yummly.com/v1/api/recipe/" + recipe.id + "?_app_id=819b4bc4&_app_key=7566a720cd09d180c558599027c88ffd").responseString{ response in
+                                if (response.result.value) != nil {
+                                    let stringResult = response.result.value
+                                    UserDefaults.standard.set(stringResult, forKey: recipe.id)
+                                    
+                                    UserDefaults.standard.synchronize()
+                                }
+                                
+                                
+                            }
+                            
+                            
+                            
+                        }
+
+                        
+                        
+                        
+                        
+                    }
+                }
+                print(newRecipes)
+                
+                self.recipes = newRecipes
+                self.tableView.reloadData()
+                
+                
+                
+                
+                
+            }
+            
+            
+        }) { (error) in
+            
+            print("this is error" + error.localizedDescription)
+        }
         
         searchBar.delegate = self
         searchBar.returnKeyType = .done
-        
-        
-
-        
-        
-        // gather info from cloud functions result
-        
-        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
@@ -87,19 +117,42 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         for: indexPath) as! RecipeTableViewCell
         let row = indexPath.row
         
+        var picString = ""
+        var keyForPic = ""
+        
         if isSearching {
-            cell.recipeTitle.text = filteredRecipes[row].title
-            cell.recipeImage.sd_setImage(with: URL(string: filteredRecipes[row].pic), placeholderImage: UIImage(named: "genericrecipe"))
+            cell.recipeTitle.text = filteredRecipes[row].recipeName
+            
+            picString = filteredRecipes[row].smallImageUrls[0]
+            keyForPic = filteredRecipes[row].id
+            
             
         } else {
-            cell.recipeTitle.text = recipes[row].title
-            cell.recipeImage.sd_setImage(with: URL(string: recipes[row].pic), placeholderImage: UIImage(named: "genericrecipe"))
+            cell.recipeTitle.text = recipes[row].recipeName
+            
+            picString = recipes[row].smallImageUrls[0]
+            keyForPic = recipes[row].id
 
         }
         
-
-        cell.recipeImage.contentMode = .center
-        cell.recipeImage.alpha = 0.8
+        // if a large image is possibly stored in user defaults
+        if UserDefaults.standard.string(forKey: keyForPic) != nil {
+            var storedRecipe = JSON.parse(UserDefaults.standard.string(forKey: keyForPic)!)
+            
+            var hostedLargeUrl = storedRecipe["images"][0]["hostedLargeUrl"]
+            if hostedLargeUrl.stringValue != "" {
+                picString = hostedLargeUrl.stringValue
+            } else if storedRecipe["images"][0]["hostedMediumUrl"] != "" {
+                picString = storedRecipe["images"][0]["hostedMediumUrl"].stringValue
+            }
+        }
+        
+        
+        cell.recipeImage.sd_setImage(with: URL(string: picString), placeholderImage: UIImage(named: "genericrecipe"))
+        
+        
+    
+        //cell.recipeImage.alpha = 0.8
         
         cell.view.layer.masksToBounds = true
         cell.view.layer.borderColor = UIColor.white.cgColor
@@ -115,12 +168,12 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
  
         cell.recipeImage.addSubview(blurView)
         */
-        
         return cell
 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         if searchBar.text == nil || searchBar.text == "" {
             isSearching = false
             view.endEditing(true)
@@ -128,11 +181,27 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             isSearching = true
             filteredRecipes = recipes.filter({ recipe in
-                return recipe.title.lowercased().contains(searchText.lowercased())
+                return recipe.recipeName.lowercased().contains(searchText.lowercased())
             })
             tableView.reloadData()
         }
+ 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "showRecipeDetail" {
+            if let cell = sender as? UITableViewCell {
+                let i = tableView.indexPath(for: cell)!.row
+                let vc = segue.destination as! RecipeDetailViewController
+                if isSearching {
+                    vc.currentRecipe = self.filteredRecipes[i]
+                } else {
+                    vc.currentRecipe = self.recipes[i]
+                }
+            }
+        }
+    }
+
 
     
     

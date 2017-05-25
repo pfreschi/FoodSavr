@@ -21,6 +21,7 @@ class FirebaseProxy: NSObject {
     private var _myRootRef = FIRDatabase.database().reference()
     private var _itemRef = FIRDatabase.database().reference().child("items")
     private var _receiptRef = FIRDatabase.database().reference().child("receipts")
+    private var _recipeRef = FIRDatabase.database().reference().child("recipes")
     private var _userRef = FIRDatabase.database().reference().child("users")
     private var _groupRef = FIRDatabase.database().reference().child("groups")
     private var _userGroupsRef = FIRDatabase.database().reference().child("userGroups")
@@ -34,6 +35,9 @@ class FirebaseProxy: NSObject {
     }
     var receiptRef: FIRDatabaseReference {
         return _receiptRef
+    }
+    var recipeRef: FIRDatabaseReference {
+        return _recipeRef
     }
     var userRef: FIRDatabaseReference {
         return _userRef

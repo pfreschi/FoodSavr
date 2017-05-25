@@ -97,6 +97,10 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
                         self.newUserInfo["name"] = profile.displayName!
                         self.newUserInfo["email"] = profile.email!
                         self.newUserInfo["pic"] = profile.photoURL?.absoluteString
+                        self.newUserInfo["allergy"] = [""]
+                        self.newUserInfo["diet"] = [""]
+                        self.newUserInfo["excludedIngredients"] = ""
+                        
                         // TODO: Ask peter about the sisutation when user is alreay logged in
                         UserDefaults.standard.setValue(userUid, forKey: "uid")
                         self.afterSuccessfulFBLogin(userUid: userUid!)
