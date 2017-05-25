@@ -17,17 +17,18 @@ target 'FoodSavr' do
     # Pods for testing
   end
 
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Storage'
-  pod 'Firebase/Auth'
-  pod 'FirebaseUI/Auth'
-  pod 'FirebaseUI/Facebook'
+  pod 'Firebase/Core', '~> 3.17.0'
+  pod 'Firebase/Database', '~> 3.17.0'
+  pod 'Firebase/Storage', '~> 3.17.0'
+  pod 'Firebase/Auth', '~> 3.17.0'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'M13Checkbox'
-  pod 'Alamofire', '~> 4.4'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'AlamofireSwiftyJSON'
+  pod 'SwiftyStarRatingView', '~> 1.0'
   pod 'SDWebImage', '~>3.8'
   
 
