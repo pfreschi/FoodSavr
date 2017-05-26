@@ -66,3 +66,6 @@ fastlane/test_output
 
 # secrets
 features/secret.js
+
+#hide Yummly API info
+Keys.plist
