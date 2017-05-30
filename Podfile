@@ -30,6 +30,8 @@ target 'FoodSavr' do
   pod 'AlamofireSwiftyJSON'
   pod 'SwiftyStarRatingView', '~> 1.0'
   pod 'SDWebImage', '~>3.8'
+  pod 'SwiftOverlays', '~> 3.0.0'
+  use_frameworks! 
   
 
 end

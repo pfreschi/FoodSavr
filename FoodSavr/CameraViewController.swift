@@ -49,12 +49,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         // Dispose of any resources that can be recreated.
     }
 
-
-    
-    @IBAction func takePhoto(_ sender: UIButton) {
-
-    }
-    
     
     @IBOutlet var imageView: UIImageView!
     

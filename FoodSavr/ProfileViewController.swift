@@ -25,6 +25,25 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var allergyText: UILabel!
     @IBOutlet weak var dislikeText: UILabel!
     
+    @IBAction func logOut(_ sender: Any) {
+        
+
+        UserDefaults.standard.set(nil, forKey: "uid")
+        
+        let FBManager = FBSDKLoginManager()
+        FBManager.logOut()
+        
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        // segue back to login view
+        let nextView = (self.storyboard?.instantiateViewController(withIdentifier: "login"))! as UIViewController
+        self.present(nextView, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setProfilePic()
@@ -115,9 +134,6 @@ class ProfileViewController: UIViewController {
             } else {
                 self.dislikeText.text?.append("N/A")
             }
-
-
-            
 
         }) { (error) in
             print(error.localizedDescription)

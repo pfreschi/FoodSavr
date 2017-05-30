@@ -1104,7 +1104,7 @@ reccommendations.
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMn-vg-QgE" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
-                                        <rect key="frame" x="209" y="367" width="113" height="35"/>
+                                        <rect key="frame" x="193" y="367" width="156" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Continue">
@@ -1115,7 +1115,7 @@ reccommendations.
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTY-dN-ufL" userLabel="Welcome/End Text">
-                                        <rect key="frame" x="45" y="206" width="285" height="155"/>
+                                        <rect key="frame" x="8" y="206" width="359" height="155"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <string key="text">Hello.
  Welcome to FoodSavr!
@@ -1262,6 +1262,7 @@ get started.</string>
                                 </state>
                                 <connections>
                                     <action selector="continueFromWelcomeOrEnd:" destination="U2Q-0o-L6a" eventType="touchUpInside" id="LIf-ni-uyY"/>
+                                    <action selector="logOut:" destination="FrO-KO-YoK" eventType="touchUpInside" id="BIc-1R-dxm"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGJ-nc-pAd">
@@ -1542,9 +1543,9 @@ get started.</string>
         <image name="profile" width="25" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="w6W-Zy-42Z"/>
         <segue reference="jpS-bF-CJt"/>
         <segue reference="qfu-sy-IlH"/>
-        <segue reference="1il-nK-kb0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -71,23 +71,22 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                             newItems.append(item)
                             //calculate expirtation date
                             item.expirationDate = self.calculateExpDate(days: item.expirationDate, createdDate: item.dateAdded)
-                        }
-                        
-                        if itemDict.index(forKey: "groups") != nil {
-                            let keys = Set(item.groups.keys)
-                            // get the common groupID back
-                            //let filter = keys.filter() {self.groupIDs.contains($0)}
-                            if keys.isSubset(of: self.groupIDs) {
-                                newItems.append(item)
-                                //calculate expirtation date
-                                item.expirationDate = self.calculateExpDate(days: item.expirationDate, createdDate: item.dateAdded)
+                        } else {
+                            if itemDict.index(forKey: "groups") != nil {
+                                let keys = Set(item.groups.keys)
+                                // get the common groupID back
+                                //let filter = keys.filter() {self.groupIDs.contains($0)}
+                                if keys.isSubset(of: self.groupIDs) {
+                                    newItems.append(item)
+                                    //calculate expirtation date
+                                    item.expirationDate = self.calculateExpDate(days: item.expirationDate, createdDate: item.dateAdded)
+                                }
                             }
                         }
                     }
                 }
                 
                 self.itemList = newItems
-                
                 
                 // save all items to userdefault
                 var itemNames : [String] = []
@@ -114,13 +113,19 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     func fetchGroups() {
         var userGroupIDs = Set<String>()
         userGroupsRef?.child((curUser?.uid)!).observeSingleEvent(of: .value , with: {(snapshot) in
-            if let groupDict = snapshot.value as? Dictionary<String, AnyObject>{
-                for (_, value) in groupDict {
-                    let data = value as! Dictionary<String, Any>
-                    userGroupIDs.insert(data["id"]! as! String)
+            if snapshot.exists(){
+                if let groupDict = snapshot.value as? Dictionary<String, AnyObject>{
+                    for (_, value) in groupDict {
+                        let data = value as! Dictionary<String, Any>
+                        userGroupIDs.insert(data["id"]! as! String)
+                    }
                 }
+                self.groupIDs = userGroupIDs
+            
+            } else {
+                print("firebase snapshot doesn not exist")
             }
-            self.groupIDs = userGroupIDs
+
             
         })
     }
@@ -157,50 +162,50 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! KitchenItemsTableViewCell
         
-        
-        if isSearching {
-            let i = self.filteredItemList[indexPath.row]
-            cell.itemName.text = i.name
-            setWhoAddedItem(cell: cell, indexPath: indexPath)
-            cell.expiration.text = expDate(days: self.filteredItemList[indexPath.row].expirationDate)
-            // make the text red!
-            if (i.expirationDate) < 0 {
-                cell.expiration.textColor = UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0)
+        if self.itemList.count > 0 {
+            
+            if isSearching {
+                let i = self.filteredItemList[indexPath.row]
+                cell.itemName.text = i.name
+                setWhoAddedItem(cell: cell, indexPath: indexPath)
+                cell.expiration.text = expDate(days: self.filteredItemList[indexPath.row].expirationDate)
+                // make the text red!
+                if (i.expirationDate) < 0 {
+                    cell.expiration.textColor = UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0)
+                    
+                    setRoundBorder(img: cell.itemPic, color: UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0))
+                    
+                } else {
+                    setRoundBorder(img: cell.itemPic, color: UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0))
+                    
+                }
                 
-                setRoundBorder(img: cell.itemPic, color: UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0))
+                
+                //            let expIndays = calculateExpDate(days: i.expirationDate, createdDate: i.dateAdded)
+                //            cell.expiration.text = "\(expIndays)"
+                
+                cell.itemPic.sd_setImage(with: URL(string: i.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
                 
             } else {
-                setRoundBorder(img: cell.itemPic, color: UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0))
-                
+                let i = self.itemList[indexPath.row]
+                cell.itemName.text = i.name
+                setWhoAddedItem(cell: cell, indexPath: indexPath)
+                cell.expiration.text = expDate(days: i.expirationDate)
+                // make the text red!
+                if (i.expirationDate) < 0 {
+                    cell.expiration.textColor = UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0)
+                    setRoundBorder(img: cell.itemPic, color: UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0))
+                    
+                } else {
+                    setRoundBorder(img: cell.itemPic, color: UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0))
+                    
+                }
+                cell.itemPic.sd_setImage(with: URL(string: i.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
+                //            let expIndays = calculateExpDate(days: i.expirationDate, createdDate: i.dateAdded)
+                //            cell.expiration.text = "\(expIndays)"
             }
 
-            
-//            let expIndays = calculateExpDate(days: i.expirationDate, createdDate: i.dateAdded)
-//            cell.expiration.text = "\(expIndays)"
-            
-            cell.itemPic.sd_setImage(with: URL(string: i.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
-
-        } else {
-            let i = self.itemList[indexPath.row]
-            cell.itemName.text = i.name
-            setWhoAddedItem(cell: cell, indexPath: indexPath)
-            cell.expiration.text = expDate(days: i.expirationDate)
-            // make the text red!
-            if (i.expirationDate) < 0 {
-                cell.expiration.textColor = UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0)
-                setRoundBorder(img: cell.itemPic, color: UIColor(red:244.0/255.0, green: 89.0/255.0, blue: 66.0/255.0, alpha: 1.0))
-                
-            } else {
-                setRoundBorder(img: cell.itemPic, color: UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0))
-                
-            }
-            cell.itemPic.sd_setImage(with: URL(string: i.pic), placeholderImage: UIImage(named: "genericinventoryitem"))
-//            let expIndays = calculateExpDate(days: i.expirationDate, createdDate: i.dateAdded)
-//            cell.expiration.text = "\(expIndays)"
         }
-        
-
-        
         
         return cell
     }

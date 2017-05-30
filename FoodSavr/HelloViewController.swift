@@ -267,7 +267,7 @@ class HelloViewController: UIViewController {
             let fullNameArr = fullName.components(separatedBy: " ")
             
             let name    = fullNameArr[0]
-            let lastName = fullNameArr[1]
+            //let lastName = fullNameArr[1]
             self.welcomeOrEndText.text = "Hello, \(name).\n Welcome to FoodSavr!\n We would love to get to \n know you before you \n get started."
             
             // ...
