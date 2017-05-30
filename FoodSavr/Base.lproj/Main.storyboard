@@ -638,6 +638,7 @@ Ingredient 5</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="recipeHaveIngredients" destination="wca-t9-A3z" id="Cbf-vj-CXy"/>
                         <outlet property="recipeMissingIngredients" destination="p0k-Nv-gir" id="ner-rs-khc"/>
                         <outlet property="recipeName" destination="RLa-Ch-g2R" id="2VW-l3-MFP"/>
                         <outlet property="recipePic" destination="0Vn-nY-6sa" id="OZO-1o-J1P"/>
