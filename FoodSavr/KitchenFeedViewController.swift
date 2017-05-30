@@ -87,17 +87,23 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 
                 self.itemList = newItems
+
+                // sort the table by expiration date
+                self.itemList.sort(by: { $0.expirationDate < $1.expirationDate } )
                 
-                // save all items to userdefault
+                
+                // save all items to userdefaults (is sorted by expiration
                 var itemNames : [String] = []
-                for i in newItems {
-                    itemNames.append(i.name)
+                for i in self.itemList {
+                    itemNames.append(i.name.lowercased())
                 }
                 UserDefaults.standard.set(itemNames, forKey: "inventory")
                 UserDefaults.standard.synchronize()
                 
-                // sort the table by expiration date
-                self.itemList.sort(by: { $0.expirationDate < $1.expirationDate } )
+                // save all sorted by expiration item names to Firebase for use with recipe cloud function
+                self.userRef?.child((self.curUser?.uid)!).child("inventoryOrderedByExpiration").setValue(itemNames)
+                
+                
                 self.table.reloadData()
             }
         }) { (error) in

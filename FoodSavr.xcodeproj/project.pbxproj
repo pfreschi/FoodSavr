@@ -64,6 +64,7 @@
 		F4682F101EBAE40F00ED3BAB /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4682F0F1EBAE40F00ED3BAB /* RecipeTableViewCell.swift */; };
 		F46C0A151EBCF8CF007C951E /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */; };
 		F46C0A161EBCF8D6007C951E /* AutoCompleteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */; };
+		F4878B621ED89D7500B591BF /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4878B611ED89D7500B591BF /* Keys.plist */; };
 		F48ECB0B1ECBB57900427B77 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48ECB0A1ECBB57900427B77 /* ProfileViewController.swift */; };
 		F49F13BA1EA003F1004534D9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49F13B91EA003F1004534D9 /* BorderedButton.swift */; };
 		F4AE6C681E920169009C5141 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE6C671E920169009C5141 /* Item.swift */; };
@@ -130,6 +131,7 @@
 		F46332391E91FACA00A8C14C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F4682F0F1EBAE40F00ED3BAB /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		F46E85901E96134600A7AEF1 /* FoodSavr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodSavr.entitlements; sourceTree = "<group>"; };
+		F4878B611ED89D7500B591BF /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F48ECB0A1ECBB57900427B77 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F49F13B91EA003F1004534D9 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		F4AE6C671E920169009C5141 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				AE43F0731EA7DB3C008D34E1 /* KitchenItemsTableViewCell.swift */,
 				AE788B181E904AE4000DF559 /* GoogleService-Info.plist */,
 				F4FE29551E8EC7F10026AD50 /* Info.plist */,
+				F4878B611ED89D7500B591BF /* Keys.plist */,
 				F46332371E91D0B700A8C14C /* FirebaseProxy.swift */,
 				AE84628E1EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift */,
 				F4CE843E1E99DFF000606BDA /* HelloViewController.swift */,
@@ -466,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4878B621ED89D7500B591BF /* Keys.plist in Resources */,
 				AE581AC71EBD048E004AA617 /* Assets 21-48-33-041.xcassets in Resources */,
 				AE788B191E904AE4000DF559 /* GoogleService-Info.plist in Resources */,
 				AE125EA21ED624D60014335F /* Launch Screen.storyboard in Resources */,
