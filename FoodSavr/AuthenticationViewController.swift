@@ -45,7 +45,6 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
         rootRef = FIRDatabase.database().reference()
         userRef = FirebaseProxy.firebaseProxy.userRef
         
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,8 +77,9 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
     
     func firebaseLogin(credential: FIRAuthCredential) {
-        if FIRAuth.auth()?.currentUser?.link != nil{
+        if FIRAuth.auth()?.currentUser?.link != nil {
             print("Current user has been linked with a firebase credential.")
+            UserDefaults.standard.setValue(FIRAuth.auth()!.currentUser?.uid, forKey: "uid")
             afterSuccessfulFBLogin(userUid: (FIRAuth.auth()?.currentUser?.uid)!)
         } else {
             
@@ -101,7 +101,6 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
                         self.newUserInfo["diet"] = [""]
                         self.newUserInfo["excludedIngredients"] = ""
                         
-                        // TODO: Ask peter about the sisutation when user is alreay logged in
                         UserDefaults.standard.setValue(userUid, forKey: "uid")
                         self.afterSuccessfulFBLogin(userUid: userUid!)
                         
@@ -113,22 +112,14 @@ class AuthenticationViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     // navigate to the next page after login
     func afterSuccessfulFBLogin(userUid : String) {
-        
-
-        
    
         self.userRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            // if user had logged in before and has items in their kitchen, go to Kitchen
-            if snapshot.hasChild(userUid) && snapshot.childSnapshot(forPath: userUid).childSnapshot(forPath: "receipts").childrenCount > 0  {
+            // if user had logged in before, go to Kitchen
+            if snapshot.hasChild(userUid) {
+                print("user has logged in before")
                 self.showViewWithIdentifier(identifier: "tabBar")
 
-                
-            } else if snapshot.hasChild(userUid){
-                // user logged in before but has NO items in kitchen, go to Kitchen
-                // TODO: Add a layer to encourage user add recipe
-                self.showViewWithIdentifier(identifier: "tabBar")
-                
             } else { // new user
                 self.showViewWithIdentifier(identifier: "quiz")
                 print("adding new user")

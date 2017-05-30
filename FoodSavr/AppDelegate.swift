@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
                 let vc = AuthenticationViewController()
                 self.window?.rootViewController?.present(vc, animated: false, completion: nil)
-                
-        
             } else {
                 let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
                 self.window?.rootViewController = vc

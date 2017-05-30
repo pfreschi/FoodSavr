@@ -9,11 +9,11 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - FBSDKCoreKit (4.22.1):
+  - FBSDKCoreKit (4.23.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.22.1):
+  - FBSDKLoginKit (4.23.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.22.1):
+  - FBSDKShareKit (4.23.0):
     - FBSDKCoreKit
   - Firebase/Auth (3.17.0):
     - Firebase/Core
@@ -60,6 +60,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SwiftOverlays (3.0.0)
   - SwiftyJSON (3.1.4)
   - SwiftyStarRatingView (1.0.4)
 
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - Levenshtein
   - M13Checkbox
   - SDWebImage (~> 3.8)
+  - SwiftOverlays (~> 3.0.0)
   - SwiftyJSON
   - SwiftyStarRatingView (~> 1.0)
 
@@ -83,9 +85,9 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireSwiftyJSON: 5a49196b8b061e32f5ebc84fa0815300bd8a974e
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FBSDKCoreKit: 9c2daf0162214d6d2e21cf8208a9c6c2a2e42b9c
-  FBSDKLoginKit: 00cf28916b9f0169763a3d61985d745b579fe304
-  FBSDKShareKit: 1cbd0fdc2bb3277dd3522512855dcf1f4088f734
+  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
+  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
+  FBSDKShareKit: 65751c3b9937ab9d594e6c37611ecc115ceeb448
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -98,9 +100,10 @@ SPEC CHECKSUMS:
   Levenshtein: 0e31e9b173ad0416aaee283265cd4e424ded3dd6
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SwiftOverlays: 4cdd9e4f5c7817fb6348882059eb697e11685fad
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
 
-PODFILE CHECKSUM: 03dbf92894c2d18bcb24326cf54e8233522ac55e
+PODFILE CHECKSUM: cd8ef97f75e62b8866d5217426bc3ed166d82185
 
 COCOAPODS: 1.2.1

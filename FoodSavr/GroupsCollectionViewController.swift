@@ -88,7 +88,6 @@ class GroupsCollectionViewController: UICollectionViewController {
         cell.groupName.text = group.name
             var count = 0
             for u in group.users  {
-                print(group.users)
                 let data = u.value as! Dictionary<String, Any>
                 let picURL = data["pic"] as! String
                 if count == 0 {
