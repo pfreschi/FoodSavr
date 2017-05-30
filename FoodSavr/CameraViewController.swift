@@ -88,8 +88,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     func uploadSuccess(_ metadata: FIRStorageMetadata, storagePath: String) {
         let imgURL = metadata.downloadURL()?.absoluteString
         
-        FirebaseProxy.firebaseProxy.saveReceipt(pic: imgURL!, creatorId: FIRAuth.auth()!.currentUser!.uid,
-             items: ["Apples", "Eggs","Milk"], vendor: "Safeway")
+//        FirebaseProxy.firebaseProxy.saveReceipt(pic: imgURL!, creatorId: FIRAuth.auth()!.currentUser!.uid,
+//             items: ["Apples", "Eggs","Milk"], vendor: "Safeway")
         
         //storage for user defaults??
 //        UserDefaults.standard.set(receiptURL, forKey: "receiptURL")
