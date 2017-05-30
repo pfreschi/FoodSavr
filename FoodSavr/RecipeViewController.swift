@@ -52,7 +52,12 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
                         newRecipes.append(recipe)
                         
                         if (UserDefaults.standard.data(forKey: recipe.id) == nil) {
-                            Alamofire.request("http://api.yummly.com/v1/api/recipe/" + recipe.id + "?_app_id=819b4bc4&_app_key=7566a720cd09d180c558599027c88ffd").responseString{ response in
+                            let yummlyAppId = UserDefaults.standard.string(forKey: "yummlyAppId") ?? "missingAppId"
+                            let yummlyAppKey = UserDefaults.standard.string(forKey: "yummlyAppKey") ?? "missingAppKey"
+                            var requestURL = "http://api.yummly.com/v1/api/recipe/" + recipe.id
+                            requestURL = requestURL + "?_app_id=" + yummlyAppId + "&_app_key=" + yummlyAppKey
+                            
+                            Alamofire.request(requestURL).responseString{ response in
                                 if (response.result.value) != nil {
                                     let stringResult = response.result.value
                                     UserDefaults.standard.set(stringResult, forKey: recipe.id)

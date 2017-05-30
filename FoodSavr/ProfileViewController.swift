@@ -101,21 +101,10 @@ class ProfileViewController: UIViewController {
             } else {
                 self.allergyText.text?.append("N/A")
             }
-            let excludedIngredients = value?["excludedIngredients"] as? NSArray ?? NSArray()
+            let excludedIngredient = value?["excludedIngredients"] as? String ?? "N/A"
             self.dislikeText.text = "Dislikes: "
-            if excludedIngredients.count != 0 {
-                for (index, elem) in excludedIngredients.enumerated() {
-                    if index != excludedIngredients.count - 1 {
-                        self.dislikeText.text?.append("\(elem), ")
-                    } else {
-                        self.dislikeText.text?.append("\(elem) ")
-                    }
-                    
-                }
-            } else {
-                self.dislikeText.text?.append("N/A")
-            }
-
+            
+            self.dislikeText.text?.append(excludedIngredient.capitalized)
 
             
 

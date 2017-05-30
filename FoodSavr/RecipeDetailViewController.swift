@@ -114,7 +114,7 @@ class RecipeDetailViewController: UIViewController {
             shortIngredient = shortIngredient.replacingOccurrences(of: "organic", with: "")
             shortIngredient = shortIngredient.replacingOccurrences(of: "florets", with: "")
             
-            var suggestion = Levenshtein.suggest(shortIngredient, list: allItemsInKitchen, ratio: 0.4, ignoreType: .all)
+            var suggestion = Levenshtein.suggest(shortIngredient, list: allItemsInKitchen, ratio: 0.7, ignoreType: .all)
             if suggestion == nil {
                 suggestion = ""
             }
@@ -127,7 +127,7 @@ class RecipeDetailViewController: UIViewController {
                 }
             }
             
-            print("suggestion for : " + shortIngredient + "-----> " + suggestion!)
+            print("Levenshtein suggestion for : " + shortIngredient + "-----> " + suggestion!)
             print("range suggestion for : " + shortIngredient + "-----> " + rangeSug)
             
             

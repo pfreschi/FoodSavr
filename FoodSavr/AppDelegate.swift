@@ -37,6 +37,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let vc = storyboard.instantiateViewController(withIdentifier: "tabBar")
                 self.window?.rootViewController = vc
             }
+        
+        
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = keys {
+            let yummlyAppId = dict["yummlyAppId"] as? String
+            let yummlyAppKey = dict["yummlyAppKey"] as? String
+            
+            // Save Yummly info to UserDefaults
+            UserDefaults.standard.set(yummlyAppId, forKey: "yummlyAppId")
+            UserDefaults.standard.set(yummlyAppKey, forKey: "yummlyAppKey")
+        }
+        
+        
+        
     
         return true
     }
