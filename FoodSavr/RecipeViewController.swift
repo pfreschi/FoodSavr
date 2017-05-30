@@ -49,7 +49,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
                     if let recipeDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let recipe = Recipe(key: key, dictionary: recipeDict)
-                        newRecipes.append(recipe)
+                        
+                        
                         
                         if (UserDefaults.standard.data(forKey: recipe.id) == nil) {
                             let yummlyAppId = UserDefaults.standard.string(forKey: "yummlyAppId") ?? "missingAppId"
@@ -62,6 +63,20 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
                                     let stringResult = response.result.value
                                     UserDefaults.standard.set(stringResult, forKey: recipe.id)
                                     
+                                    // prevents bad data from yummly getting shown to User and exception thrown!
+                                    var storedForCheck = JSON.parse(stringResult!)
+                                    let longIngredients = storedForCheck["ingredientLines"].arrayValue
+                                    print("recipe ingred count is \(recipe.ingredients.count)")
+                                    print("long ingred count is \(longIngredients.count)")
+
+                                    if (recipe.ingredients.count == longIngredients.count) {
+                                        newRecipes.append(recipe)
+                                        self.recipes = newRecipes
+                                        self.tableView.reloadData()
+                                    }
+                                    
+                                    
+                                    
                                     UserDefaults.standard.synchronize()
                                 }
                                 
@@ -71,17 +86,17 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
                             
                             
                         }
-
-                        
                         
                         
                         
                     }
                 }
+                
+                self.tableView.reloadData()
+                
+                
                 print(newRecipes)
                 
-                self.recipes = newRecipes
-                self.tableView.reloadData()
                 
                 
                 
@@ -128,7 +143,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         if isSearching {
             cell.recipeTitle.text = filteredRecipes[row].recipeName
             
+
             picString = filteredRecipes[row].smallImageUrls[0]
+            
             keyForPic = filteredRecipes[row].id
             
             
