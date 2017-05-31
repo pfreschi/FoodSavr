@@ -192,6 +192,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         cell.recipeImage.sd_setImage(with: URL(string: picString), placeholderImage: UIImage(named: "genericrecipe"))
         
         
+        let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell.recipeImage.frame.size.width, height: cell.recipeImage.frame.size.height))
+        overlay.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 0.03)
+        cell.recipeImage.addSubview(overlay)
     
         //cell.recipeImage.alpha = 0.8
         

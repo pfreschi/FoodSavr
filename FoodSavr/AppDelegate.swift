@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -51,10 +52,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(yummlyAppKey, forKey: "yummlyAppKey")
         }
         
-        
-        
+        // store a list of ingredients to user default
+        getIngredients() { (ingredients: [String]?) in
+            UserDefaults.standard.set(ingredients!, forKey: "ingredients")
+        }
     
         return true
+    }
+    
+    // get a list of ingredients and save them to userdefault
+    func getIngredients(completionHandler:@escaping (_ ingredients: [String]?) -> ()) {
+        
+        FirebaseProxy.firebaseProxy.myRootRef.child("ingredients").queryOrdered(byChild: "term").observeSingleEvent(of: .value, with: {(snapshot) in
+            var ingredients : [String] = []
+            let result = snapshot.value as! NSArray
+            
+            for r in result as Array {
+                ingredients.append(r["term"]! as! String)
+ 
+            }
+            
+            if ingredients.isEmpty {
+                completionHandler(nil)
+            }else {
+                completionHandler(ingredients)
+            }
+        })
     }
     
     
