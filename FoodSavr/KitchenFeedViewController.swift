@@ -45,7 +45,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     var beginTimer: Timer?
     var endTimer: Timer?
     var itemAdded = false
-    
+    var itemsAdded = false
     
     
     @IBOutlet weak var table: UITableView!
@@ -65,6 +65,14 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         setupUI()
         if (itemAdded) {
             self.overlayBegin()
+        } else if (itemsAdded) {
+            self.showWaitOverlayWithText("Adding new items!")
+            if let endTimer = endTimer {
+                endTimer.invalidate()
+            }
+            
+            endTimer = Timer.scheduledTimer(timeInterval: 12.0, target: self, selector: #selector(end), userInfo: nil, repeats: false)
+            
         }
         
         self.hideKeyboardWhenTappedAround()

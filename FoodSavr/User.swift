@@ -53,6 +53,7 @@ class User: NSObject {
     
     var diet: Array<String> {
         return _diet
+        
     }
     
     var restrictedIngredients: Array<String> {

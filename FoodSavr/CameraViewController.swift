@@ -56,7 +56,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             print("priting user uid: \(FIRAuth.auth()!.currentUser!.uid)")
             let uid = FIRAuth.auth()!.currentUser!.uid
             guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-            guard let imageData = UIImageJPEGRepresentation(pickedImage, 0.5) else { return }
+            guard let imageData = UIImageJPEGRepresentation(pickedImage, 0.4) else { return }
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             
@@ -86,12 +86,12 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     func uploadSuccess(_ metadata: FIRStorageMetadata, storagePath: String) {
         let imgURL = metadata.downloadURL()?.absoluteString
         
-//        FirebaseProxy.firebaseProxy.saveReceipt(pic: imgURL!, creatorId: FIRAuth.auth()!.currentUser!.uid,
-//             items: ["Apples", "Eggs","Milk"], vendor: "Safeway")
+        FirebaseProxy.firebaseProxy.saveReceipt(pic: imgURL!, creatorId: FIRAuth.auth()!.currentUser!.uid,
+             items: ["Apples", "Eggs","Milk"], vendor: "Safeway")
         
         //storage for user defaults??
-//        UserDefaults.standard.set(receiptURL, forKey: "receiptURL")
-//        UserDefaults.standard.synchronize()
+        //UserDefaults.standard.set(receiptURL, forKey: "receiptURL")
+        //UserDefaults.standard.synchronize()
  
     }
     
@@ -105,5 +105,22 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 //        self.present(kitchenVC, animated: true, completion: nil)
         
     }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showKitchenView" {
+            if let destVC = segue.destination as? KitchenFeedViewController {
+                destVC.itemsAdded = true
+            }
+        }
+    }
+    
+
 }
 
