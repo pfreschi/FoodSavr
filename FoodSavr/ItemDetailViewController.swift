@@ -23,14 +23,14 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var currentItem = Item(key:"none", dictionary: Dictionary<String, AnyObject>())
     var userGroupsRef : FIRDatabaseReference!
     var userRef : FIRDatabaseReference!
+    var itemRef : FIRDatabaseReference!
     var groups : [Group] = []
     var itemKey : String = ""
     var creatorName : String = ""
+    var switchStates : Dictionary<String, Bool> = [:]
     
     var recipes = [Recipe]()
 
-    
-    
     @IBOutlet weak var itemPic: UIImageView!
     
     @IBOutlet weak var itemName: UILabel!
@@ -46,6 +46,7 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
         userRef = FirebaseProxy.firebaseProxy.userRef
+        itemRef = FirebaseProxy.firebaseProxy.itemRef
         groupsTableview.delegate = self
         groupsTableview.dataSource = self
         recipesTableView.delegate = self
@@ -53,8 +54,8 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         getRecipes()
         showitemInfo()
         fetchGroups()
+        getItemsharing()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,16 +116,19 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         if tableView == groupsTableview {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sharingCell", for: indexPath) as! SharingTableViewCell
             let groupName = groups[indexPath.row].name
             cell.itemName = itemName.text!
             cell.groupName.text = groupName
             cell.delegate = self
-            
+            let groupID = groups[indexPath.row].id
+            if self.switchStates[groupID] != nil {
+                if self.switchStates[groupID]! {
+                    cell.isShared.isOn = true
+                 }
+            }
             return cell
 
         } else {
@@ -164,16 +168,20 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
             return recipeCell
         }
-        
     }
     
     func sharingSwitchTapped(cell : SharingTableViewCell, isSwitchOn : Bool) {
         let group = groups[(groupsTableview.indexPath(for: cell)?.row)!]
-        UserDefaults.standard.set(isSwitchOn, forKey: "\(itemName.text!)sharing")
+        UserDefaults.standard.set(isSwitchOn, forKey: "\(String(describing: itemName.text!))\(group.name)")
+//        print("this is in sharing switch tapped")
+//        print("\(String(describing: itemName.text!))\(group.name)")
+//        print(UserDefaults.standard.bool(forKey: "\(String(describing: itemName.text!))\(group.name)"))
     
         UserDefaults.standard.synchronize()
-        
+        // check how to delete!
+        //call firebase function to save state
         FirebaseProxy.firebaseProxy.markedAsShared(isShared: isSwitchOn, groupName: group.name, groupId: group.key, itemId: itemKey, members: group.users)
+        
     }
     
     func fetchGroups() {
@@ -189,6 +197,19 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             self.groupsTableview!.reloadData()
         })
         
+    }
+    
+    func getItemsharing() {
+        itemRef.child(itemKey).child("groups").observeSingleEvent(of: .value, with: {(snapshot) in
+            //check if there is a groups ref
+            if snapshot.exists() {
+                let result = snapshot.value as! Dictionary<String, Any>
+                for (key, value) in result {
+                    let data = value as! Dictionary<String, Any>
+                    self.switchStates[key] = data["shared"] as! Bool
+                }
+            }
+        })
     }
     
     func getRecipes() {
@@ -282,7 +303,6 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-
     /*
     // MARK: - Navigation
 

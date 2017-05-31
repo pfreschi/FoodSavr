@@ -52,6 +52,9 @@
 		AEC4556D1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
 		AEC4556E1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
 		AEC4556F1EA88635005724D3 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */; };
+		AED21E061EDDE156006EFAE2 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED21E051EDDE156006EFAE2 /* AddNewItemViewController.swift */; };
+		AED21E071EDDE156006EFAE2 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED21E051EDDE156006EFAE2 /* AddNewItemViewController.swift */; };
+		AED21E081EDDE156006EFAE2 /* AddNewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED21E051EDDE156006EFAE2 /* AddNewItemViewController.swift */; };
 		C833E6FE2AB2E7AA5B2FBE98 /* Pods_FoodSavrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */; };
 		F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F401CABD1EAA909800B5A3EE /* RecipeViewController.swift */; };
 		F40E22881ED26DAE007DF937 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E22871ED26DAE007DF937 /* RecipeDetailViewController.swift */; };
@@ -116,6 +119,7 @@
 		AE9CCD441ECF520200B943D2 /* SharingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingTableViewCell.swift; sourceTree = "<group>"; };
 		AEA35A291EB53D1E00DFCE45 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		AEC4556C1EA88635005724D3 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		AED21E051EDDE156006EFAE2 /* AddNewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewItemViewController.swift; sourceTree = "<group>"; };
 		BC31EA20D851F2F2D64C38E8 /* Pods-FoodSavrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodSavrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodSavrTests/Pods-FoodSavrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C06E66CC407330A92509BF3C /* Pods_FoodSavrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0758F0A510159B9F4D96BE1 /* Pods_FoodSavr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodSavr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +251,7 @@
 				F4C2B6101E95FA1B00211778 /* AuthenticationViewController.swift */,
 				AE37B89B1EC40A5D00A7A950 /* GroupsCollectionViewController.swift */,
 				F4FE294D1E8EC7F10026AD50 /* Main.storyboard */,
+				AED21E051EDDE156006EFAE2 /* AddNewItemViewController.swift */,
 				AE125EA11ED624D60014335F /* Launch Screen.storyboard */,
 				AE9CCD401ECE2EDC00B943D2 /* GroupMemberTableViewCell.swift */,
 				AE9CCD3C1ECD091600B943D2 /* GroupViewController.swift */,
@@ -779,6 +784,7 @@
 				F401CABE1EAA909800B5A3EE /* RecipeViewController.swift in Sources */,
 				F40E22881ED26DAE007DF937 /* RecipeDetailViewController.swift in Sources */,
 				F4FE29481E8EC7F10026AD50 /* AppDelegate.swift in Sources */,
+				AED21E061EDDE156006EFAE2 /* AddNewItemViewController.swift in Sources */,
 				F4FE297A1E90617B0026AD50 /* User.swift in Sources */,
 				F48ECB0B1ECBB57900427B77 /* ProfileViewController.swift in Sources */,
 				F40E228A1ED27249007DF937 /* Recipe.swift in Sources */,
@@ -793,6 +799,7 @@
 			files = (
 				AE9CCD3E1ECD091600B943D2 /* GroupViewController.swift in Sources */,
 				AE8462901EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,
+				AED21E071EDDE156006EFAE2 /* AddNewItemViewController.swift in Sources */,
 				F4FE295F1E8EC7F10026AD50 /* FoodSavrTests.swift in Sources */,
 				AE37B89D1EC40A5D00A7A950 /* GroupsCollectionViewController.swift in Sources */,
 				AE43F07D1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,
@@ -811,6 +818,7 @@
 			files = (
 				AE9CCD3F1ECD091600B943D2 /* GroupViewController.swift in Sources */,
 				AE8462911EBBD48C00CF9EE4 /* AutoCompleteUserTableViewCell.swift in Sources */,
+				AED21E081EDDE156006EFAE2 /* AddNewItemViewController.swift in Sources */,
 				F4FE296A1E8EC7F10026AD50 /* FoodSavrUITests.swift in Sources */,
 				AE37B89E1EC40A5D00A7A950 /* GroupsCollectionViewController.swift in Sources */,
 				AE43F07E1EA7E1B2008D34E1 /* KitchenFeedViewController.swift in Sources */,

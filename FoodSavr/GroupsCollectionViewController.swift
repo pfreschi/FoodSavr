@@ -26,6 +26,8 @@ class GroupsCollectionViewController: UICollectionViewController {
         userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
         fetchGroups()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: .reload, object: nil)
+        
         let padding: CGFloat = 30
         let collectionCellSize = collectionView!.frame.size.width - padding
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -40,14 +42,25 @@ class GroupsCollectionViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loadList(_ notification: Notification){
+        self.groups = []
+        DispatchQueue.main.async(execute: { self.collectionView!.reloadData() })
+    }
 
     func fetchGroups() {
+        
+        userGroupsRef.child(FirebaseProxy.firebaseProxy.getCurrentUser()).observe(.value , with: {(snapshot) in
         var newGroups :[Group] = []
-        userGroupsRef.child(FirebaseProxy.firebaseProxy.getCurrentUser()).observe(.childAdded , with: {(snapshot) in
-        if let groupDict = snapshot.value as? Dictionary<String, AnyObject>{
-            let key = snapshot.key
-            let g = Group(key: key, dictionary: groupDict)
-            newGroups.append(g)
+        if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+
+                    if let groupDict = snap.value as? Dictionary<String, AnyObject>{
+                        let key = snapshot.key
+                        let g = Group(key: key, dictionary: groupDict)
+                        newGroups.append(g)
+                    }
+            }
         }
 
         self.groups = newGroups
@@ -144,7 +157,7 @@ class GroupsCollectionViewController: UICollectionViewController {
                 let i = self.collectionView!.indexPath(for: cell)!.row
                 let vc = segue.destination as! GroupViewController
                 vc.group = self.groups[i]
-                vc.groupKey = self.groups[i].key
+                vc.groupKey = self.groups[i].id
             }
         }
     }
