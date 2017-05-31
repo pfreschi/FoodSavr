@@ -16,7 +16,7 @@ import FBSDKCoreKit
 import M13Checkbox
 
 
-class HelloViewController: UIViewController {
+class HelloViewController: UIViewController, UITextFieldDelegate {
     
     var dietPreferences = [String: Bool]()
     var allergyPreferences = [String: Bool]()
@@ -43,6 +43,11 @@ class HelloViewController: UIViewController {
     @IBOutlet weak var outerContinueButton: BorderedButton!
     
     var currentStep = 0 //Diet is 1, Allergy is 2, Preference is 3
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func editingPrefEnded(_ sender: UITextField, forEvent event: UIEvent) {
         FirebaseProxy.firebaseProxy.myRootRef.child("ingredients").queryOrdered(byChild: "term").queryEqual(toValue: sender.text).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -206,6 +211,8 @@ class HelloViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.preferenceTextBox.delegate = self;
         
         welcomeOrEndView.isHidden = false
     
