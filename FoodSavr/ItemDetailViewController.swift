@@ -198,6 +198,7 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             
             var newRecipes : [Recipe] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+
                 for snap in snapshots {
                     if let recipeDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key

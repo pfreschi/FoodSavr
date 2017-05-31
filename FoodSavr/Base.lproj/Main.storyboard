@@ -495,6 +495,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
+                        <outlet property="pickSwitch" destination="wsW-yf-vBx" id="dh1-RO-e2X"/>
                         <outlet property="searchBar" destination="CLo-Xj-X1S" id="pGC-qx-8JF"/>
                         <outlet property="tableView" destination="p1v-We-Pfe" id="9kb-yk-PcH"/>
                     </connections>
@@ -520,7 +521,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RLa-Ch-g2R">
-                                <rect key="frame" x="16" y="111" width="346" height="30"/>
+                                <rect key="frame" x="16" y="111" width="257" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -634,6 +635,18 @@ Ingredient 5</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNa-zQ-Ki7" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
+                                <rect key="frame" x="281" y="112" width="78" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressSaveRecipeButton:forEvent:" destination="15H-k2-SyQ" eventType="touchUpInside" id="qv5-3q-36Q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -645,6 +658,7 @@ Ingredient 5</string>
                         <outlet property="recipeRating" destination="NVO-9k-mfX" id="eII-0n-r4g"/>
                         <outlet property="recipeServings" destination="7Bd-DO-cW1" id="yGY-VF-YZJ"/>
                         <outlet property="recipeTime" destination="UUC-iU-mUs" id="wMD-Tj-jmJ"/>
+                        <outlet property="saveRecipeButton" destination="eNa-zQ-Ki7" id="ICy-cG-jks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdo-2K-5TM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1548,10 +1562,10 @@ get started.</string>
         <image name="profile" width="25" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HB1-O0-DdY"/>
         <segue reference="qfu-sy-IlH"/>
         <segue reference="jpS-bF-CJt"/>
         <segue reference="w6W-Zy-42Z"/>
+        <segue reference="l5M-Jk-8D3"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
