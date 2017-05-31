@@ -788,23 +788,6 @@ reccommendations.
                                         <rect key="frame" x="0.0" y="156" width="375" height="208"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLZ-Ji-jSg" customClass="M13Checkbox" customModule="M13Checkbox">
-                                                <rect key="frame" x="101" y="47" width="22" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <accessibility key="accessibilityConfiguration">
-                                                    <accessibilityTraits key="traits" button="YES"/>
-                                                </accessibility>
-                                                <connections>
-                                                    <action selector="checkboxPressed:forEvent:" destination="U2Q-0o-L6a" eventType="valueChanged" id="AqO-XI-JPd"/>
-                                                </connections>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vegetarian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAL-XD-96b">
-                                                <rect key="frame" x="128" y="47" width="83" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.5177420973777771" green="0.67984086275100708" blue="0.24955907464027405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjx-Pz-eof" customClass="M13Checkbox" customModule="M13Checkbox">
                                                 <rect key="frame" x="101" y="73" width="22" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1145,7 +1128,6 @@ get started.</string>
                         <outlet property="welcomeOrEndSkip" destination="UgN-DL-Jn4" id="FUS-1S-6AM"/>
                         <outlet property="welcomeOrEndText" destination="wTY-dN-ufL" id="wNX-55-uUE"/>
                         <outlet property="welcomeOrEndView" destination="arq-7a-PSg" id="aKN-Co-8xY"/>
-                        <outletCollection property="dietCheckboxes" destination="bLZ-Ji-jSg" collectionClass="NSMutableArray" id="cmX-5W-dJc"/>
                         <outletCollection property="dietCheckboxes" destination="gjx-Pz-eof" collectionClass="NSMutableArray" id="BrO-b4-TLF"/>
                         <outletCollection property="dietCheckboxes" destination="7mL-bD-q7g" collectionClass="NSMutableArray" id="6gr-vU-hef"/>
                         <outletCollection property="dietCheckboxes" destination="RFf-t2-IaH" collectionClass="NSMutableArray" id="dJq-QG-dbf"/>
@@ -1361,11 +1343,11 @@ get started.</string>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObO-Qa-wRU">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ObO-Qa-wRU">
                                                     <rect key="frame" x="15" y="8" width="58" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9q3-Hs-rex">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9q3-Hs-rex">
                                                     <rect key="frame" x="279" y="2" width="83" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>

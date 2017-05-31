@@ -21,7 +21,7 @@ class HelloViewController: UIViewController {
     var dietPreferences = [String: Bool]()
     var allergyPreferences = [String: Bool]()
     
-    var dietOptions = ["Vegetarian", "Lacto vegetarian", "Ovo vegetarian", "Vegan", "Pescetarian"]
+    var dietOptions = ["Lacto vegetarian", "Ovo vegetarian", "Vegan", "Pescetarian"]
     var allergyOptions = ["Dairy", "Peanut", "Soy", "Tree Nut", "Egg", "Seafood", "Sulfite", "Gluten", "Sesame", "Wheat"]
     
 
