@@ -110,8 +110,11 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! GroupMemberTableViewCell
         cell.userName.text = userlist[indexPath.row].name
         cell.profilePic.sd_setImage(with: URL(string: userlist[indexPath.row].pic))
-        let dietStr = userlist[indexPath.row].diet.joined(separator: ",")
-        cell.allergy.text = "Preference: \(dietStr)"
+        if userlist[indexPath.row].diet != nil {
+            let dietStr = userlist[indexPath.row].diet.joined(separator: ",")
+            cell.allergy.text = "Preference: \(dietStr)"
+        }
+
 
         setRoundBorder(img: cell.profilePic)
         return cell

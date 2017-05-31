@@ -206,9 +206,4 @@ class RecipeDetailViewController: UIViewController {
         }
     }
 
-    
-    
-    
-    
-    
 }

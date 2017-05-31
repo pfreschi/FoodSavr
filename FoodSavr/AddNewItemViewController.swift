@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Levenshtein
+import SwiftOverlays
 
 class AddNewItemViewController: UIViewController {
     var ingredients : [String] = []
@@ -25,10 +26,15 @@ class AddNewItemViewController: UIViewController {
         if (nameText!.isEmpty || expText!.isEmpty) {
             warningText.text = "Please fill out all the information!"
         } else {
-            checkItemname(name: nameText!)
-//            FirebaseProxy.firebaseProxy.saveItem(expDate: Int(expText!)!, name: nameText!)
-//            performSegue(withIdentifier: "itemAdded", sender: sender)
+//            
+//            let suggestion = checkItemname(name: nameText!)
+//            print(suggestion)
+//            if !suggestion.isEmpty {
             
+                //itemName.text = suggestion
+                FirebaseProxy.firebaseProxy.saveItem(expDate: Int(expText!)!, name: nameText!)
+                performSegue(withIdentifier: "itemAdded", sender: sender)
+            //}
         }
         
     }
@@ -36,7 +42,7 @@ class AddNewItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        ingredients = UserDefaults.standard.array(forKey: "ingredients") as! [String]
+       // ingredients = UserDefaults.standard.array(forKey: "ingredients") as! [String]
         
     }
 
@@ -45,12 +51,17 @@ class AddNewItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func checkItemname (name: String) {
-        print(ingredients)
-        let suggestion = Levenshtein.suggest(name, list: ingredients, ratio: 0.7, ignoreType: .all)
-        print(suggestion)
-
-    }
+//    func checkItemname (name: String) -> String {
+//        
+//        let suggestion = Levenshtein.suggest(name, list: ingredients, ratio: 0.7, ignoreType: .all)
+//        //print(suggestion)
+//        if (suggestion != nil) {
+//            return suggestion!
+//            
+//        }
+//        return ""
+//        
+//    }
 
 
     // MARK: - Navigation

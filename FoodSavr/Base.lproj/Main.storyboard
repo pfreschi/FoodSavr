@@ -716,7 +716,7 @@ Ingredient 5</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNa-zQ-Ki7" customClass="BorderedButton" customModule="FoodSavr" customModuleProvider="target">
-                                <rect key="frame" x="307" y="112" width="52" height="28"/>
+                                <rect key="frame" x="281" y="112" width="78" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1652,7 +1652,7 @@ get started.</string>
     <inferredMetricsTieBreakers>
         <segue reference="l5M-Jk-8D3"/>
         <segue reference="w6W-Zy-42Z"/>
-        <segue reference="LZg-b9-Pea"/>
+        <segue reference="qfu-sy-IlH"/>
         <segue reference="jpS-bF-CJt"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.47058823529999999" green="0.66274509800000003" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
