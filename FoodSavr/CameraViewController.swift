@@ -56,7 +56,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             print("priting user uid: \(FIRAuth.auth()!.currentUser!.uid)")
             let uid = FIRAuth.auth()!.currentUser!.uid
             guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-            guard let imageData = UIImageJPEGRepresentation(pickedImage, 0.2) else { return }
+            guard let imageData = UIImageJPEGRepresentation(pickedImage, 0.4) else { return }
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             

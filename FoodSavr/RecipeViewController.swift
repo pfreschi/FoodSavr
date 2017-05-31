@@ -15,7 +15,19 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 
-class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate {
     
     var recipes = [Recipe]()
     var filteredRecipes = [Recipe]()
@@ -30,6 +42,12 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var pickSwitch: UISegmentedControl!
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        print("done searching")
+        self.searchBar.endEditing(true)
+    }
 
     @IBAction func recipesSavedSwitch(_ sender: UISegmentedControl, forEvent event: UIEvent) {
         switch sender.selectedSegmentIndex {
@@ -50,6 +68,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboardWhenTappedAround()
+        
         if pickSwitch.selectedSegmentIndex == 0 {
             print("recipes selected")
             locationOfRecipes = "recipes"
@@ -191,16 +212,20 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.recipeImage.sd_setImage(with: URL(string: picString), placeholderImage: UIImage(named: "genericrecipe"))
         
+        /*
         
         let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: cell.recipeImage.frame.size.width, height: cell.recipeImage.frame.size.height))
         overlay.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 0.03)
         cell.recipeImage.addSubview(overlay)
-    
-        //cell.recipeImage.alpha = 0.8
+        
         
         cell.view.layer.masksToBounds = true
         cell.view.layer.borderColor = UIColor.white.cgColor
         cell.view.layer.borderWidth = 6.0
+*/
+    
+        cell.recipeImage.alpha = 0.8
+    
     
         
         

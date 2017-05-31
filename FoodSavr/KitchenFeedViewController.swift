@@ -29,6 +29,7 @@ extension Date {
 }
 
 
+
 class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UISearchBarDelegate{
     
     var ref : FIRDatabaseReference?
@@ -52,6 +53,13 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     
     var isSearching = false
     
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        print("done searching")
+        self.searchBar.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -63,11 +71,11 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                 endTimer.invalidate()
             }
             
-            endTimer = Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(end), userInfo: nil, repeats: false)
+            endTimer = Timer.scheduledTimer(timeInterval: 12.0, target: self, selector: #selector(end), userInfo: nil, repeats: false)
             
         }
         
-        
+        self.hideKeyboardWhenTappedAround()
         ref = FirebaseProxy.firebaseProxy.myRootRef
         itemRef = FirebaseProxy.firebaseProxy.itemRef
         userRef = FirebaseProxy.firebaseProxy.userRef

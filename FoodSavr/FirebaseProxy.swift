@@ -77,11 +77,12 @@ class FirebaseProxy: NSObject {
         var userGroupsUpd : Dictionary<String, Any> = [:]
         var membersString : Dictionary<String,Any> = [:]
         //var users : Dictionary<String, Bool> = [:]
+        var diet : Array<String> = ["N/A"]
         for m in members {
             let member : Dictionary<String, Any> = [
                 "name": m.name,
                 "pic":  m.pic,
-                "diet": m.diet
+                "diet": diet
             ]
             membersString[m.key] = member
         }
