@@ -11,7 +11,7 @@ import Firebase
 import Levenshtein
 
 class AddNewItemViewController: UIViewController {
-   // var ingredients : NSArray
+    var ingredients : [String] = []
 
     @IBOutlet weak var itemName: UITextField!
     @IBOutlet weak var expirationDate: UITextField!
@@ -21,13 +21,13 @@ class AddNewItemViewController: UIViewController {
     @IBAction func addItem(_ sender: Any) {
         let nameText = itemName.text
         let expText = expirationDate.text
+        
         if (nameText!.isEmpty || expText!.isEmpty) {
             warningText.text = "Please fill out all the information!"
         } else {
-            print("about to save!!")
-            
-            FirebaseProxy.firebaseProxy.saveItem(expDate: Int(expText!)!, name: nameText!)
-            performSegue(withIdentifier: "itemAdded", sender: sender)
+            checkItemname(name: nameText!)
+//            FirebaseProxy.firebaseProxy.saveItem(expDate: Int(expText!)!, name: nameText!)
+//            performSegue(withIdentifier: "itemAdded", sender: sender)
             
         }
         
@@ -35,14 +35,21 @@ class AddNewItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getIngredients()
-
         // Do any additional setup after loading the view.
+        ingredients = UserDefaults.standard.array(forKey: "ingredients") as! [String]
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkItemname (name: String) {
+        print(ingredients)
+        let suggestion = Levenshtein.suggest(name, list: ingredients, ratio: 0.7, ignoreType: .all)
+        print(suggestion)
+
     }
 
 
@@ -60,20 +67,5 @@ class AddNewItemViewController: UIViewController {
         }
     }
     
-    
-    func getIngredients() {
-        //let ingredients = ["desctiption" = "", "searchValue" = "", "term" = ""]
-        FirebaseProxy.firebaseProxy.myRootRef.child("ingredients").queryOrdered(byChild: "term").observeSingleEvent(of: .value, with: {(snapshot) in
-            let result = snapshot.value 
-//            if (result == nil){
-//                print("result not found")
-//               // var suggestion = Levenshtein.suggest(result, list: , ratio: 0.7, ignoreType: .all)
-//            } else {
-//                print("result found")
-//            }
-         print(result)
-        })
-
-    }
     
 }
