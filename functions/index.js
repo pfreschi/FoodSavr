@@ -11,6 +11,7 @@ var usersref = db.ref("/users/");
 ////////////////////////////////////////////////////////////////////////
 // INSERT YOUR OWN OCR, GOOGLE URL SHORTENER, and YUMMLY KEYS! 
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -249,6 +250,81 @@ exports.generateRecipes = functions.database.ref('/users/{userID}/inventoryOrder
         });
       });
     });
+
+
+// generates a list of reccommended recipes for A SINGLE ITEM INSERTED INTO INVENTORY
+exports.generateItemRecipes = functions.database.ref('/users/{userID}/inventoryOrderedByExpiration/{itemKey}')
+    .onWrite(event => {
+      // Grab the current value of what was written to the Realtime Database.
+      const inventoryOfOne = event.data.val();
+      const itemKey = event.params.itemKey
+      console.log(inventoryOfOne);
+      
+
+      //get preferences
+      return event.data.ref.parent.parent.once('value').then(function(snapshot) {
+        var userObject = snapshot.val();
+        if(typeof userObject["allergy"] != 'undefined'){
+          var rawAllergyRestrictions = userObject["allergy"]
+          console.log("original allergy restrictions are " + rawAllergyRestrictions)
+
+          if (typeof rawAllergyRestrictions != 'undefined') {
+            for (var i = 0; i < rawAllergyRestrictions.length; i++) {
+              var result = getAllergySearchVal(rawAllergyRestrictions[i] + "-Free");
+              if (typeof result != 'undefined'){
+                allergyRestrictions.push(result[0]["searchValue"])
+              }
+            }
+            console.log("modified allergy restrictions are " + allergyRestrictions);
+            
+          }
+        }
+        
+        if(typeof userObject["diet"] != 'undefined'){
+          var rawDietaryRestrictions = userObject["diet"]
+          console.log("original dietary restrictions are " + rawDietaryRestrictions)
+
+          if (typeof rawDietaryRestrictions != 'undefined') {
+            for (var i = 0; i < rawDietaryRestrictions.length; i++) {
+              var result = getDietarySearchVal(rawDietaryRestrictions[i]);
+              if (typeof result != 'undefined'){
+                dietaryRestrictions.push(result[0]["searchValue"])
+              }
+              
+            }
+          }
+        }
+
+
+        excludedIngredient = userObject["excludedIngredients"]
+
+
+        // now ready to fetch the recipes using these prefs...
+        var determinedTopRecipeList = false
+        
+        // save the returned recipes for the item
+        if (inventoryOfOne != "") {
+          findRecipes([inventoryOfOne], 1, 10, false, null, 3, event.data.ref.parent.parent.child('recipesForItems/' + inventoryOfOne))
+        }
+        
+
+      
+
+      // You must return a Promise when performing asynchronous tasks inside a Functions such as
+      // writing to the Firebase Realtime Database.
+        return event.data.ref.parent.child('recipesForItems').once('value').then(function(snapshot) {
+          console.log(snapshot)
+        });
+      });
+    });
+
+
+
+
+
+
+
+
 
     function getAllergySearchVal(search) {
       return allergyIdJSON.filter(

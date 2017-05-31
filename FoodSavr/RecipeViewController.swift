@@ -24,15 +24,25 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     var isSearching = false
     
+    var locationOfRecipes = "recipes"
+    
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var pickSwitch: UISegmentedControl!
+
     @IBAction func recipesSavedSwitch(_ sender: UISegmentedControl, forEvent event: UIEvent) {
         switch sender.selectedSegmentIndex {
         case 0:
             print("recipes selected")
+            locationOfRecipes = "recipes"
+            viewDidLoad()
+            tableView.reloadData()
         case 1:
             print("saved selected")
+            locationOfRecipes = "savedRecipes"
+            viewDidLoad()
+            tableView.reloadData()
         default:
             break
         }
@@ -40,8 +50,17 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if pickSwitch.selectedSegmentIndex == 0 {
+            print("recipes selected")
+            locationOfRecipes = "recipes"
+
+        } else if pickSwitch.selectedSegmentIndex == 1{
+            print("saved selected")
+            locationOfRecipes = "savedRecipes"
+        }
+        
         let uid = UserDefaults.standard.string(forKey: "uid")
-        FirebaseProxy.firebaseProxy.userRef.child(uid! + "/recipes").observe(.value, with: { (snapshot) in
+        FirebaseProxy.firebaseProxy.userRef.child(uid! + "/" + locationOfRecipes).observe(.value, with: { (snapshot) in
             
             var newRecipes : [Recipe] = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
