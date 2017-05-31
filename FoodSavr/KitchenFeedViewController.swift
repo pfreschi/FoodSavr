@@ -328,7 +328,6 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
         let userId = list[indexPath.row].creatorId
         if (userId == curUser?.uid) {
             cell.addedBy.text = "added by me"
-            self.nameArr.append("me")
         } else {
             
             ref?.child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -372,7 +371,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if segue.identifier == "showItemDetail" {
-            if let cell = sender as? UITableViewCell {
+            if let cell = sender as? KitchenItemsTableViewCell {
                 let i = table.indexPath(for: cell)!.row
                 let vc = segue.destination as! ItemDetailViewController
                 if isSearching {
@@ -382,7 +381,11 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
                     vc.currentItem = self.itemList[i]
                     vc.itemKey = self.itemList[i].key
                 }
-                vc.creatorName = self.nameArr[0]
+                if cell.addedBy.text == "added by me" {
+                    vc.creatorName = "me"
+                } else {
+                    vc.creatorName = self.nameArr[0]
+                }
                 
             }
         }
