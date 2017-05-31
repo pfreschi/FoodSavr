@@ -9,12 +9,19 @@
 import UIKit
 import Firebase
 
+extension Notification.Name {
+    static let reload = Notification.Name("reload")
+}
+
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var group = Group(key:"none", dictionary: Dictionary<String, AnyObject>())
     var groupKey : String = ""
     var userlist : [User] = []
     var groupRef : FIRDatabaseReference!
+    var userRef : FIRDatabaseReference!
     var userGroupsRef : FIRDatabaseReference!
+    var rootRef : FIRDatabaseReference!
+    let curUser = FirebaseProxy.firebaseProxy.getCurrentUser()
     
 
     @IBOutlet weak var groupName: UITextField!
@@ -39,7 +46,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         editPressed.isHidden = true
     }
     @IBOutlet weak var groupTableview: UITableView!
-    var userRef : FIRDatabaseReference!
+
     
     
     override func viewDidLoad() {
@@ -49,6 +56,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         donePressed.isHidden = true
         groupRef = FirebaseProxy.firebaseProxy.groupRef
         userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
+        rootRef = FirebaseProxy.firebaseProxy.myRootRef
         
     }
 
@@ -71,11 +79,14 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func updateGroupName(name: String) {
-        groupRef.child(groupKey).updateChildValues(["name": name])
+        let childUpdates = ["/groups/\(groupKey)/name": name,
+                            "/userGroups/\(curUser)/\(groupKey)/name": name]
+        //groupRef.child(groupKey).updateChildValues(["name": name])
         
-        //TODO : update group name for all users!!!
-       // userGroupsRef.(fireba)
-        
+        rootRef.updateChildValues(childUpdates)
+        //reload collectionview
+        NotificationCenter.default.post(name: .reload, object: nil)
+
     }
     
     // MARK: - Table view data source
@@ -112,7 +123,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
 
-    /*
+   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -120,6 +131,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

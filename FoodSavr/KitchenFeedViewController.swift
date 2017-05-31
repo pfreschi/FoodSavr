@@ -13,6 +13,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseCore
 import SDWebImage
+import SwiftOverlays
 
 extension Date {
     
@@ -40,6 +41,10 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     var curUser : FIRUser?
     var nameArr : [String] = []
     var imagePicker: UIImagePickerController!
+    var beginTimer: Timer?
+    var endTimer: Timer?
+    var itemAdded = false
+    
     
     
     @IBOutlet weak var table: UITableView!
@@ -50,6 +55,10 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        if (itemAdded) {
+            self.overlayBegin()
+        }
+        
         
         ref = FirebaseProxy.firebaseProxy.myRootRef
         itemRef = FirebaseProxy.firebaseProxy.itemRef
@@ -111,6 +120,21 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             print("this is error" + error.localizedDescription)
         }
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let beginTimer = beginTimer {
+            beginTimer.invalidate()
+        }
+        
+        if let endTimer = endTimer {
+            endTimer.invalidate()
+        }
+        
+        SwiftOverlays.removeAllBlockingOverlays()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -134,6 +158,26 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
 
             
         })
+    }
+    
+    //overlay functions
+    func overlayBegin() {
+        self.showTextOverlay("Yay, new item(s) added!")
+        if let endTimer = endTimer {
+            endTimer.invalidate()
+        }
+        
+        endTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(end), userInfo: nil, repeats: false)
+        
+    }
+    
+    func end(){
+        if let beginTimer = beginTimer {
+            beginTimer.invalidate()
+        }
+        
+//        beginTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(begin), userInfo: nil, repeats: false)
+        SwiftOverlays.removeAllBlockingOverlays()
     }
     
     
@@ -255,7 +299,7 @@ class KitchenFeedViewController: UIViewController, UITableViewDelegate, UITableV
             return "\(days)d"
         } else {
             // TODO : cap the days at a value, 30(?)
-            return "\(days)d+"
+            return "30d+"
         }
         
     }

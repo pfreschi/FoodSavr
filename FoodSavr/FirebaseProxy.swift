@@ -26,6 +26,8 @@ class FirebaseProxy: NSObject {
     private var _groupRef = FIRDatabase.database().reference().child("groups")
     private var _userGroupsRef = FIRDatabase.database().reference().child("userGroups")
     
+    let placeholderPic = "https://firebasestorage.googleapis.com/v0/b/foodsavr-1347f.appspot.com/o/items%2Fplaceholder.png?alt=media&token=6d70dc08-87d5-453d-88c0-93aeb4b31c4d"
+    
     
     var myRootRef: FIRDatabaseReference {
         return _myRootRef
@@ -48,18 +50,7 @@ class FirebaseProxy: NSObject {
     var userGroupsRef: FIRDatabaseReference {
         return _userGroupsRef
     }
-    /*
-     private var _receiptRef: FIRDatabaseReference!
-     
-     private var _key: Int!
-     private var _pic: UIImage!
-     private var _deleted: Bool!
-     private var _dateAdded: String!
-     private var _creatorId: Int!
-     private var _items: Array<String>! //array of item id
-     private var _vendor: String!
-     
-     */
+    
     
     func saveReceipt(pic: String, creatorId: String, items: [String], vendor: String) {
         
@@ -143,8 +134,9 @@ class FirebaseProxy: NSObject {
             // get group name and id and update
             let groupUpd = [
                 "id" : groupId,
-                "name" : groupName
-            ]
+                "name" : groupName,
+                "shared": true
+            ] as [String : Any]
             
             itemRef.child("\(itemId)/groups/\(groupId)").updateChildValues(groupUpd)
            // itemRef.child("\(itemId)/groups/\(groupId)/users").updateChildValues(members)
@@ -156,6 +148,24 @@ class FirebaseProxy: NSObject {
         
     }
     
+    func saveItem(expDate: Int, name: String) {
+      
+        let creatorId = getCurrentUser()
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd"
+        let currentDate = dateFormatter.string(from: Date())
+        let newItem : [String: Any] = [
+            "creatorId" : creatorId,
+            "dateAdded" : currentDate,
+            "expirationDate": expDate,
+            "name" : name,
+            "pic" : placeholderPic
+        ]
+        print(newItem)
+        itemRef.childByAutoId().updateChildValues(newItem)
+    }
     /*
     func getProfPic(fid: String) -> UIImage? {
         if (fid != "") {

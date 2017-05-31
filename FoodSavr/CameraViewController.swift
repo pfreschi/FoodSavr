@@ -40,8 +40,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

@@ -155,7 +155,7 @@
                     <navigationItem key="navigationItem" title="New Item" id="fhJ-W2-Flq">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="sKT-N6-FfW">
                             <connections>
-                                <action selector="addItem:" destination="cdh-Wf-3tE" id="Nse-uX-SGG"/>
+                                <action selector="addItem:" destination="cdh-Wf-3tE" id="9f9-j2-bPw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -164,6 +164,7 @@
                         <outlet property="expirationDate" destination="RXG-xe-xZw" id="9yY-M1-qdH"/>
                         <outlet property="itemName" destination="KqC-k2-VJ1" id="3Nj-uw-E56"/>
                         <outlet property="warningText" destination="23Q-8b-j5p" id="bLw-a2-v9v"/>
+                        <segue destination="exN-tz-9Hj" kind="show" identifier="itemAdded" id="LZg-b9-Pea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItX-R3-1Ux" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1472,6 +1473,7 @@ get started.</string>
                     </view>
                     <navigationItem key="navigationItem" title="My Kitchen" id="dfK-RB-0sb">
                         <barButtonItem key="leftBarButtonItem" systemItem="compose" id="nXn-Xo-jDQ">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="cdh-Wf-3tE" kind="show" id="Cdt-Rn-tRi"/>
                             </connections>

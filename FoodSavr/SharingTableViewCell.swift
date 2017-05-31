@@ -20,7 +20,12 @@ class SharingTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        isShared.setOn(UserDefaults.standard.bool(forKey: "\(itemName)sharing"), animated: animated)
+        
+       // isShared.setOn(UserDefaults.standard.bool(forKey: "\(itemName)\(String(describing: groupName.text!))"), animated: animated)
+//        print("this is itemname groupname")
+//        print("\(itemName)\(String(describing: groupName.text!))")
+//        print("this is itemname groupname localstorage")
+//        print(UserDefaults.standard.bool(forKey: "\(itemName)\(String(describing: groupName.text!))"))
     }
 
     @IBOutlet weak var isShared: UISwitch!
