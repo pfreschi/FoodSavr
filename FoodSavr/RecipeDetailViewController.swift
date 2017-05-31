@@ -114,9 +114,12 @@ class RecipeDetailViewController: UIViewController {
 
         }
         
+        /*
         let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: recipePic.frame.size.width, height: recipePic.frame.size.height))
         overlay.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 0.1)
         recipePic.addSubview(overlay)
+ */
+        recipePic.alpha = 0.8
         
         if storedRecipe["totalTime"] != nil {
             recipeTime.text = storedRecipe["totalTime"].stringValue
