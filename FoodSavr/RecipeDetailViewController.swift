@@ -28,6 +28,10 @@ class RecipeDetailViewController: UIViewController {
     var haveIngredients = Array<String>()
     var missingIngredients = Array<String>()
     
+    var isSaved = false
+    
+    var uid : String = ""
+    
     @IBOutlet weak var recipePic: UIImageView!
     
     @IBOutlet weak var recipeName: UILabel!
@@ -38,13 +42,57 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var recipeServings: UILabel!
 
     @IBOutlet weak var recipeRating: SwiftyStarRatingView!
+    @IBOutlet weak var saveRecipeButton: BorderedButton!
     
+    
+    @IBAction func pressSaveRecipeButton(_ sender: BorderedButton, forEvent event: UIEvent) {
+        if isSaved {
+            //un-save it
+            FirebaseProxy.firebaseProxy.userRef.child(uid).child("savedRecipes").child(currentRecipe.id).removeValue()
+            
+            sender.setTitle("Save", for: .normal)
+            isSaved = false
+            
+        } else {
+            //save it
+            
+            let dictResult = ["id": currentRecipe.id,
+                              "ingredients": currentRecipe.ingredients,
+                              "recipeName": currentRecipe.recipeName,
+                              "smallImageUrls": currentRecipe.smallImageUrls
+                              
+            ] as [String : Any]
+            
+            FirebaseProxy.firebaseProxy.userRef.child(uid).child("savedRecipes").child(currentRecipe.id).setValue(dictResult)
+                    
+            sender.setTitle("Saved", for: .normal)
+            isSaved = true
+            
+            
+        }
+        
+    }
     
     override func viewDidLoad() {
+        uid = UserDefaults.standard.string(forKey: "uid")!
+        
+        FirebaseProxy.firebaseProxy.userRef.child(uid).child("savedRecipes").child(currentRecipe.id).observe(FIRDataEventType.value, with: { (snapshot) in
+            let savedDict = snapshot.value as? [String : AnyObject] ?? [:]
+            if savedDict.keys.count != 0 {
+                self.isSaved = true
+                self.saveRecipeButton.setTitle("Saved", for: .normal)
+            } else {
+                self.isSaved = false
+                self.saveRecipeButton.setTitle("Save", for: .normal)
+
+            }
+        })
+        
         super.viewDidLoad()
         self.showRecipeInfo()
         
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,8 +114,9 @@ class RecipeDetailViewController: UIViewController {
 
         }
         
-        
-        recipeTime.text = storedRecipe["totalTime"].stringValue
+        if storedRecipe["totalTime"] != nil {
+            recipeTime.text = storedRecipe["totalTime"].stringValue
+        }
         
         // adds relevant ingredients to Have and Missing
         differentiateIngredients()

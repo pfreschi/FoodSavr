@@ -10,6 +10,9 @@ import UIKit
 import SDWebImage
 import Foundation
 import Firebase
+import SwiftyJSON
+import Alamofire
+import AlamofireSwiftyJSON
 
 protocol sharingDelegate {
     func sharingSwitchTapped(cell : SharingTableViewCell, isSwitchOn : Bool)
@@ -25,6 +28,9 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var itemKey : String = ""
     var creatorName : String = ""
     var switchStates : Dictionary<String, Bool> = [:]
+    
+    var recipes = [Recipe]()
+
     @IBOutlet weak var itemPic: UIImageView!
     
     @IBOutlet weak var itemName: UILabel!
@@ -35,6 +41,7 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var groupsTableview: UITableView!
 
+    @IBOutlet weak var recipesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         userGroupsRef = FirebaseProxy.firebaseProxy.userGroupsRef
@@ -42,6 +49,9 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         itemRef = FirebaseProxy.firebaseProxy.itemRef
         groupsTableview.delegate = self
         groupsTableview.dataSource = self
+        recipesTableView.delegate = self
+        recipesTableView.dataSource = self
+        getRecipes()
         showitemInfo()
         fetchGroups()
         getItemsharing()
@@ -90,14 +100,15 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: - Table view data source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (tableView == groupsTableview) {
+            return groups.count
+        } else {
+            return recipes.count
+        }
         
-        return groups.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -105,20 +116,58 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sharingCell", for: indexPath) as! SharingTableViewCell
-        let groupName = groups[indexPath.row].name
-        cell.itemName = itemName.text!
-        cell.groupName.text = groupName
-        cell.delegate = self
-        let groupID = groups[indexPath.row].id
-        if self.switchStates[groupID] != nil {
-            if self.switchStates[groupID]! {
-                cell.isShared.isOn = true
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
+        if tableView == groupsTableview {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sharingCell", for: indexPath) as! SharingTableViewCell
+            let groupName = groups[indexPath.row].name
+            cell.itemName = itemName.text!
+            cell.groupName.text = groupName
+            cell.delegate = self
+            let groupID = groups[indexPath.row].id
+            if self.switchStates[groupID] != nil {
+                if self.switchStates[groupID]! {
+                    cell.isShared.isOn = true
+                 }
             }
+            return cell
+
+        } else {
+            let recipeCell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
+            let row = indexPath.row
+            
+            var picString = ""
+            var keyForPic = ""
+            
+
+            recipeCell.recipeTitle.text = recipes[row].recipeName
+                
+            picString = recipes[row].smallImageUrls[0]
+            keyForPic = recipes[row].id
+                
+            
+            // if a large image is possibly stored in user defaults
+            if UserDefaults.standard.string(forKey: keyForPic) != nil {
+                var storedRecipe = JSON.parse(UserDefaults.standard.string(forKey: keyForPic)!)
+                
+                var hostedLargeUrl = storedRecipe["images"][0]["hostedLargeUrl"]
+                if hostedLargeUrl.stringValue != "" {
+                    picString = hostedLargeUrl.stringValue
+                } else if storedRecipe["images"][0]["hostedMediumUrl"] != "" {
+                    picString = storedRecipe["images"][0]["hostedMediumUrl"].stringValue
+                }
+            }
+            
+            
+            recipeCell.recipeImage.sd_setImage(with: URL(string: picString), placeholderImage: UIImage(named: "genericrecipe"))
+            
+            
+            recipeCell.view.layer.masksToBounds = true
+            recipeCell.view.layer.borderColor = UIColor.white.cgColor
+            recipeCell.view.layer.borderWidth = 6.0
+            
+        
+            return recipeCell
         }
-        return cell
     }
     
     func sharingSwitchTapped(cell : SharingTableViewCell, isSwitchOn : Bool) {
@@ -158,11 +207,102 @@ class ItemDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 for (key, value) in result {
                     let data = value as! Dictionary<String, Any>
                     self.switchStates[key] = data["shared"] as! Bool
-
                 }
             }
         })
     }
+    
+    func getRecipes() {
+    
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        FirebaseProxy.firebaseProxy.userRef.child(uid! + "/recipesForItems/\(currentItem.name)").observe(.value, with: { (snapshot) in
+            
+            var newRecipes : [Recipe] = []
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+
+                for snap in snapshots {
+                    if let recipeDict = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let recipe = Recipe(key: key, dictionary: recipeDict)
+                        print(recipe.id)
+                        
+                        
+                        if (UserDefaults.standard.data(forKey: recipe.id) == nil) {
+                            let yummlyAppId = UserDefaults.standard.string(forKey: "yummlyAppId") ?? "missingAppId"
+                            let yummlyAppKey = UserDefaults.standard.string(forKey: "yummlyAppKey") ?? "missingAppKey"
+                            var requestURL = "http://api.yummly.com/v1/api/recipe/" + recipe.id
+                            requestURL = requestURL + "?_app_id=" + yummlyAppId + "&_app_key=" + yummlyAppKey
+                            
+                            Alamofire.request(requestURL).responseString{ response in
+                                if (response.result.value) != nil {
+                                    let stringResult = response.result.value
+                                    UserDefaults.standard.set(stringResult, forKey: recipe.id)
+                                    
+                                    // prevents bad data from yummly getting shown to User and exception thrown!
+                                    var storedForCheck = JSON.parse(stringResult!)
+                                    let longIngredients = storedForCheck["ingredientLines"].arrayValue
+                                    print("recipe ingred count is \(recipe.ingredients.count)")
+                                    print("long ingred count is \(longIngredients.count)")
+                                    
+                                    if (recipe.ingredients.count == longIngredients.count) {
+                                        newRecipes.append(recipe)
+                                        self.recipes = newRecipes
+                                        self.recipesTableView.reloadData()
+                                    }
+                                    
+                                    
+                                    
+                                    UserDefaults.standard.synchronize()
+                                }
+                                
+                                
+                            }
+                            
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }
+                }
+                
+                self.recipesTableView.reloadData()
+                self.recipes = newRecipes
+                
+                print(newRecipes)
+                
+                
+                
+                
+                
+                
+            }
+            
+            
+        }) { (error) in
+            
+            print("this is error" + error.localizedDescription)
+        }
+        
+        
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "showRecipeDetail" {
+            if let cell = sender as? UITableViewCell {
+                let i = recipesTableView.indexPath(for: cell)!.row
+                let vc = segue.destination as! RecipeDetailViewController
+                print("the current recipe to transfer is !!")
+                print(self.recipes[i])
+                vc.currentRecipe = self.recipes[i]
+            }
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

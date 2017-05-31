@@ -46,7 +46,12 @@ class Recipe: NSObject {
     }
     
     var smallImageUrls: Array<String> {
-        return _smallImageUrls
+        if _smallImageUrls != nil {
+            return _smallImageUrls
+        } else {
+            return [""]
+        }
+        
     }
     
     var attributes: NSDictionary {

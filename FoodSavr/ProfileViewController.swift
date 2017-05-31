@@ -110,7 +110,7 @@ class ProfileViewController: UIViewController {
             self.allergyText.text = "Allergies: "
             if allergy.count != 0 {
                 for (index, elem) in allergy.enumerated() {
-                    if index != diet.count - 1 {
+                    if index != allergy.count - 1 {
                         self.allergyText.text?.append("\(elem), ")
                     } else {
                         self.allergyText.text?.append("\(elem) ")
@@ -123,7 +123,12 @@ class ProfileViewController: UIViewController {
             let excludedIngredient = value?["excludedIngredients"] as? String ?? "N/A"
             self.dislikeText.text = "Dislikes: "
             
-            self.dislikeText.text?.append(excludedIngredient.capitalized)
+            if excludedIngredient != "" {
+                self.dislikeText.text?.append(excludedIngredient.capitalized)
+            } else {
+                self.dislikeText.text?.append("N/A")
+            }
+            
 
         }) { (error) in
             print(error.localizedDescription)
