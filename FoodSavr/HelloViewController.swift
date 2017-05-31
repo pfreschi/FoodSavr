@@ -125,14 +125,18 @@ class HelloViewController: UIViewController {
     }
     
     @IBAction func skipToNextStep(_ sender: BorderedButton, forEvent event: UIEvent) {
-        if (currentStep == 3) { //pref check
+        self.currentStep += 1
+        print("new step is \(currentStep)")
+        
+        if (currentStep >= 3) { //pref check
 
             self.outerView.isHidden = true
             self.welcomeOrEndView.isHidden = false
             self.welcomeOrEndText.text = "Thank you very much for \n telling us about you. We hope you enjoy FoodSavr!"
             self.welcomeOrEndContinue.setTitle("Get Started", for: .normal)
             self.welcomeOrEndSkip.isHidden = true
-            self.currentStep += 1
+            savePrefs()
+            
 
         } else {
             if (currentStep == 1){ //on diet page
@@ -147,40 +151,29 @@ class HelloViewController: UIViewController {
                 preferenceView.isHidden = false
                 titleText.text = "Preference"
                 descriptionDietOrAllergyText.isHidden = true
-                
             }
-            print(currentStep)
-            currentStep += 1
+            
+
         }
     }
     
     
     @IBAction func continueToNextStep(_ sender: UIButton, forEvent event: UIEvent) {
-        if (currentStep == 3) { //pref check
+        if (currentStep >= 3) { //pref check
             FirebaseProxy.firebaseProxy.myRootRef.child("ingredients").queryOrdered(byChild: "term").queryEqual(toValue: preferenceTextBox.text).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let result = snapshot.value as? NSDictionary
                 if (result == nil){
                     print("result not found")
                 } else {
-                    print("result found")
+                    print("result found or none specified")
                     self.outerView.isHidden = true
                     self.welcomeOrEndView.isHidden = false
                     self.welcomeOrEndText.text = "Thank you very much for \n telling us about you. We hope you enjoy FoodSavr!"
                     self.welcomeOrEndContinue.setTitle("Get Started", for: .normal)
                     self.welcomeOrEndSkip.isHidden = true
                     self.currentStep += 1
-                    // save collected info to Firebase
-                    let currentUser = FIRAuth.auth()?.currentUser?.uid
-                    FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("diet").setValue(
-                        Array(self.dietPreferences.keys)
-                    )
-                    FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("allergy").setValue(
-                        Array(self.allergyPreferences.keys)
-                    )
-                    FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("excludedIngredients").setValue(
-                        self.preferenceTextBox.text
-                    )
+                    self.savePrefs()
                 }
                 
             }) { (error) in
@@ -200,8 +193,6 @@ class HelloViewController: UIViewController {
                 preferenceView.isHidden = false
                 titleText.text = "Preference"
                 descriptionDietOrAllergyText.isHidden = true
-                
-            } else if (currentStep == 4){
                 
             }
             
@@ -283,6 +274,27 @@ class HelloViewController: UIViewController {
             checkbox.tintColor = UIColor(red: 155.0/255.0, green: 198.0/255.0, blue: 93.0/255.0, alpha: 1.0)
             checkbox.stateChangeAnimation = M13Checkbox.Animation.expand(.stroke)
         }
+    }
+    
+    func savePrefs() {
+        // save collected info to Firebase
+        let currentUser = FIRAuth.auth()?.currentUser?.uid
+        
+        
+        FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("diet").setValue(
+            Array(self.dietPreferences.keys)
+        )
+        FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("allergy").setValue(
+            Array(self.allergyPreferences.keys)
+        )
+        FirebaseProxy.firebaseProxy.userRef.child(currentUser!).child("excludedIngredients").setValue(
+            self.preferenceTextBox.text
+        )
+        
+        print("diets are \(self.dietPreferences.keys)")
+        print("allergies are \(self.allergyPreferences.keys)")
+        print("excluded is \(self.preferenceTextBox.text)")
+
     }
 
     

@@ -66,8 +66,9 @@ class RecipeDetailViewController: UIViewController {
 
         }
         
-        
-        recipeTime.text = storedRecipe["totalTime"].stringValue
+        if storedRecipe["totalTime"] != nil {
+            recipeTime.text = storedRecipe["totalTime"].stringValue
+        }
         
         // adds relevant ingredients to Have and Missing
         differentiateIngredients()
