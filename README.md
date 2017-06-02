@@ -38,7 +38,6 @@ The repository contains FoodSavr, an iOS application that helps you keep track o
 ## Team
 [Peter Freschi: peter.m.freschi@gmail.com](https://github.com/pfreschi) | [Xiaowen Feng: xfeng1@uw.edu](https://github.com/xiaowenfeng1) | [Sophie Song: ys46@uw.edu](https://www.linkedin.com/in/yiyingsong/) | [Sayna Parsi: parsis@uw.edu](https://github.com/sainap)
 
-## Contact
 
 
 ## Screenshots
