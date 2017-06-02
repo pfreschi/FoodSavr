@@ -36,7 +36,10 @@ The repository contains FoodSavr, an iOS application that helps you keep track o
 *  We chose Yummly because it allows recipe search by ingredient, and incorporates dietary preferences. It has a huge collection of over 1 million recipes.                                                                                      * We decided to use Facebook login for authentication because most people have an account already and it allows us to access an individual’s friends list, which is useful for the sharing feature
 
 ## Team
-[Peter Freschi](https://github.com/pfreschi) | [Xiaowen Feng](https://github.com/xiaowenfeng1) | [Sophie Song](https://www.linkedin.com/in/yiyingsong/) | [Sayna Parsi](https://github.com/sainap)
+[Peter Freschi: peter.m.freschi@gmail.com](https://github.com/pfreschi) | [Xiaowen Feng: xfeng1@uw.edu](https://github.com/xiaowenfeng1) | [Sophie Song: ys46@uw.edu](https://www.linkedin.com/in/yiyingsong/) | [Sayna Parsi: parsis@uw.edu](https://github.com/sainap)
+
+## Contact
+
 
 ## Screenshots
 ![Quiz and Profile](gifs/quizandprofile.gif "Quiz and Profile")
