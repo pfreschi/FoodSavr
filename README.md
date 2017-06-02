@@ -15,8 +15,8 @@ The repository contains FoodSavr, an iOS application that helps you keep track o
 
 - [Main Features](#main-features)
 - [Major Technology Decisions](#major-technology-decisions)
-- [Screenshots](#screenshots)
 - [Team](#team)
+- [Screenshots](#screenshots)
 
 ## Main Features
 * Utilize text recognition to scan a receipt and load food items into the kitchen inventory on the app
@@ -35,6 +35,9 @@ The repository contains FoodSavr, an iOS application that helps you keep track o
 * In order to process receipts and generate recipes in the background, several Firebase Cloud Functions are triggered to call the Yummly, Google URL Shortener, and OCRSpace APIs.
 *  We chose Yummly because it allows recipe search by ingredient, and incorporates dietary preferences. It has a huge collection of over 1 million recipes.                                                                                      * We decided to use Facebook login for authentication because most people have an account already and it allows us to access an individual’s friends list, which is useful for the sharing feature
 
+## Team
+[Peter Freschi](https://github.com/pfreschi) | [Xiaowen Feng](https://github.com/xiaowenfeng1) | [Sophie Song](https://www.linkedin.com/in/yiyingsong/) | [Sayna Parsi](https://github.com/sainap)
+
 ## Screenshots
 ![Quiz and Profile](gifs/quizandprofile.gif "Quiz and Profile")
 ![Receipt Upload](gifs/receiptupload.gif "Receipt Upload")
@@ -44,5 +47,3 @@ The repository contains FoodSavr, an iOS application that helps you keep track o
 ![Save Recipe 2](gifs/savedrecipes.gif "Save Recipe 2")
 
 
-## Team
-[Peter Freschi](https://github.com/pfreschi) | [Xiaowen Feng](https://github.com/xiaowenfeng1) | [Sophie Song](https://www.linkedin.com/in/yiyingsong/) | [Sayna Parsi](https://github.com/sainap)
